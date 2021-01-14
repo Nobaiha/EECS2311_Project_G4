@@ -6,7 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.println("New Version 17: Martin Edition 3");
 		System.out.println("New Version Rayta");
-		System.out.println("New Version Suha Siddiqui");
+		System.out.println("New Version Suha Siddiqui 2");
 		System.out.println("Richard version");
 	}
 
