@@ -10,6 +10,7 @@ public class Main {
 		System.out.println("Richard version");
 		System.out.println("Rayta version 2");
 		System.out.println("Suha version 2");
+		System.out.println("Patchanon edit");
 	}
 
 }
