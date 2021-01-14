@@ -7,6 +7,7 @@ public class Main {
 		System.out.println("New Version 17: Martin Edition 2");
 		System.out.println("New Version Rayta");
 		System.out.println("New Version Suha Siddiqui");
+		System.out.println("Richard version");
 	}
 
 }
