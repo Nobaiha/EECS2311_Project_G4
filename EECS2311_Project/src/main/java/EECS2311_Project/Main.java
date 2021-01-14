@@ -9,6 +9,7 @@ public class Main {
 		System.out.println("New Version Suha Siddiqui");
 		System.out.println("Richard version");
 		System.out.println("Rayta version 2");
+		System.out.println("Suha version 2");
 	}
 
 }
