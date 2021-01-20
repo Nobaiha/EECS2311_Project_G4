@@ -80,6 +80,7 @@ public class Main {
 				noteNum++;
 			}else{
 				//Otherwise create a new note with the string as the note value.
+				//Need to check for letters/symbols between notes
 				noteNum++;
 				Note tempNote = new Note(measureNum, noteNum, stringNum, str);
 				noteNum += str.length();
