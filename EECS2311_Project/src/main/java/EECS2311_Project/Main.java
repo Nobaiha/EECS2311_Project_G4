@@ -92,7 +92,7 @@ public class Main {
 			System.out.println("String number: " + note.stringNumber);
 			System.out.println("Measure number: " + note.measure);
 			System.out.println("Note number: " + note.noteNumber);
-			System.out.println("Note value: " + note.noteValue);
+			System.out.println("Note value1: " + note.noteValue);
 			System.out.println();
 		}
 
