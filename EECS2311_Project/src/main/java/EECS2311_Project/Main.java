@@ -90,6 +90,8 @@ public class Main {
 			}
 		}
 
+		//comment
+
 		//Test print the array
 		for(Note note : noteArray){
 			System.out.println("String number: " + note.stringNumber);
