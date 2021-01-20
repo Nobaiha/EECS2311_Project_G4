@@ -62,7 +62,7 @@ public class Main {
 			if (matcher.find()){
 				//If it has gone through 6 iterations (6 strings) dont reset the measure count
 				if(repeatTimes == 5){
-					repeatTimes = 0;
+					repeatTimes = 0;					
 					measureMem = measureNum;
 				}else {
 					measureNum = measureMem;
@@ -93,7 +93,7 @@ public class Main {
 			System.out.println("Measure number: " + note.measure);
 			System.out.println("Note number: " + note.noteNumber);
 			System.out.println("Note value1: " + note.noteValue);
-			System.out.println();
+			System.out.println();//print a line
 		}
 
 
