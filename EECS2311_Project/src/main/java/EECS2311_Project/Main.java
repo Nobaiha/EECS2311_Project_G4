@@ -15,6 +15,7 @@ public class Main {
 		System.out.println("Rayta version 2");
 		System.out.println("Suha version 2");
 		System.out.println("Patchanon edit");*/
+		//Rayta labtask
 
 		ArrayList<String> testLines = new ArrayList<>();
 
