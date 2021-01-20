@@ -15,6 +15,8 @@ public class Main {
 		System.out.println("Rayta version 2");
 		System.out.println("Suha version 2");
 		System.out.println("Patchanon edit");*/
+		//Rayta labtask
+		//Suha labtask
 
 		ArrayList<String> testLines = new ArrayList<>();
 
@@ -62,7 +64,7 @@ public class Main {
 			if (matcher.find()){
 				//If it has gone through 6 iterations (6 strings) dont reset the measure count
 				if(repeatTimes == 5){
-					repeatTimes = 0;
+					repeatTimes = 0;					
 					measureMem = measureNum;
 				}else {
 					measureNum = measureMem;
@@ -93,8 +95,8 @@ public class Main {
 			System.out.println("String number: " + note.stringNumber);
 			System.out.println("Measure number: " + note.measure);
 			System.out.println("Note number: " + note.noteNumber);
-			System.out.println("Note value: " + note.noteValue);
-			System.out.println();
+			System.out.println("Note value1: " + note.noteValue);
+			System.out.println();//print a line
 		}
 
 
