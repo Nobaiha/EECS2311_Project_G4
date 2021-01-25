@@ -82,22 +82,22 @@ public class Main {
 				noteNum++;
 			}else{
 				//Otherwise create a new note with the string as the note value.
-				//Need to check for letters/symbols between notes
-				noteNum++;
-				Note tempNote = new Note(measureNum, noteNum, stringNum, str);
-				noteNum += str.length();
-				noteArray.add(tempNote);
+				//splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
+				//will update regex when encountering new patterns.
+				for(String character : str.split("(?<=[a-z])")){
+					noteNum++;
+					Note tempNote = new Note(measureNum, noteNum, stringNum, character);
+					noteArray.add(tempNote);
+				}
 			}
 		}
-
-		//comment
 
 		//Test print the array
 		for(Note note : noteArray){
 			System.out.println("String number: " + note.stringNumber);
 			System.out.println("Measure number: " + note.measure);
-			System.out.println("Note number: " + note.noteNumber);
-			System.out.println("Note value1: " + note.noteValue);
+			System.out.println("Element number: " + note.noteNumber);
+			System.out.println("Element value: " + note.noteValue);
 			System.out.println();//print a line
 		}
 
