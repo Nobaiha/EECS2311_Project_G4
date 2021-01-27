@@ -9,7 +9,9 @@ public class Note {
     public int noteNumber;
     public int stringNumber;
     public String noteValue;
-
+    public int pullOff1;
+    public int pullOff2;
+   //overload const. with pull off1/2
     public Note(int measure, int noteNumber, int stringNumber, String noteValue) {
         this.measure = measure;
         this.noteNumber = noteNumber;
