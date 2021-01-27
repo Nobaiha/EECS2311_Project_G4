@@ -9,6 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		/*System.out.println("New Version 17: Martin Edition 2");
+		 * New change
 		System.out.println("New Version Rayta");
 		System.out.println("New Version Suha Siddiqui");
 		System.out.println("Richard version");
@@ -16,7 +17,13 @@ public class Main {
 		System.out.println("Suha version 2");
 		System.out.println("Patchanon edit");*/
 		//Rayta labtask
+
 //Rayta trying labtask2
+
+		//Suha labtask
+		//conflict trying(Zhilong Lin)
+
+
 		ArrayList<String> testLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
@@ -81,10 +88,13 @@ public class Main {
 				noteNum++;
 			}else{
 				//Otherwise create a new note with the string as the note value.
-				noteNum++;
-				Note tempNote = new Note(measureNum, noteNum, stringNum, str);
-				noteNum += str.length();
-				noteArray.add(tempNote);
+				//splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
+				//will update regex when encountering new patterns.
+				for(String character : str.split("(?<=[a-z])")){
+					noteNum++;
+					Note tempNote = new Note(measureNum, noteNum, stringNum, character);
+					noteArray.add(tempNote);
+				}
 			}
 		}
 
@@ -92,10 +102,14 @@ public class Main {
 		for(Note note : noteArray){
 			System.out.println("String number: " + note.stringNumber);
 			System.out.println("Measure number: " + note.measure);
-			System.out.println("Note number: " + note.noteNumber);
-			System.out.println("Note value1: " + note.noteValue);
+			System.out.println("Element number: " + note.noteNumber);
+			System.out.println("Element value: " + note.noteValue);
 			System.out.println();//print a line
 		}
+
+
+		//conflict here? conflicts
+
 
 
 	}
