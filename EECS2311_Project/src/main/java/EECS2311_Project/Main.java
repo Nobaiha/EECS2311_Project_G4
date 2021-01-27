@@ -18,7 +18,7 @@ public class Main {
 		System.out.println("Patchanon edit");*/
 		//Rayta labtask
 
-//Rayta trying labtask2
+		//Rayta trying labtask2
 
 		//Suha labtask
 		//conflict trying(Zhilong Lin)
@@ -109,7 +109,7 @@ public class Main {
 
 
 		//conflict here? conflicts 
-		//pushing try
+		//pushing try 
 
 
 
