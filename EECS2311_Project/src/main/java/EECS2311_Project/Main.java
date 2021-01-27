@@ -109,12 +109,9 @@ public class Main {
 
 
 		//conflict here? conflicts 
-<<<<<<< HEAD
-		//pushing try ZL
-=======
-        //change suha
->>>>>>> branch 'master' of https://github.com/Nobaiha/EECS2311_Project_G4.git
 
+		//pushing try ZL
+//rayta labtask2
 
 
 
