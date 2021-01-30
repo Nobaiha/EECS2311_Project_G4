@@ -11,13 +11,13 @@ public class Main {
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
-		File inputFile = new File("src/main/java/EECS2311_Project/example2.txt");
+		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
 
 		//need to check for some others too, sometimes E is a D?
 		Pattern pattern = Pattern.compile("^([eBGDAE])");
 
 		//Need to check for alternatives such as CC HH, etc.
-		Pattern drumPattern = Pattern.compile("^([CHSB])");
+		Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
 
 		//Reads the txt file and parses each line into the arraylist if it is a note line.
 		//Maybe need to edit later as sometimes there is information on top of the bars???
@@ -120,8 +120,8 @@ public class Main {
 
 			int measureNum = 1;
 			int noteNum = 1;
-			char part = '.';
-			char repeatedPart = '.';
+			String part = "";
+			String repeatedPart = "";
 			int measureMem = 1;
 
 			//Iterates through the parsed string array and makes an array of note objects
@@ -130,28 +130,38 @@ public class Main {
 				//checks for old regex expression which represents a note
 				Matcher matcher = drumPattern.matcher(str);
 				if (matcher.find()) {
-					System.out.println((str));
-					part = str.charAt(0);
-					//does once, to set the repeated char to the first string.
-					if(repeatedPart == '.'){
-						repeatedPart = part;
+					//System.out.println((str));
+					//checks to see if the first part of the line indicates a "string" i.e checks for a |
+					int indexOfMeasure = str.indexOf("|");
+					if(indexOfMeasure != -1) {
+						part = str.substring(0, indexOfMeasure);
+						//does once, to set the repeated char to the first string.
+						if (repeatedPart.equals("")) {
+							repeatedPart = part;
+						}
+						if (str.length() > indexOfMeasure + 1) {
+							//outlier where first note isnt a '-'
+							DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, str.charAt(indexOfMeasure + 1));
+							drumNoteArray.add(tempDrumNote);
+						} else if (repeatedPart.equals(part)) {
+							//If it has gone through all possible parts dont reset the measure count
+							measureMem = measureNum;
+						} else {
+							measureNum = measureMem;
+						}
+						noteNum = 1;
 					}
-					if(str.length() == 3){
-						//outlier where first note isnt a '-'
-						DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, str.charAt(2));
-						drumNoteArray.add(tempDrumNote);
-					}
-					else if(repeatedPart == part ){
-					//If it has gone through all possible parts dont reset the measure count
-						measureMem = measureNum;
-					} else {
-						measureNum = measureMem;
-					}
-					noteNum = 1;
-				} else if (str.equals("|")) {
+				} else if (str.contains("|")) {
 					//Increase measure count if it encounters |
 					noteNum = 1;
 					measureNum++;
+					if(str.length() > 1){
+						//Extract this to separate function? duplicate code in function below.
+						for (char character : str.substring(1).toCharArray()) {
+							DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, character);
+							drumNoteArray.add(tempDrumNote);
+						}
+					}
 				} else if (str.length() == 0) {
 					//if blank, increase note count.
 					noteNum++;
@@ -175,6 +185,8 @@ public class Main {
 				System.out.println("Element value: " + drumNote.noteValue);
 				System.out.println();
 			}
+			
+
 
 		}
 	}
