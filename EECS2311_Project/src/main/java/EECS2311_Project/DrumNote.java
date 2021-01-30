@@ -7,9 +7,9 @@ public class DrumNote {
         //noteValue is the representation of the note in tab form, usually a combination of numbers, letters, and symbols.
         public int measure;
         public int noteNumber;
-        public char part;
+        public String part;
         public char noteValue;
-        public DrumNote(int measure, int noteNumber, char part, char noteValue) {
+        public DrumNote(int measure, int noteNumber, String part, char noteValue) {
             this.measure = measure;
             this.noteNumber = noteNumber;
             this.part = part;
