@@ -9,6 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * A class that creates the GUI for the user. It will prompt the user the input a file or to copy and paste text to be converted.
+ * 
+ * @author Team 4 EECS2311 Winter 2021
+ * 
+ */
+
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
