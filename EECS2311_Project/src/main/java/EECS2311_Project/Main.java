@@ -4,6 +4,13 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
+/**
+ * The main class.
+ * 
+ * @author Team 4 EECS2311 Winter 2021
+ * 
+ */
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -104,9 +111,9 @@ public class Main {
 			}
 
 
-
-///////////////////////////////////////////////////DRUM TEST HERE
-
+//---------------
+//DRUM TEST HERE
+//---------------
 
 
 		}else{
