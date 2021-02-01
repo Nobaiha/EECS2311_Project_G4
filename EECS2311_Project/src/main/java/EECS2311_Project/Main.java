@@ -4,6 +4,13 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
+/**
+ * The main class.
+ * 
+ * @author Team 4 EECS2311 Winter 2021
+ * 
+ */
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,11 +18,12 @@ public class Main {
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
-		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
+		File inputFile = new File("src/main/java/EECS2311_Project/example.txt");
 
 		//need to check for some others too, sometimes E is a D?
-		Pattern pattern = Pattern.compile("^([eBGDAE])");
-
+//		Pattern pattern = Pattern.compile("^([eBGDAE])");
+		//string tuning can be changed, needs to be accounted for
+		Pattern pattern = Pattern.compile("^([eABCDEFG])");
 		//Need to check for alternatives such as CC HH, etc.
 		Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
 
@@ -103,9 +111,9 @@ public class Main {
 			}
 
 
-
-///////////////////////////////////////////////////DRUM TEST HERE
-//test change
+//---------------
+//DRUM TEST HERE
+//---------------
 
 
 		}else{
