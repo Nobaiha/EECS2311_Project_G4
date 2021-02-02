@@ -12,13 +12,13 @@ import java.util.regex.*;
  */
 
 public class Main {
-	//branch practice suha 
+	//branch practice suha v1
 	public static void main(String[] args) {
 		ArrayList<String> testLines = new ArrayList<>();
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
-		File inputFile = new File("src/main/java/EECS2311_Project/example.txt");
+		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
 
 		//need to check for some others too, sometimes E is a D?
 //		Pattern pattern = Pattern.compile("^([eBGDAE])");
