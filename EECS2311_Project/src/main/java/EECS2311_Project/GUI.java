@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * 
  */
 
-//changing somehting again-Rayta
+//changing somehting again-Rayta labtask
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
