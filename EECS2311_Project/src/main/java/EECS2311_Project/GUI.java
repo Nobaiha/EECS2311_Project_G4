@@ -16,7 +16,12 @@ import javax.swing.JPanel;
  * 
  */
 
+
 //changing somehting again-Rayta labtask
+
+//changing somehting again-Rayta
+
+
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
@@ -43,5 +48,5 @@ public class GUI {
 		// TODO Auto-generated method stub
 		new GUI();
 	}
-
+//hello change
 }

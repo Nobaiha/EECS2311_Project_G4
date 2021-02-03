@@ -10,15 +10,15 @@ import java.util.regex.*;
  * @author Team 4 EECS2311 Winter 2021
  * 
  */
-
+//hello 
 public class Main {
-
+	//branch practice suha v1
 	public static void main(String[] args) {
 		ArrayList<String> testLines = new ArrayList<>();
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
-		File inputFile = new File("src/main/java/EECS2311_Project/example.txt");
+		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
 
 		//need to check for some others too, sometimes E is a D?
 //		Pattern pattern = Pattern.compile("^([eBGDAE])");
@@ -185,7 +185,7 @@ public class Main {
 				}
 			}
 
-			//Test print the array
+			//Test print the array. Martin merge change.
 			for (DrumNote drumNote : drumNoteArray) {
 				System.out.println("Part: " + drumNote.part);
 				System.out.println("Measure number: " + drumNote.measure);
@@ -193,10 +193,7 @@ public class Main {
 				System.out.println("Element value: " + drumNote.noteValue);
 				System.out.println();
 			}
-			
-
-
 		}
 	}
-
+//test commit
 }
