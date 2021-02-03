@@ -16,7 +16,9 @@ import javax.swing.JPanel;
  * 
  */
 
+
 //changing somehting again-Rayta
+
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
