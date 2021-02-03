@@ -13,7 +13,7 @@ import java.util.regex.*;
 //hello 
 public class Main {
 	//branch practice suha v1
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		ArrayList<String> testLines = new ArrayList<>();
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
@@ -184,13 +184,9 @@ public class Main {
 					}
 				}
 			}
-			File file = new File("out.txt"); //Your file
-			FileOutputStream outputStream = new FileOutputStream(file);
-			//Test print the array. Martin merge change.
+
+			//Test print the array. A change.
 			for (DrumNote drumNote : drumNoteArray) {
-				
-				PrintStream printStream = new PrintStream(outputStream);
-				System.setOut(printStream);
 				System.out.println("Part: " + drumNote.part);
 				System.out.println("Measure number: " + drumNote.measure);
 				System.out.println("Element number: " + drumNote.noteNumber);
@@ -199,5 +195,6 @@ public class Main {
 			}
 		}
 	}
-//test commit
+//test commit to develop branch
+	//test
 }
