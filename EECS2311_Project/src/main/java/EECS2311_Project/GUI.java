@@ -15,13 +15,9 @@ import javax.swing.JPanel;
  * @author Team 4 EECS2311 Winter 2021
  * 
  */
-<<<<<<< HEAD
-//hi v1
-//hello suha
-=======
 
 //changing somehting again-Rayta
->>>>>>> refs/remotes/origin/develop-branch
+
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
