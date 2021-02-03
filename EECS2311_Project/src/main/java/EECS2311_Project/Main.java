@@ -11,7 +11,7 @@ import main.java.EECS2311_Project.DrumNote;
  * @author Team 4 EECS2311 Winter 2021
  * 
  */
-
+//hello 
 public class Main {
 	//branch practice suha v1
 	public static void main(String[] args) {
@@ -185,7 +185,7 @@ public class Main {
 				}
 			}
 
-			//Test print the array
+			//Test print the array. A change.
 			for (DrumNote drumNote : drumNoteArray) {
 				System.out.println("Part: " + drumNote.part);
 				System.out.println("Measure number: " + drumNote.measure);
@@ -193,10 +193,8 @@ public class Main {
 				System.out.println("Element value: " + drumNote.noteValue);
 				System.out.println();
 			}
-			
-
-
 		}
+<<<<<<< HEAD
 
 
 		//Test print the array
@@ -220,6 +218,8 @@ public class Main {
 
 
 
+=======
+>>>>>>> refs/remotes/origin/develop-branch
 	}
-
+//test commit
 }

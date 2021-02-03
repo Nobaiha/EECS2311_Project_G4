@@ -17,6 +17,8 @@ import javax.swing.JPanel;
  */
 
 
+//changing somehting again-Rayta
+
 public class GUI {
 	public GUI() {
 		JFrame frame = new JFrame();
@@ -44,5 +46,7 @@ public class GUI {
 		new GUI();
 		
 	}
+
 //changed during Lab time and can be deleted aaa
+
 }
