@@ -185,7 +185,7 @@ public class Main {
 				}
 			}
 
-			//Test print the array
+			//Test print the array. A change.
 			for (DrumNote drumNote : drumNoteArray) {
 				System.out.println("Part: " + drumNote.part);
 				System.out.println("Measure number: " + drumNote.measure);
@@ -193,10 +193,7 @@ public class Main {
 				System.out.println("Element value: " + drumNote.noteValue);
 				System.out.println();
 			}
-			
-
-
 		}
 	}
-
+//test commit
 }
