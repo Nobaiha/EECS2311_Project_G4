@@ -1,4 +1,4 @@
-package EECS2311_Project;
+package main.java.EECS2311_Project;
 
 /**
  * A class that stores the data of the recognized drum note.

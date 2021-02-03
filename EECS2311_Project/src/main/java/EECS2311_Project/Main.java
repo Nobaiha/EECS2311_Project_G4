@@ -1,8 +1,9 @@
-package EECS2311_Project;
-
+package main.java.EECS2311_Project;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
+
+import main.java.EECS2311_Project.DrumNote;
 
 /**
  * The main class.
@@ -20,8 +21,7 @@ public class Main {
 		//might need to change the file path depending on system.
 		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
 
-		//need to check for some others too, sometimes E is a D?
-//		Pattern pattern = Pattern.compile("^([eBGDAE])");
+		//ne›ern pattern = Pattern.compile("^([eBGDAE])");
 		//string tuning can be changed, needs to be accounted for
 		Pattern pattern = Pattern.compile("^([eABCDEFG])");
 		//Need to check for alternatives such as CC HH, etc.
@@ -206,7 +206,8 @@ public class Main {
 			System.out.println("Element number: " + note.noteNumber);
 			System.out.println("Element value: " + note.noteValue);
 			System.out.println();//print a line
-		}
+		}	
+		
 
 
 		//changed something and try to put it in the branch
