@@ -193,34 +193,7 @@ public class Main {
 				System.out.println("Element value: " + drumNote.noteValue);
 				System.out.println();
 			}
-			
-
-
 		}
-
-
-		//Test print the array
-		for(Note note : noteArray){
-			System.out.println("String number: " + note.stringNumber);
-			System.out.println("Measure number: " + note.measure);
-			System.out.println("Element number: " + note.noteNumber);
-			System.out.println("Element value: " + note.noteValue);
-			System.out.println();//print a line
-		}
-
-
-		//changed something and try to put it in the branch
-		
-		//pushing something into develop branch
-		
-
-
-
-
-
-
 	}
-
+//test commit
 }
-
-//dev branch test.
