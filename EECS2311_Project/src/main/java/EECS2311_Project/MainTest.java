@@ -1,14 +1,13 @@
 package EECS2311_Project;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
 public class MainTest {
 
-	//Sup
 	@Test
-	public void test() {
+	void test() {
 		fail("Not yet implemented");
 	}
 
