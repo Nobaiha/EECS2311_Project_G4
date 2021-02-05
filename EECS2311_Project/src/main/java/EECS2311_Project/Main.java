@@ -185,7 +185,7 @@ public class Main {
 				}
 			}
 
-			//Test print the array. A change.
+			//Test print the array. Martin merge change.
 			for (DrumNote drumNote : drumNoteArray) {
 				System.out.println("Part: " + drumNote.part);
 				System.out.println("Measure number: " + drumNote.measure);
