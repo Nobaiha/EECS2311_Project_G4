@@ -52,7 +52,7 @@ public class guiFileUploadPage extends JFrame {
 		setContentPane(uploadFileWindow);
 		uploadFileWindow.setLayout(null);
 		
-		JLabel messageLabel = new JLabel("Pick a .txt file");
+		JLabel messageLabel = new JLabel("No file currently selected");
 		messageLabel.setBackground(new Color(255, 255, 255));
 		messageLabel.setFont(new Font("Calibri", Font.ITALIC, 20));
 		messageLabel.setOpaque(true);
@@ -63,12 +63,12 @@ public class guiFileUploadPage extends JFrame {
 		JButton browseButton = new JButton("Browse");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser file = new JFileChooser();
-				file.setCurrentDirectory(new File (System.getProperty("user.home")));
-				int result = file.showOpenDialog(parent);
-				if (result == JFileChooser.APPROVE_OPTION) {
-				    File selectedFile = file.getSelectedFile();
-				    messageLabel.setText(selectedFile.getAbsolutePath());
+				JFileChooser browseFile = new JFileChooser();
+				browseFile.setCurrentDirectory(new File (System.getProperty("user.home")));
+				int uploadFile = browseFile.showOpenDialog(parent);
+				if (uploadFile == JFileChooser.APPROVE_OPTION) {
+				    File chosenFile = browseFile.getSelectedFile();
+				    messageLabel.setText(chosenFile.getAbsolutePath());
 				}
 				
 				
@@ -79,26 +79,27 @@ public class guiFileUploadPage extends JFrame {
 		browseButton.setBounds(650, 318, 171, 42);
 		uploadFileWindow.add(browseButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("Pick a file from your file explorer of type .txt that contains your");
-		lblNewLabel_1.setToolTipText("");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(47, 70, 787, 85);
-		uploadFileWindow.add(lblNewLabel_1);
+		JLabel instructionLabel1 = new JLabel("Pick a file from your file explorer of type .txt that contains your");
+		instructionLabel1.setToolTipText("");
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 30));
+		instructionLabel1.setBounds(47, 70, 787, 85);
+		uploadFileWindow.add(instructionLabel1);
 		
-		JLabel lblNewLabel_2 = new JLabel("tablature music.");
-		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel_2.setBounds(47, 129, 787, 63);
-		uploadFileWindow.add(lblNewLabel_2);
-		
-		JButton btnNewButton = new JButton("Enter");
-		btnNewButton.addActionListener(new ActionListener() {
+		JLabel instructionLabel2 = new JLabel("tablature music.");
+		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 30));
+		instructionLabel2.setBounds(47, 129, 787, 63);
+		uploadFileWindow.add(instructionLabel2);
+		modifications f = new modifications();
+		JButton enterButton = new JButton("Enter");
+		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				f.setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBackground(SystemColor.activeCaption);
-		btnNewButton.setFont(new Font("Calibri", Font.BOLD, 30));
-		btnNewButton.setBounds(343, 571, 261, 85);
-		uploadFileWindow.add(btnNewButton);
+		enterButton.setBackground(SystemColor.activeCaption);
+		enterButton.setFont(new Font("Calibri", Font.BOLD, 30));
+		enterButton.setBounds(343, 571, 261, 85);
+		uploadFileWindow.add(enterButton);
 	}
 }

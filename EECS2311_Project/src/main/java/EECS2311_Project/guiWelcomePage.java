@@ -53,8 +53,14 @@ public class guiWelcomePage extends JFrame {
 		companyNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		companyNameLabel.setFont(new Font("Calibri", Font.BOLD, 86));
 		openingWindow.add(companyNameLabel);
-		
+		paste p = new paste();
 		JButton pasteWindowButton = new JButton("Paste Tab");
+		pasteWindowButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				p.setVisible(true);
+			}
+		});
 		pasteWindowButton.setFont(new Font("Calibri", Font.BOLD, 30));
 		pasteWindowButton.setBackground(SystemColor.activeCaption);
 		pasteWindowButton.setBounds(534, 304, 277, 75);
