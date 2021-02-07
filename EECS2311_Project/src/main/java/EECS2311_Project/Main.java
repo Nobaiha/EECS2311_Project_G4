@@ -47,6 +47,7 @@ public class Main {
                 }
             }
         } catch (FileNotFoundException e) {
+            //Send error not found here.
             e.printStackTrace();
         }
         if (testLines.size() > drumTestLines.size()) {
@@ -76,6 +77,7 @@ public class Main {
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String str : strArray) {
+            System.out.println(str);
             //checks for old regex expression which represents a note (e,a,b,d...)
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
@@ -108,16 +110,15 @@ public class Main {
                 }
             }
         }
-        return guitarNoteArray;
-
         //Test print the array
-            /*for (GuitarNote guitarNote : guitarNoteArray) {
-                System.out.println("String: " + guitarNote.stringValue);
-                System.out.println("Measure number: " + guitarNote.measure);
-                System.out.println("Element number: " + guitarNote.noteNumber);
-                System.out.println("Element value: " + guitarNote.noteValue);
-                System.out.println();
-            }*/
+        /*for (GuitarNote guitarNote : guitarNoteArray) {
+            System.out.println("String: " + guitarNote.stringValue);
+            System.out.println("Measure number: " + guitarNote.measure);
+            System.out.println("Element number: " + guitarNote.noteNumber);
+            System.out.println("Element value: " + guitarNote.noteValue);
+            System.out.println();
+        }*/
+        return guitarNoteArray;
     }
 
     private static ArrayList<DrumNote> drumNoteParser (ArrayList<String> noteArray){
@@ -282,7 +283,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Object[] notes = fileParser("src/main/java/EECS2311_Project/drumExample3.txt");
+        Object[] notes = fileParser("src/main/java/EECS2311_Project/example.txt");
         ArrayList<String> noteArray = (ArrayList<String>)notes[1];
         if (notes[0] == "guitar") {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
