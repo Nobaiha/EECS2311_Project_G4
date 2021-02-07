@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 
 public class paste extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel pasteBody;
 
 	/**
 	 * Launch the application.
@@ -50,11 +50,12 @@ public class paste extends JFrame {
 	public paste() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(248, 248, 255));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		pasteBody = new JPanel();
+		pasteBody.setBackground(new Color(248, 248, 255));
+		pasteBody.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(pasteBody);
+		pasteBody.setLayout(null);
+		modifications m=new modifications();
 		
 		JLabel lblNewLabel = new JLabel("PASTE");
 		lblNewLabel.setBounds(0, 0, 891, 105);
@@ -62,24 +63,24 @@ public class paste extends JFrame {
 		lblNewLabel.setBackground(new Color(255, 240, 245));
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 86));
-		contentPane.add(lblNewLabel);
+		pasteBody.add(lblNewLabel);
 		
 		TextArea pasteArea = new TextArea();
 		pasteArea.setBackground(new Color(240, 248, 255));
 		pasteArea.setBounds(38, 128, 821, 489);
-		contentPane.add(pasteArea);
-		
+		pasteBody.add(pasteArea);
 		Button enterButton = new Button("Enter");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				m.setVisible(true);
 			}
 		});
 		enterButton.setBackground(new Color(240, 248, 255));
 		enterButton.setFont(new Font("Calibri", Font.BOLD, 30));
 		enterButton.setForeground(new Color(0, 0, 0));
 		enterButton.setBounds(354, 645, 161, 67);
-		contentPane.add(enterButton);
+		pasteBody.add(enterButton);
 		
 	}
 	
