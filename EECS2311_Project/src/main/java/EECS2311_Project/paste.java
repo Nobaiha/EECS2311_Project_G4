@@ -57,13 +57,13 @@ public class paste extends JFrame {
 		pasteBody.setLayout(null);
 		modifications m=new modifications();
 		
-		JLabel lblNewLabel = new JLabel("PASTE");
-		lblNewLabel.setBounds(0, 0, 891, 105);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBackground(new Color(255, 240, 245));
-		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 86));
-		pasteBody.add(lblNewLabel);
+		JLabel PasteLabel = new JLabel("PASTE");
+		PasteLabel.setBounds(0, 0, 891, 105);
+		PasteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		PasteLabel.setBackground(new Color(255, 240, 245));
+		PasteLabel.setForeground(new Color(0, 0, 0));
+		PasteLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 86));
+		pasteBody.add(PasteLabel);
 		
 		TextArea pasteArea = new TextArea();
 		pasteArea.setBackground(new Color(240, 248, 255));
