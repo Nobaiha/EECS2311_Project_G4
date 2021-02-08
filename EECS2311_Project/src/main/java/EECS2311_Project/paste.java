@@ -55,7 +55,7 @@ public class paste extends JFrame {
 		pasteBody.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pasteBody);
 		pasteBody.setLayout(null);
-		modifications m=new modifications();
+		//modifications m=new modifications();
 		
 		JLabel PasteLabel = new JLabel("PASTE");
 		PasteLabel.setBounds(0, 0, 891, 105);
@@ -73,7 +73,7 @@ public class paste extends JFrame {
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				m.setVisible(true);
+				//m.setVisible(true);
 			}
 		});
 		enterButton.setBackground(new Color(240, 248, 255));
