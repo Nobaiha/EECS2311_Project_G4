@@ -13,13 +13,13 @@ import main.java.EECS2311_Project.DrumNote;
  */
 //hello 
 public class Main {
-	//branch practice suha v1
+
 	public static void main(String[] args) {
 		ArrayList<String> testLines = new ArrayList<>();
 		ArrayList<String> drumTestLines = new ArrayList<>();
 
 		//might need to change the file path depending on system.
-		File inputFile = new File("src/main/java/EECS2311_Project/drumExample3.txt");
+		File inputFile = new File("/Users/serenemoon/git/EECS2311_Project_G4/EECS2311_Project/src/main/java/EECS2311_Project/drumExample3.txt");
 
 		//ne›ern pattern = Pattern.compile("^([eBGDAE])");
 		//string tuning can be changed, needs to be accounted for
@@ -197,18 +197,9 @@ public class Main {
 
 
 
-		//Test print the array
-		for(Note note : noteArray){
-			System.out.println("String number: " + note.stringNumber);
-			System.out.println("Measure number: " + note.measure);
-			System.out.println("Element number: " + note.noteNumber);
-			System.out.println("Element value: " + note.noteValue);
-			System.out.println();//print a line
-		}	
+
+
 		
-
-
-		//changed something and try to put it in the branch
 		
 
 
