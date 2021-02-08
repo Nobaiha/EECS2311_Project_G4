@@ -23,6 +23,7 @@ public class guiFileUploadPage extends JFrame {
 
 	private JPanel uploadFileWindow;
 	protected Component parent;
+	private String filePath;
 
 	/**
 	 * Launch the application.
@@ -69,6 +70,7 @@ public class guiFileUploadPage extends JFrame {
 				if (uploadFile == JFileChooser.APPROVE_OPTION) {
 				    File chosenFile = browseFile.getSelectedFile();
 				    messageLabel.setText(chosenFile.getAbsolutePath());
+				    filePath = chosenFile.getAbsolutePath();
 				}
 				
 				
@@ -89,10 +91,10 @@ public class guiFileUploadPage extends JFrame {
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 30));
 		instructionLabel2.setBounds(47, 129, 787, 63);
 		uploadFileWindow.add(instructionLabel2);
-		modifications f = new modifications();
 		JButton enterButton = new JButton("Enter");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				modifications f = new modifications(filePath);
 				f.setVisible(true);
 				setVisible(false);
 			}
