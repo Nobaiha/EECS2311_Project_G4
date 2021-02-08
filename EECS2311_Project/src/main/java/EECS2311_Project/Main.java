@@ -3,7 +3,6 @@ package EECS2311_Project;
 import org.xembly.*;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.*;
 
@@ -280,6 +279,12 @@ public class Main {
             System.out.println("error");
         }
         //System.out.println(xml);
+    }
+
+    private static void musicNoteParser (ArrayList noteArray){
+        MusicNote F = new MusicNote("F");
+        MusicNote C = new MusicNote("C");
+        MusicNote G = new MusicNote("G");
     }
 
     public static void main(String[] args) {
