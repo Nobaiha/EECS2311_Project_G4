@@ -13,9 +13,11 @@ import java.util.regex.*;
  */
 
 public class Main {
+    private static String filePath;
 
-    private static Object[] fileParser (String file){
-
+    public static Object[] fileParser (String file){
+        System.out.println("Parsing file");
+        System.out.println(file);
         ArrayList<String> testLines = new ArrayList<>();
         ArrayList<String> drumTestLines = new ArrayList<>();
 
@@ -56,7 +58,7 @@ public class Main {
         }
     }
 
-    private static ArrayList<GuitarNote> guitarNoteParser (ArrayList<String> noteArray){
+    public static ArrayList<GuitarNote> guitarNoteParser (ArrayList<String> noteArray){
         //Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
@@ -76,7 +78,7 @@ public class Main {
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String str : strArray) {
-            System.out.println(str);
+            //System.out.println(str);
             //checks for old regex expression which represents a note (e,a,b,d...)
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
@@ -120,7 +122,7 @@ public class Main {
         return guitarNoteArray;
     }
 
-    private static ArrayList<DrumNote> drumNoteParser (ArrayList<String> noteArray){
+    public static ArrayList<DrumNote> drumNoteParser (ArrayList<String> noteArray){
         //drum test case
         ArrayList<DrumNote> drumNoteArray = new ArrayList<>();
         ArrayList<String> strArray = new ArrayList<>();
@@ -201,7 +203,7 @@ public class Main {
         return drumNoteArray;
     }
 
-    private static void guitarXMLParser (ArrayList<GuitarNote> guitarNoteArray){
+    public static void guitarXMLParser (ArrayList<GuitarNote> guitarNoteArray){
         //XML print attempt
         Directives directives = new Directives();
         directives
@@ -248,7 +250,7 @@ public class Main {
                             .add("note")
                             .add("pitch")
                             .add("step")
-                            .set(guitarNoteArray.get(i).noteValue)
+                            .set(guitarNote.noteValue)
                             .up()
                             .add("octave")
                             .set(4)
@@ -270,25 +272,21 @@ public class Main {
             xml = new Xembler(
                     directives
             ).xml();
-            FileWriter xmlFile = new FileWriter("text.musicxml");
-            xmlFile.write("");
+            guiSaveFile guiSaveFile = new guiSaveFile();
+            guiSaveFile.setVisible(true);
+            File file = guiSaveFile.guiSaveFile();
+            FileWriter xmlFile = new FileWriter(file);
             xmlFile.write(xml);
             xmlFile.close();
-            System.out.println(xml);
+            System.exit(0);
         } catch (Exception e) {
             System.out.println("error");
         }
         //System.out.println(xml);
     }
 
-    private static void musicNoteParser (ArrayList noteArray){
-        MusicNote F = new MusicNote("F");
-        MusicNote C = new MusicNote("C");
-        MusicNote G = new MusicNote("G");
-    }
-
-    public static void main(String[] args) {
-        Object[] notes = fileParser("src/main/java/EECS2311_Project/example.txt");
+    public static void start(String filePath){
+        Object[] notes = fileParser(filePath);
         ArrayList<String> noteArray = (ArrayList<String>)notes[1];
         if (notes[0] == "guitar") {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
@@ -296,5 +294,10 @@ public class Main {
         } else {
             ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
         }
+    }
+
+    public static void main(String[] args) {
+        guiWelcomePage welcomePage = new guiWelcomePage();
+        welcomePage.setVisible(true);
     }
 }
