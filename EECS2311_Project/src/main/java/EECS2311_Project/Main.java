@@ -194,7 +194,7 @@ public class Main {
 				System.out.println();
 			}
 		}
-<<<<<<< HEAD
+
 
 
 		//Test print the array
@@ -218,8 +218,7 @@ public class Main {
 
 
 
-=======
->>>>>>> refs/remotes/origin/develop-branch
+
 	}
 //test commit
 }

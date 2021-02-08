@@ -1,4 +1,4 @@
-package EECS2311_Project;
+package main.java.EECS2311_Project;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
