@@ -23,9 +23,11 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:28.2-jre'
+    implementation 'junit:junit:4.12'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    //JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.0.0-M2'
 
     //Xembly for xml
     implementation 'com.jcabi.incubator:xembly:0.25.0'

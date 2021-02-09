@@ -13,11 +13,21 @@ import java.util.regex.*;
  */
 
 public class Main {
-    private static String filePath;
 
-    public static Object[] fileParser (String file){
-        System.out.println("Parsing file");
-        System.out.println(file);
+    public static boolean fileChecker (String file){
+        int indexOfExt = file.lastIndexOf(".") + 1;
+        if(!file.substring(indexOfExt).equals("txt")) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static Object[] fileParser (String file) throws FileNotFoundException{
+        if(!fileChecker(file)){
+            throw new FileNotFoundException("Unsupported file type");
+        }
         ArrayList<String> testLines = new ArrayList<>();
         ArrayList<String> drumTestLines = new ArrayList<>();
 
@@ -203,8 +213,11 @@ public class Main {
         return drumNoteArray;
     }
 
-    public static void guitarXMLParser (ArrayList<GuitarNote> guitarNoteArray){
+    public static String guitarXMLParser (ArrayList<GuitarNote> guitarNoteArray){
         //XML print attempt
+        if(guitarNoteArray.size() == 0 ){
+            return null;
+        }
         Directives directives = new Directives();
         directives
                 .add("score-partwise")
@@ -267,11 +280,99 @@ public class Main {
             }
             directives.up();
         }
-        String xml;
+        String xml = null;
         try {
             xml = new Xembler(
                     directives
             ).xml();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return xml;
+        //System.out.println(xml);
+    }
+
+    public static String drumXMLParser (ArrayList<DrumNote> drumNoteArray){
+        if(drumNoteArray.size() == 0 ){
+            return null;
+        }
+        //XML print attempt
+        Directives directives = new Directives();
+        directives
+                .add("score-partwise")
+                .attr("version", "3.0")
+                .add("part-list")
+                .add("score-part")
+                .attr("id", "P1")
+                .add("part-name")
+                .set("Music")
+                .up()
+                .up()
+                .up()
+                .add("part")
+                .attr("id", "P1");
+        for (int i = 0; i < 2; i++) {
+            directives.add("measure")
+                    .attr("number", i + 1)
+                    .add("attributes")
+                    .add("divisions")
+                    .set("1")
+                    .up()
+                    .add("time")
+                    .add("beats")
+                    .set(4)
+                    .up()
+                    .add("beat-type")
+                    .set(4)
+                    .up()
+                    .up()
+                    .add("clef")
+                    .add("sign")
+                    .set("G")
+                    .up()
+                    .add("line")
+                    .set(2)
+                    .up()
+                    .up()
+                    .up();
+            for (DrumNote drumNote : drumNoteArray) {
+                if (drumNote.measure == i + 1) {
+                    //process note here later
+                    directives
+                            .add("note")
+                            .add("pitch")
+                            .add("step")
+                            .set(drumNote.noteValue)
+                            .up()
+                            .add("octave")
+                            .set(4)
+                            .up()
+                            .up()
+                            .add("duration")
+                            .set(4)
+                            .up()
+                            .add("type")
+                            .set("whole")
+                            .up()
+                            .up();
+                }
+            }
+            directives.up();
+        }
+        String xml = null;
+        try {
+            xml = new Xembler(
+                    directives
+            ).xml();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return xml;
+        //System.out.println(xml);
+    }
+
+    public static void saveFile(String xml){
+        try {
             guiSaveFile guiSaveFile = new guiSaveFile();
             guiSaveFile.setVisible(true);
             File file = guiSaveFile.guiSaveFile();
@@ -279,13 +380,34 @@ public class Main {
             xmlFile.write(xml);
             xmlFile.close();
             System.exit(0);
-        } catch (Exception e) {
-            System.out.println("error");
+        }catch(Exception e){
+            System.out.println("Error");
         }
-        //System.out.println(xml);
     }
 
-    public static void start(String filePath){
+    public static MusicNote guitarToMusicNote (GuitarNote guitarNote){
+        if(guitarNote.stringValue == 'e'){
+            if(guitarNote.noteValue.equals("1")){
+                return new MusicNote("F");
+            }else if(guitarNote.noteValue.equals("2")){
+                MusicNote musicNote = new MusicNote("F");
+                musicNote.addModifier("sharp");
+                return musicNote;
+            }
+        }
+        return null;
+    }
+
+    public static MusicNote drumToMusicNote (DrumNote drumNote){
+        if(drumNote.part.equals("C")){
+            if(drumNote.noteValue == 'X'){
+                return new MusicNote("B");
+            }
+        }
+        return null;
+    }
+
+    public static void start(String filePath) throws FileNotFoundException {
         Object[] notes = fileParser(filePath);
         ArrayList<String> noteArray = (ArrayList<String>)notes[1];
         if (notes[0] == "guitar") {

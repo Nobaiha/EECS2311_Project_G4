@@ -22,6 +22,7 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.TextArea;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.JRadioButton;
 
@@ -80,7 +81,11 @@ public class modifications extends JFrame {
 			Submit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					Main.start(filepath);
+					try {
+						Main.start(filepath);
+					} catch (FileNotFoundException fileNotFoundException) {
+						fileNotFoundException.printStackTrace();
+					}
 				}
 			});
 			Submit.setFont(new Font("Calibri", Font.BOLD, 30));
