@@ -1,18 +1,16 @@
 package EECS2311_Project;
 
-import org.junit.Test;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
+import java.io.FileNotFoundException;
+import java.util.*;
+
+public class MainTest {
 
 
-    @org.junit.jupiter.api.Test
-    void fileParser() throws FileNotFoundException {
+    @Test
+    public void fileParser() throws FileNotFoundException {
         //Patchanon
         String path = "src/main/java/EECS2311_Project/example.txt";
         Object[] guitarNotes = Main.fileParser(path);
@@ -31,8 +29,8 @@ class MainTest {
         });*/
     }
 
-    @org.junit.jupiter.api.Test
-    void fileChecker() {
+    @Test
+    public void fileChecker() {
         //Patchanon
         String file = "notatxt.exe";
         //assertFalse(Main.fileChecker(file));
@@ -42,8 +40,8 @@ class MainTest {
         //assertTrue(Main.fileChecker(file));
     }
 
-    @org.junit.jupiter.api.Test
-    void guitarToMusicNote() {
+    @Test
+    public void guitarToMusicNote() {
         //Patchanon
         GuitarNote guitarNote = new GuitarNote(1, 1, 'e', "2");
         MusicNote musicNote = new MusicNote("F");
@@ -51,8 +49,8 @@ class MainTest {
         //assertEquals(musicNote.note, testMusicNote.note);
     }
 
-    @org.junit.jupiter.api.Test
-    void drumToMusicNote(){
+    @Test
+    public void drumToMusicNote(){
         //Suha
         //Given a drumnote of part C and note value X, should return the musical note B
         DrumNote drumNote = new DrumNote(1,1,"C",'X');
@@ -61,8 +59,8 @@ class MainTest {
         //assertEquals(musicNote.note, testMusicNote.note);
     }
 
-    @org.junit.jupiter.api.Test
-    void guitarNoteParser() {
+    @Test
+    public void guitarNoteParser() {
         //Rayta
         String input = "e|-----|-15p12--10p9--12p10--6p5--8p6------|---------|----|";
         ArrayList<String> testNoteArray = new ArrayList<String>();
@@ -79,8 +77,8 @@ class MainTest {
 
     }
 
-    @org.junit.jupiter.api.Test
-    void drumNoteParser() {
+    @Test
+    public void drumNoteParser() {
         //Rayta
         String input = "C |X---------------|----------------|X-------------------|X--X--X---------|";
         ArrayList<String> testNoteArray = new ArrayList<String>();
@@ -96,8 +94,8 @@ class MainTest {
         //assertEquals(drumNotes.size(), 0);
     }
 
-    @org.junit.jupiter.api.Test
-    void guitarXMLParser() {
+    @Test
+    public void guitarXMLParser() {
         //Martin
         ArrayList<GuitarNote> guitarNotes = new ArrayList<>();
         GuitarNote guitarNote = new GuitarNote(1,1,'e',"3");
@@ -109,8 +107,8 @@ class MainTest {
         //assertNull(Main.guitarXMLParser(guitarNotes));
     }
 
-    @org.junit.jupiter.api.Test
-    void drumXMLParser() {
+    @Test
+    public void drumXMLParser() {
         //Martin
         ArrayList<DrumNote> drumNotes = new ArrayList<>();
         //assertNull(Main.drumXMLParser(drumNotes));
