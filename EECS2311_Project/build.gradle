@@ -26,4 +26,7 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+    //Xembly for xml
+    implementation 'com.jcabi.incubator:xembly:0.25.0'
 }
