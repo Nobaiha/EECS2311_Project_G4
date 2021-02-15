@@ -14,18 +14,17 @@ import java.util.regex.*;
 
 public class Main {
 
-    public static boolean fileChecker (String file){
+    public static boolean fileChecker(String file) {
         int indexOfExt = file.lastIndexOf(".") + 1;
-        if(!file.substring(indexOfExt).equals("txt")) {
+        if (!file.substring(indexOfExt).equals("txt")) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
 
-    public static Object[] fileParser (String file) throws FileNotFoundException{
-        if(!fileChecker(file)){
+    public static Object[] fileParser(String file) throws FileNotFoundException {
+        if (!fileChecker(file)) {
             throw new FileNotFoundException("Unsupported file type");
         }
         ArrayList<String> testLines = new ArrayList<>();
@@ -63,15 +62,16 @@ public class Main {
         }
         if (testLines.size() > drumTestLines.size()) {
             return new Object[]{"guitar", testLines};
-        }else{
+        } else {
             return new Object[]{"drum", drumTestLines};
         }
     }
 
-    public static ArrayList<GuitarNote> guitarNoteParser (ArrayList<String> noteArray){
+    public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
         //Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
+            System.out.println(list);
             String[] tempArray = list.split("-", -1);
             //converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
@@ -88,7 +88,7 @@ public class Main {
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String str : strArray) {
-            //System.out.println(str);
+            System.out.println(str);
             //checks for old regex expression which represents a note (e,a,b,d...)
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
@@ -114,25 +114,26 @@ public class Main {
                 //Otherwise create a new note with the string as the note value.
                 //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
                 //will update regex when encountering new patterns.
+                noteNum++;
                 for (String character : str.split("(?<=[a-z])")) {
-                    noteNum++;
                     GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, character);
                     guitarNoteArray.add(tempGuitarNote);
+                    noteNum += character.length();
                 }
             }
         }
         //Test print the array
-        /*for (GuitarNote guitarNote : guitarNoteArray) {
+        for (GuitarNote guitarNote : guitarNoteArray) {
             System.out.println("String: " + guitarNote.stringValue);
             System.out.println("Measure number: " + guitarNote.measure);
             System.out.println("Element number: " + guitarNote.noteNumber);
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
-        }*/
+        }
         return guitarNoteArray;
     }
 
-    public static ArrayList<DrumNote> drumNoteParser (ArrayList<String> noteArray){
+    public static ArrayList<DrumNote> drumNoteParser(ArrayList<String> noteArray) {
         //drum test case
         ArrayList<DrumNote> drumNoteArray = new ArrayList<>();
         ArrayList<String> strArray = new ArrayList<>();
@@ -213,9 +214,9 @@ public class Main {
         return drumNoteArray;
     }
 
-    public static String guitarXMLParser (ArrayList<GuitarNote> guitarNoteArray){
+    public static String guitarXMLParser(ArrayList<GuitarNote> guitarNoteArray) {
         //XML print attempt
-        if(guitarNoteArray.size() == 0 ){
+        if (guitarNoteArray.size() == 0) {
             return null;
         }
         Directives directives = new Directives();
@@ -226,7 +227,7 @@ public class Main {
                 .add("score-part")
                 .attr("id", "P1")
                 .add("part-name")
-                .set("Music")
+                .set("Name here.") //change this to name of music
                 .up()
                 .up()
                 .up()
@@ -234,28 +235,92 @@ public class Main {
                 .attr("id", "P1");
         for (int i = 0; i < 2; i++) {
             directives.add("measure")
-                    .attr("number", i + 1)
-                    .add("attributes")
-                    .add("divisions")
-                    .set("1")
-                    .up()
-                    .add("time")
-                    .add("beats")
-                    .set(4)
-                    .up()
-                    .add("beat-type")
-                    .set(4)
-                    .up()
-                    .up()
-                    .add("clef")
-                    .add("sign")
-                    .set("G")
-                    .up()
-                    .add("line")
-                    .set(2)
-                    .up()
-                    .up()
-                    .up();
+                    .attr("number", i + 1);
+            //sets the first measure to include tab details and clef etc.
+            if(i == 0){
+                directives
+                        .add("attributes")
+                        .add("divisions") //still no idea what divisions does?
+                        .set("2") //the denominator in notes in terms of quarter notes. A duration of 2 will be one quarter note? A duration of 1 will be an eight?
+                        .up()
+                        .add("time")
+                        .add("beats")
+                        .set(4) //change 4/4 based on user or input later
+                        .up()
+                        .add("beat-type")
+                        .set(4)
+                        .up()
+                        .up()
+                        .add("clef")
+                        .add("sign")
+                        .set("TAB") //to indicate it is a tab
+                        .up()
+                        .add("line")
+                        .set(5) //sets tab to line 5
+                        .up()
+                        .up()
+                        .add("staff-details")
+                        .add("staff-lines")
+                        .set(6)
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","1")
+                        .add("tuning-step")
+                        .set("E")
+                        .up()
+                        .add("tuning-octave")
+                        .set(2)
+                        .up()
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","2")
+                        .add("tuning-step")
+                        .set("A")
+                        .up()
+                        .add("tuning-octave")
+                        .set(2)
+                        .up()
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","3")
+                        .add("tuning-step")
+                        .set("D")
+                        .up()
+                        .add("tuning-octave")
+                        .set(3)
+                        .up()
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","4")
+                        .add("tuning-step")
+                        .set("G")
+                        .up()
+                        .add("tuning-octave")
+                        .set(3)
+                        .up()
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","5")
+                        .add("tuning-step")
+                        .set("B")
+                        .up()
+                        .add("tuning-octave")
+                        .set(3)
+                        .up()
+                        .up()
+                        .add("staff-tuning")
+                        .attr("line","6")
+                        .add("tuning-step")
+                        .set("E")
+                        .up()
+                        .add("tuning-octave")
+                        .set(4)
+                        .up()
+                        .up()
+                        .up()
+                        .up();
+            }
+            //Add each note child node
             for (GuitarNote guitarNote : guitarNoteArray) {
                 if (guitarNote.measure == i + 1) {
                     //process note here later
@@ -292,8 +357,8 @@ public class Main {
         //System.out.println(xml);
     }
 
-    public static String drumXMLParser (ArrayList<DrumNote> drumNoteArray){
-        if(drumNoteArray.size() == 0 ){
+    public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
+        if (drumNoteArray.size() == 0) {
             return null;
         }
         //XML print attempt
@@ -371,7 +436,7 @@ public class Main {
         //System.out.println(xml);
     }
 
-    public static void saveFile(String xml){
+    public static void saveFile(String xml) {
         try {
             guiSaveFile guiSaveFile = new guiSaveFile();
             guiSaveFile.setVisible(true);
@@ -380,16 +445,16 @@ public class Main {
             xmlFile.write(xml);
             xmlFile.close();
             System.exit(0);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
         }
     }
 
-    public static MusicNote guitarToMusicNote (GuitarNote guitarNote){
-        if(guitarNote.stringValue == 'e'){
-            if(guitarNote.noteValue.equals("1")){
+    public static MusicNote guitarToMusicNote(GuitarNote guitarNote) {
+        if (guitarNote.stringValue == 'e') {
+            if (guitarNote.noteValue.equals("1")) {
                 return new MusicNote("F");
-            }else if(guitarNote.noteValue.equals("2")){
+            } else if (guitarNote.noteValue.equals("2")) {
                 MusicNote musicNote = new MusicNote("F");
                 musicNote.addModifier("sharp");
                 return musicNote;
@@ -398,9 +463,9 @@ public class Main {
         return null;
     }
 
-    public static MusicNote drumToMusicNote (DrumNote drumNote){
-        if(drumNote.part.equals("C")){
-            if(drumNote.noteValue == 'X'){
+    public static MusicNote drumToMusicNote(DrumNote drumNote) {
+        if (drumNote.part.equals("C")) {
+            if (drumNote.noteValue == 'X') {
                 return new MusicNote("B");
             }
         }
@@ -409,10 +474,25 @@ public class Main {
 
     public static void start(String filePath) throws FileNotFoundException {
         Object[] notes = fileParser(filePath);
-        ArrayList<String> noteArray = (ArrayList<String>)notes[1];
+        ArrayList<String> noteArray = (ArrayList<String>) notes[1];
         if (notes[0] == "guitar") {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
-            guitarXMLParser(guitarNoteArray);
+            String xml = guitarXMLParser(guitarNoteArray);
+            if(xml != null){
+                try {
+                    guiSaveFile guiSaveFile = new guiSaveFile();
+                    guiSaveFile.setVisible(true);
+                    File file = guiSaveFile.guiSaveFile();
+                    FileWriter xmlFile = new FileWriter(file);
+                    xmlFile.write(xml);
+                    xmlFile.close();
+                    System.exit(0);
+                }catch(Exception e){
+                    System.out.println("error");
+                }
+            }else{
+                //error here.
+            }
         } else {
             ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
         }
@@ -423,3 +503,4 @@ public class Main {
         welcomePage.setVisible(true);
     }
 }
+
