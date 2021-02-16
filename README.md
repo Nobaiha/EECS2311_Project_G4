@@ -25,8 +25,18 @@ If it is showing some compiler errors please refer to the next section.
 
 ## How to deal with compiler errors
 **1.** Errors dealing with build path
-  - To know if you have an error with build path a "Quick fixable error" indicated with a light-bulb with an 'x' with the message "Multiple markers at the line" over the package explorer.
-   - To deal with this issue click on the  
+When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' with the message "Multiple markers at the line" over the package explorer.To deal with this issue: 
+- Navigate towards the package explorer
+- Right click on the appropriate file with the build path error described above 
+- Click on the option “Configure Build Path”
+- Click on the option “Libraries”
+- Select the appropriate java system
+- Click on remove 
+- Highlight “classpath”
+- Click “add library” →  JRE system library → “Next” → Execution environment → From drop down menu select javaSE-1.8
+- Select “Finish”
+- Select “Apply & Close”
+
 ## Authors 
 - Suha Siddiqui
 - Nobaiha Zaman Rayta
