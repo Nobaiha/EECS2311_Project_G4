@@ -12,12 +12,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.JTextArea;
 
 public class guiFileUploadPage extends JFrame {
 
@@ -58,38 +63,52 @@ public class guiFileUploadPage extends JFrame {
 		messageLabel.setFont(new Font("Calibri", Font.ITALIC, 20));
 		messageLabel.setOpaque(true);
 		messageLabel.setForeground(Color.LIGHT_GRAY);
-		messageLabel.setBounds(47, 318, 602, 42);
+		messageLabel.setBounds(47, 148, 602, 42);
 		uploadFileWindow.add(messageLabel);
+		
+		JTextArea textArea1 = new JTextArea();
+		textArea1.setBounds(47, 215, 823, 404);
+		uploadFileWindow.add(textArea1);
 		
 		JButton browseButton = new JButton("Browse");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser browseFile = new JFileChooser();
-				browseFile.setCurrentDirectory(new File (System.getProperty("user.home")));
-				int uploadFile = browseFile.showOpenDialog(parent);
-				if (uploadFile == JFileChooser.APPROVE_OPTION) {
-				    File chosenFile = browseFile.getSelectedFile();
-				    messageLabel.setText(chosenFile.getAbsolutePath());
-				    filePath = chosenFile.getAbsolutePath();
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File f = chooser.getSelectedFile();
+				String fileName= f.getAbsolutePath();
+				try {
+					FileReader reader = new FileReader(fileName);
+					BufferedReader br = new BufferedReader(reader);
+					textArea1.read(br, null);
+					br.close();
+					textArea1.requestFocus();
+					
+					
 				}
+				catch(Exception exception) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+			
+				
 				
 				
 			}
 		});
 		browseButton.setBackground(SystemColor.activeCaption);
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 20));
-		browseButton.setBounds(650, 318, 171, 42);
+		browseButton.setBounds(688, 148, 171, 42);
 		uploadFileWindow.add(browseButton);
 		
 		JLabel instructionLabel1 = new JLabel("Pick a file from your file explorer of type .txt that contains your");
 		instructionLabel1.setToolTipText("");
 		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 30));
-		instructionLabel1.setBounds(47, 70, 787, 85);
+		instructionLabel1.setBounds(47, 10, 787, 85);
 		uploadFileWindow.add(instructionLabel1);
 		
 		JLabel instructionLabel2 = new JLabel("tablature music.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 30));
-		instructionLabel2.setBounds(47, 129, 787, 63);
+		instructionLabel2.setBounds(47, 75, 787, 63);
 		uploadFileWindow.add(instructionLabel2);
 		JButton enterButton = new JButton("Enter");
 		enterButton.addActionListener(new ActionListener() {
@@ -101,7 +120,9 @@ public class guiFileUploadPage extends JFrame {
 		});
 		enterButton.setBackground(SystemColor.activeCaption);
 		enterButton.setFont(new Font("Calibri", Font.BOLD, 30));
-		enterButton.setBounds(343, 571, 261, 85);
+		enterButton.setBounds(345, 673, 261, 85);
 		uploadFileWindow.add(enterButton);
+		
+		
 	}
 }
