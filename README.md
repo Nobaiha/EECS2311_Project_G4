@@ -1,5 +1,5 @@
 # EECS2311_Project_G4
-*Introduction* 
+## Introduction
 what file to run 
 possible issues
 
