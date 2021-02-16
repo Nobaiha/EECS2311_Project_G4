@@ -94,7 +94,7 @@ public class guiFileUploadPage extends JFrame {
 				
 				
 				
-			}
+			} 
 		});
 		browseButton.setBackground(SystemColor.activeCaption);
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 20));
