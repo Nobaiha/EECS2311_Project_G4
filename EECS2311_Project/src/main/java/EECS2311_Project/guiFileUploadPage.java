@@ -17,9 +17,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.JTextArea;
@@ -84,16 +82,11 @@ public class guiFileUploadPage extends JFrame {
 					textArea1.read(br, null);
 					br.close();
 					textArea1.requestFocus();
-					
-					
+					messageLabel.setText(fileName);
 				}
 				catch(Exception exception) {
 					JOptionPane.showMessageDialog(null, e);
 				}
-			
-				
-				
-				
 			} 
 		});
 		browseButton.setBackground(SystemColor.activeCaption);
@@ -116,8 +109,19 @@ public class guiFileUploadPage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 //				modifications f = new modifications(filePath);
 //				f.setVisible(true);
+				String pastedTab = textArea1.getText();
+				File file = new File("temp.txt");
+				try {
+					FileWriter fw = new FileWriter(file);
+					fw.write(pastedTab);
+					Main.start(file.toString());
+					file.delete();
+					//s.setVisible(true);
+				} catch (Exception exception) {
+					//throw error screen here.
+				}
 				setVisible(false);
-				s.setVisible(true);
+				//s.setVisible(true);
 			}
 		});
 		enterButton.setBackground(SystemColor.activeCaption);

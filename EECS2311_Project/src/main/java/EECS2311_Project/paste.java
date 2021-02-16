@@ -23,6 +23,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class paste extends JFrame {
 
@@ -74,7 +77,17 @@ public class paste extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				//m.setVisible(true);
-				s.setVisible(true);
+				String pastedTab = pasteArea.getText();
+				File file = new File("temp.txt");
+				try {
+					FileWriter fw = new FileWriter(file);
+					fw.write(pastedTab);
+					Main.start(file.toString());
+					file.delete();
+					//s.setVisible(true);
+				} catch (Exception exception) {
+					//throw error here.
+				}
 			}
 		});
 		enterButton.setBackground(new Color(240, 248, 255));
