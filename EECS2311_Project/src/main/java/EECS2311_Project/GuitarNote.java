@@ -14,25 +14,101 @@ public class GuitarNote {
     //noteValue is the representation of the note in tab form, usually a combination of numbers, letters, and symbols.
     public int measure;
     public int noteNumber;
-    public char stringValue;
+    public int stringValue;
+    public int octave;
     public String noteValue;
-    public int pullOff1;
-    public int pullOff2;
+    public String musicNote;
+    public int duration;
+    public int modifier;
+    public boolean pull;
+    public boolean hammer;
+    public boolean harmonic;
+    public boolean chord;
    //overload const. with pull off1/2
+
     
     /**
      * A constructor for GuitarNote.
      * 
-     * @param measure of note
-     * @param number of note
-     * @param string value of note
-     * @param value of note
+     * @param measure of not
      * 
      */
-    public GuitarNote(int measure, int noteNumber, char stringValue, String noteValue) {
+    public GuitarNote(int measure, int noteNumber, int stringValue, String noteValue) {
         this.measure = measure;
         this.noteNumber = noteNumber;
         this.stringValue = stringValue;
         this.noteValue = noteValue;
+        this.chord = false;
+    }
+
+    public void setDuration(int duration){
+        this.duration = duration;
+    }
+
+    public void setChord(boolean chord) {
+        this.chord = chord;
+    }
+
+    public void setMusicNote(){
+        //convert the noteNumber here to musicNote.
+        if(noteValue.contains("p")){
+            pull = true;
+        }else if(noteValue.contains("h")){
+            hammer = true;
+        }else if(noteValue.contains("(")){
+            harmonic = true;
+            this.noteNumber += 2; //shift note value to end of harmonic value
+        }
+        //will be more like slides, bends... etc
+        noteValue = noteValue.replaceAll("\\D+",""); //takes only the digits after extracting modifiers
+        int octaveChange = Integer.parseInt(this.noteValue) / 12;
+        int remainder = Integer.parseInt(this.noteValue) % 12;
+        if(this.stringValue == 1){
+            String[] notes = {"E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E"};
+            this.musicNote = notes[remainder];
+            this.octave = 4 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 8){
+                this.octave++;
+            }
+        }else if(this.stringValue == 2){
+            String[] notes = {"B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+            this.musicNote = notes[remainder];
+            this.octave = 3 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 1){
+                this.octave++;
+            }
+        }else if(this.stringValue == 3){
+            String[] notes = {"G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G"};
+            this.musicNote = notes[remainder];
+            this.octave = 3 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 5){
+                this.octave++;
+            }
+        }else if(this.stringValue == 4){
+            String[] notes = {"D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D"};
+            this.musicNote = notes[remainder];
+            this.octave = 3 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 10){
+                this.octave++;
+            }
+        }else if(this.stringValue == 5){
+            String[] notes = {"A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A"};
+            this.musicNote = notes[remainder];
+            this.octave = 2 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 3){
+                this.octave++;
+            }
+        }else if(this.stringValue == 6){
+            String[] notes = {"E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E"};
+            this.musicNote = notes[remainder];
+            this.octave = 2 + octaveChange;
+            if(Integer.parseInt(this.noteValue) >= 8){
+                this.octave++;
+            }
+        }
+        if(this.musicNote.contains("#")){
+            this.musicNote = this.musicNote.substring(0,this.musicNote.length() - 1);
+            this.modifier = 1;
+        }
     }
 }
