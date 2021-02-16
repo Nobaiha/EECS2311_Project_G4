@@ -7,5 +7,5 @@ The tablature to musicXML interface system is a java based application that can 
 ## How to deal with errors
 1)Errors dealing with build path
   - To know if you have an error with build path a "Quick fixable error" indicated with a light-bulb with an 'x' with the message "Multiple markers at the line" over the package explorer.
-    - To deal with this issue click on the 
+    - To deal with this issue click on the  
 ## Authors 
