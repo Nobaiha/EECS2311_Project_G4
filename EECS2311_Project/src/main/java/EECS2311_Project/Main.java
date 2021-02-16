@@ -72,7 +72,7 @@ public class Main {
         //Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
-            System.out.println(list);
+            //System.out.println(list);
             String[] tempArray = list.split("-", -1);
             //converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
@@ -89,7 +89,7 @@ public class Main {
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String str : strArray) {
-            System.out.println(str);
+            //System.out.println(str);
             //checks for old regex expression which represents a note (e,a,b,d...)
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
@@ -140,7 +140,7 @@ public class Main {
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
         }*/
-        System.out.println(measuresElement);
+        //System.out.println(measuresElement);
         measuresElement.forEach((k, v) -> measures.add(new Measure(v, k)));
         return guitarNoteArray;
     }
@@ -510,7 +510,7 @@ public class Main {
             for (Measure measure : measureArrayList) {
                 measure.sortNotes();
                 measure.processDuration();
-                System.out.println(measure);
+                //System.out.println(measure);
             }
             String xml = guitarXMLParser(measureArrayList);
             if (xml != null) {
