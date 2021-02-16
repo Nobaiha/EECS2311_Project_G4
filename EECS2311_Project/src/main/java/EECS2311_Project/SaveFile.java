@@ -72,6 +72,7 @@ public class SaveFile extends JFrame {
 			        File file = null;
 			        if (userSelection == JFileChooser.APPROVE_OPTION) {
 			            file = fileChooser.getSelectedFile();
+			            PrintStream fileOut = new PrintStream("./out.txt");
 			            setVisible(false);
 			      
 				}

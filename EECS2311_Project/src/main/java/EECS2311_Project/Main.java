@@ -380,6 +380,7 @@ public class Main {
             xmlFile.write(xml);
             xmlFile.close();
             System.exit(0);
+            
         }catch(Exception e){
             System.out.println("Error");
         }

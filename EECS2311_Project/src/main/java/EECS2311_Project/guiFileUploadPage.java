@@ -50,6 +50,7 @@ public class guiFileUploadPage extends JFrame {
 	 * Create the frame.
 	 */
 	public guiFileUploadPage() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		uploadFileWindow = new JPanel();
@@ -57,7 +58,7 @@ public class guiFileUploadPage extends JFrame {
 		uploadFileWindow.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(uploadFileWindow);
 		uploadFileWindow.setLayout(null);
-		
+		SaveFile s = new SaveFile();
 		JLabel messageLabel = new JLabel("No file currently selected");
 		messageLabel.setBackground(new Color(255, 255, 255));
 		messageLabel.setFont(new Font("Calibri", Font.ITALIC, 20));
@@ -113,9 +114,10 @@ public class guiFileUploadPage extends JFrame {
 		JButton enterButton = new JButton("Enter");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				modifications f = new modifications(filePath);
-				f.setVisible(true);
+//				modifications f = new modifications(filePath);
+//				f.setVisible(true);
 				setVisible(false);
+				s.setVisible(true);
 			}
 		});
 		enterButton.setBackground(SystemColor.activeCaption);
