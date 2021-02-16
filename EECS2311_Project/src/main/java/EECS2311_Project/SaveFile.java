@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class SaveFile extends JFrame {
 	
 	protected Component parent;
-	
+	private String xml = "";
 
 	private JPanel saveFile;
 
@@ -42,6 +42,10 @@ public class SaveFile extends JFrame {
 				}
 			}
 		});
+	}
+
+	public void setXml(String xml) {
+		this.xml = xml;
 	}
 
 	/**
@@ -71,22 +75,10 @@ public class SaveFile extends JFrame {
 			        fileChooser.setSelectedFile(new File("guitarTab.musicxml"));
 			        fileChooser.setFileFilter(new FileNameExtensionFilter("musicxml file","musicxml"));
 			        int userSelection = fileChooser.showSaveDialog(SaveFile.this);
-			        File file = null;
 			        if (userSelection == JFileChooser.APPROVE_OPTION) {
-			            file = fileChooser.getSelectedFile();
-			            String hi = "jdskj";
-			            FileWriter xmlFile;
-						try {
-							xmlFile = new FileWriter(file);
-							  xmlFile.write(hi);
-					            xmlFile.close();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-			          
+			            File file = fileChooser.getSelectedFile();
+			            Main.saveFile(file, xml);
 			            setVisible(false);
-			      
 				}
 			}
 		});
@@ -99,6 +91,7 @@ public class SaveFile extends JFrame {
 		NObutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				System.exit(0);
 			}
 		});
 		saveFile.add(NObutton);
