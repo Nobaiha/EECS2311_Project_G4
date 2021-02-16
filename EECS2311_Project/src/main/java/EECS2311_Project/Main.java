@@ -1,6 +1,5 @@
 package EECS2311_Project;
 
-import org.checkerframework.common.value.qual.StringVal;
 import org.xembly.*;
 
 import java.io.*;
@@ -463,11 +462,8 @@ public class Main {
         //System.out.println(xml);
     }
 
-    public static void saveFile(String xml) {
+    public static void saveFile(File file, String xml) {
         try {
-            guiSaveFile guiSaveFile = new guiSaveFile();
-            guiSaveFile.setVisible(true);
-            File file = guiSaveFile.guiSaveFile();
             FileWriter xmlFile = new FileWriter(file);
             xmlFile.write(xml);
             xmlFile.close();
@@ -518,7 +514,10 @@ public class Main {
             }
             String xml = guitarXMLParser(measureArrayList);
             if (xml != null) {
-                saveFile(xml);
+                //saveFile(xml);
+                SaveFile saveFile = new SaveFile();
+                saveFile.setXml(xml);
+                saveFile.setVisible(true);
             }
         } else {
             ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
