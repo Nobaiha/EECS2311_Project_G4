@@ -12,6 +12,7 @@ You can install the project in *two* ways.
 - Clone the project on your computer with GitHub Desktop
 - Open eclipse 
 - Import it into eclipse 
+
 **2.** 
 - Download the zipped file
 - Open the zipped file 
@@ -23,7 +24,7 @@ Once the project is imported, from the package explorer menu go to EECS2311_Proj
 If it is showing some compiler errors please refer to the next section. 
 
 ## How to deal with compiler errors
-**1** Errors dealing with build path
+**1.** Errors dealing with build path
   - To know if you have an error with build path a "Quick fixable error" indicated with a light-bulb with an 'x' with the message "Multiple markers at the line" over the package explorer.
    - To deal with this issue click on the  
 ## Authors 
