@@ -78,10 +78,12 @@ public class paste extends JFrame {
 				setVisible(false);
 				//m.setVisible(true);
 				String pastedTab = pasteArea.getText();
+				//System.out.println(pastedTab);
 				File file = new File("temp.txt");
 				try {
 					FileWriter fw = new FileWriter(file);
 					fw.write(pastedTab);
+					fw.close();
 					Main.start(file.toString());
 					file.delete();
 					//s.setVisible(true);

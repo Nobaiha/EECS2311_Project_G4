@@ -110,10 +110,12 @@ public class guiFileUploadPage extends JFrame {
 //				modifications f = new modifications(filePath);
 //				f.setVisible(true);
 				String pastedTab = textArea1.getText();
+				//System.out.println(pastedTab);
 				File file = new File("temp.txt");
 				try {
 					FileWriter fw = new FileWriter(file);
 					fw.write(pastedTab);
+					fw.close();
 					Main.start(file.toString());
 					file.delete();
 					//s.setVisible(true);
