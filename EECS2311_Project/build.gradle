@@ -35,4 +35,4 @@ run {
     }
 }
 
-mainClassName = 'org.openjfx.MainApp'
+mainClassName = 'EECS2311_Project.Main'
