@@ -56,7 +56,7 @@ public class paste extends JFrame {
 		setContentPane(pasteBody);
 		pasteBody.setLayout(null);
 		//modifications m=new modifications();
-		
+		SaveFile s = new SaveFile();
 		JLabel PasteLabel = new JLabel("PASTE");
 		PasteLabel.setBounds(0, 0, 891, 105);
 		PasteLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,6 +74,7 @@ public class paste extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				//m.setVisible(true);
+				s.setVisible(true);
 			}
 		});
 		enterButton.setBackground(new Color(240, 248, 255));
