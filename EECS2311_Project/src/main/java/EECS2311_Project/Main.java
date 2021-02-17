@@ -470,6 +470,7 @@ public class Main {
             System.exit(0);
         } catch (Exception e) {
             System.out.println("Error");
+            new Error().setVisible(true);
         }
     }
 
@@ -518,9 +519,13 @@ public class Main {
                 SaveFile saveFile = new SaveFile();
                 saveFile.setXml(xml);
                 saveFile.setVisible(true);
+            }else{
+                new Error().setVisible(true);
             }
         } else {
-            ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
+            //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
+            Error error = new Error();
+            error.setVisible(true);
         }
     }
 

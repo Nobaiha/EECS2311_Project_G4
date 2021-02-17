@@ -82,15 +82,22 @@ public class GuiUploadWindow extends JFrame {
 				File fileSelected = choosingFile.getSelectedFile();
 				String fileName= fileSelected.getAbsolutePath();
 				try {
-					FileReader fileReader = new FileReader(fileName);
-					BufferedReader bufferReader = new BufferedReader(fileReader);
-					tabDisplayTextArea.read(bufferReader, null);
-					bufferReader.close();
-					tabDisplayTextArea.requestFocus();
-					fileSelectedLabel.setText(fileName.toString());
+					if(Main.fileChecker(fileName)) {
+						FileReader fileReader = new FileReader(fileName);
+						BufferedReader bufferReader = new BufferedReader(fileReader);
+						tabDisplayTextArea.read(bufferReader, null);
+						bufferReader.close();
+						tabDisplayTextArea.requestFocus();
+						fileSelectedLabel.setText(fileName.toString());
+					}else{
+						setVisible(false);
+						new Error().setVisible(true);
+					}
 				}
 				catch(Exception exception) {
-					JOptionPane.showMessageDialog(null, e);
+					System.out.println(exception);
+					setVisible(false);
+					new Error().setVisible(true);
 				}
 			}
 		});
@@ -122,7 +129,8 @@ public class GuiUploadWindow extends JFrame {
 					Main.start(file.toString());
 					file.delete();
 				} catch (Exception exception) {
-					//throw error screen here.
+					setVisible(false);
+					new Error().setVisible(true);
 				}
 				setVisible(false);
 			}

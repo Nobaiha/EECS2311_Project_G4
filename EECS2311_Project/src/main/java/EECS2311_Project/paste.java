@@ -88,7 +88,7 @@ public class paste extends JFrame {
 					file.delete();
 					//s.setVisible(true);
 				} catch (Exception exception) {
-					//throw error here.
+					new Error().setVisible(true);
 				}
 			}
 		});
