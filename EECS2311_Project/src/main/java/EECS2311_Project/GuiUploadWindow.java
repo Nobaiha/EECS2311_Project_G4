@@ -3,13 +3,9 @@ package EECS2311_Project;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Label;
@@ -22,8 +18,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.awt.event.ActionEvent;
-import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
 
 public class GuiUploadWindow extends JFrame {
 
@@ -76,8 +70,9 @@ public class GuiUploadWindow extends JFrame {
 		contentPane.add(fileSelectedLabel);
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
-		tabDisplayTextArea.setBounds(10, 259, 885, 429);
-		contentPane.add(tabDisplayTextArea);
+		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
+		sp.setBounds(10, 259, 885, 429);
+		contentPane.add(sp);
 		
 		Button browseButton = new Button("Browse");
 		browseButton.addActionListener(new ActionListener() {
