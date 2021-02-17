@@ -20,6 +20,7 @@ You can install the project on to Eclipse in *two* ways.
 - Import the project into eclipse.
 
 Once the project is imported, from the Gradle tasks menu please hit **build**, and then hit **run** for Gradle to automatically download the dependencies and run the main class. For further instruction, please refer to the instructor's [video](https://echo360.ca/media/3b4933a0-7218-4d0b-ad2a-5f166f008679/public). 
+
 ![Gradle instructions](https://i.imgur.com/z9fxmBy.png)
 
 When selecting a tab to process, please use one of the two provided examples as they have been tested to work. Please refer to the user manual included in the project for more information.
