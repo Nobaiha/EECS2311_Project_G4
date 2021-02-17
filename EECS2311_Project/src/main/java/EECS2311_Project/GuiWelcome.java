@@ -59,11 +59,12 @@ public class GuiWelcome extends JFrame {
 		standardHeaderLabel.setBounds(10, 10, 372, 49);
 		contentPane.add(standardHeaderLabel);
 		
-		guiFileUploadPage m = new guiFileUploadPage();
+		GuiUploadWindow m = new GuiUploadWindow();
 		Button browseButton = new Button("Browse Tab");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				dispose();
                 m.setVisible(true);
 			}
 		});
@@ -76,6 +77,7 @@ public class GuiWelcome extends JFrame {
 		pasteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				dispose();
                 p.setVisible(true);
 			}
 		});
@@ -99,10 +101,10 @@ public class GuiWelcome extends JFrame {
 		updateUserLabel.setBounds(10, 133, 874, 49);
 		contentPane.add(updateUserLabel);
 		
-		JLabel logoImageLabel = new JLabel("");
+		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
 		logoImageLabel.setBounds(180, 198, 500, 262);
-		contentPane.add(logoImageLabel);
+		contentPane.add(logoImageLabel);*/
 	}
 
 }
