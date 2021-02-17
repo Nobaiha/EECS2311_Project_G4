@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.JEditorPane;
+import javax.swing.JTextArea;
 
 public class GuiUploadWindow extends JFrame {
 
@@ -56,29 +57,30 @@ public class GuiUploadWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Label label = new Label("Pick a file from your file explorer of type \".txt\" that contains your");
-		label.setFont(new Font("Calibri", Font.PLAIN, 25));
-		label.setBounds(10, 73, 885, 65);
-		contentPane.add(label);
+		Label instructionsLabel1 = new Label("Pick a file from your file explorer of type \".txt\" that contains your");
+		instructionsLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionsLabel1.setBounds(10, 73, 885, 65);
+		contentPane.add(instructionsLabel1);
 		
-		Label label_1 = new Label("tablature music.");
-		label_1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		label_1.setBounds(10, 114, 885, 65);
-		contentPane.add(label_1);
+		Label instructionsLabel2 = new Label("tablature music.");
+		instructionsLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionsLabel2.setBounds(10, 114, 885, 65);
+		contentPane.add(instructionsLabel2);
 		
-		Label label_2 = new Label("No file currently selected");
-		label_2.setForeground(Color.LIGHT_GRAY);
-		label_2.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 20));
-		label_2.setBackground(Color.WHITE);
-		label_2.setBounds(10, 195, 700, 41);
-		contentPane.add(label_2);
+		JLabel fileSelectedLabel = new JLabel("No file currently selected");
+		fileSelectedLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 25));
+		fileSelectedLabel.setForeground(new Color(192, 192, 192));
+		fileSelectedLabel.setOpaque(true);
+		fileSelectedLabel.setBackground(new Color(255, 255, 255));
+		fileSelectedLabel.setBounds(10, 196, 692, 41);
+		contentPane.add(fileSelectedLabel);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(10, 268, 854, 367);
-		contentPane.add(editorPane);
+		JTextArea tabDisplayTextArea = new JTextArea();
+		tabDisplayTextArea.setBounds(10, 259, 885, 429);
+		contentPane.add(tabDisplayTextArea);
 		
-		Button button = new Button("Browse");
-		button.addActionListener(new ActionListener() {
+		Button browseButton = new Button("Browse");
+		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser choosingFile = new JFileChooser();
 				choosingFile.showOpenDialog(null);
@@ -87,34 +89,36 @@ public class GuiUploadWindow extends JFrame {
 				try {
 					FileReader fileReader = new FileReader(fileName);
 					BufferedReader bufferReader = new BufferedReader(fileReader);
-					editorPane.read(bufferReader, null);
+					tabDisplayTextArea.read(bufferReader, null);
 					bufferReader.close();
-					editorPane.requestFocus();
-					label_2.setText(fileName.toString());
+					tabDisplayTextArea.requestFocus();
+					fileSelectedLabel.setText(fileName.toString());
 				}
 				catch(Exception exception) {
 					JOptionPane.showMessageDialog(null, e);
 				}
 			}
 		});
-		button.setFont(new Font("Calibri", Font.BOLD, 15));
-		button.setBounds(730, 195, 134, 41);
-		contentPane.add(button);
+		browseButton.setFont(new Font("Calibri", Font.BOLD, 15));
+		browseButton.setBounds(730, 195, 134, 41);
+		contentPane.add(browseButton);
 		
-		Label label_4 = new Label("TM");
-		label_4.setBounds(372, 10, 28, 21);
-		contentPane.add(label_4);
+		Label tmLabel = new Label("TM");
+		tmLabel.setBounds(372, 10, 28, 21);
+		contentPane.add(tmLabel);
 		
-		Label label_3 = new Label("TAB-2-MusicXML");
-		label_3.setForeground(new Color(0, 51, 153));
-		label_3.setFont(new Font("Arial Black", Font.BOLD, 35));
-		label_3.setBounds(10, 10, 372, 49);
-		contentPane.add(label_3);
+		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
+		standardHeaderLabel.setForeground(new Color(0, 51, 153));
+		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
+		standardHeaderLabel.setBounds(10, 10, 372, 49);
+		contentPane.add(standardHeaderLabel);
 		
-		Button button_1 = new Button("Enter");
-		button_1.addActionListener(new ActionListener() {
+		
+		
+		Button enterButton = new Button("Enter");
+		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String pastedTab = editorPane.getText();
+				String pastedTab = tabDisplayTextArea.getText();
 				File file = new File("temp.txt");
 				try {
 					FileWriter fw = new FileWriter(file);
@@ -128,9 +132,13 @@ public class GuiUploadWindow extends JFrame {
 				setVisible(false);
 			}
 		});
-		button_1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		button_1.setBounds(354, 694, 224, 41);
-		contentPane.add(button_1);
+		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		enterButton.setBounds(353, 717, 224, 41);
+		contentPane.add(enterButton);
+		
+		
+		
+		
 		
 		
 	}

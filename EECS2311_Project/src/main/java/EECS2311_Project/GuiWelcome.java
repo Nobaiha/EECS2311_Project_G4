@@ -49,60 +49,60 @@ public class GuiWelcome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Label label_4 = new Label("TM");
-		label_4.setBounds(372, 10, 28, 21);
-		contentPane.add(label_4);
+		Label tmLabel = new Label("TM");
+		tmLabel.setBounds(372, 10, 28, 21);
+		contentPane.add(tmLabel);
 		
-		Label label_3 = new Label("TAB-2-MusicXML");
-		label_3.setForeground(new Color(0, 51, 153));
-		label_3.setFont(new Font("Arial Black", Font.BOLD, 35));
-		label_3.setBounds(10, 10, 372, 49);
-		contentPane.add(label_3);
+		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
+		standardHeaderLabel.setForeground(new Color(0, 51, 153));
+		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
+		standardHeaderLabel.setBounds(10, 10, 372, 49);
+		contentPane.add(standardHeaderLabel);
 		
 		guiFileUploadPage m = new guiFileUploadPage();
-		Button button = new Button("Browse Tab");
-		button.addActionListener(new ActionListener() {
+		Button browseButton = new Button("Browse Tab");
+		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
                 m.setVisible(true);
 			}
 		});
-		button.setFont(new Font("Calibri", Font.PLAIN, 25));
-		button.setBounds(151, 555, 249, 69);
-		contentPane.add(button);
+		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		browseButton.setBounds(151, 555, 249, 69);
+		contentPane.add(browseButton);
 		
 		paste p = new paste();
-		Button button_1 = new Button("Paste Tab");
-		button_1.addActionListener(new ActionListener() {
+		Button pasteButton = new Button("Paste Tab");
+		pasteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
                 p.setVisible(true);
 			}
 		});
-		button_1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		button_1.setBounds(533, 555, 249, 69);
-		contentPane.add(button_1);
+		pasteButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		pasteButton.setBounds(533, 555, 249, 69);
+		contentPane.add(pasteButton);
 		
-		Label label = new Label("Pick which method you would like to use to upload your tab.");
-		label.setFont(new Font("Calibri", Font.PLAIN, 25));
-		label.setBounds(10, 466, 885, 49);
-		contentPane.add(label);
+		Label instructionLabel2 = new Label("Pick which method you would like to use to upload your tab.");
+		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionLabel2.setBounds(10, 466, 885, 49);
+		contentPane.add(instructionLabel2);
 		
-		Label label_1 = new Label("Welcome to your personal tablature to music XML converter,");
-		label_1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		label_1.setBounds(10, 78, 874, 49);
-		contentPane.add(label_1);
+		Label instructionLabel1 = new Label("Welcome to your personal tablature to music XML converter,");
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionLabel1.setBounds(10, 78, 874, 49);
+		contentPane.add(instructionLabel1);
 		
-		Label label_2 = new Label("");
-		label_2.setText(System.getProperty("user.name"));
-		label_2.setFont(new Font("Calibri", Font.PLAIN, 25));
-		label_2.setBounds(10, 133, 874, 49);
-		contentPane.add(label_2);
+		Label updateUserLabel = new Label("");
+		updateUserLabel.setText(System.getProperty("user.name"));
+		updateUserLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
+		updateUserLabel.setBounds(10, 133, 874, 49);
+		contentPane.add(updateUserLabel);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
-		lblNewLabel.setBounds(180, 198, 500, 262);
-		contentPane.add(lblNewLabel);
+		JLabel logoImageLabel = new JLabel("");
+		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
+		logoImageLabel.setBounds(180, 198, 500, 262);
+		contentPane.add(logoImageLabel);
 	}
 
 }
