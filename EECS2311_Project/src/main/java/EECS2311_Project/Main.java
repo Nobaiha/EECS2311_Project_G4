@@ -525,7 +525,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        guiWelcomePage welcomePage = new guiWelcomePage();
+        GuiWelcome welcomePage = new GuiWelcome();
         welcomePage.setVisible(true);
     }
 }
