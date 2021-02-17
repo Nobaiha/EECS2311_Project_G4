@@ -6,7 +6,7 @@ The TAB-2-MusicXML™ interface system is a java based application that can be d
 - JavaSE-1.8 
 
 ## Installing & Running 
-You can install the project in *two* ways. 
+You can install the project on to Eclipse in *two* ways. 
 
 **1.** 
 - Fork the project. 
