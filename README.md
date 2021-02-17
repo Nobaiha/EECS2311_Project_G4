@@ -26,7 +26,7 @@ If it is showing some compiler errors please refer to the next section.
 
 ## How to deal with compiler errors
 **1. Errors dealing with build path:** 
-When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' with the message "Multiple markers at the line" over the package explorer.To deal with this issue: 
+When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, with the message "Multiple markers at the line" over the package explorer. To deal with this issue: 
 - Navigate towards the package explorer
 - Right click on the appropriate file with the build path error described above 
 - Click on the option “Configure Build Path”
@@ -39,7 +39,7 @@ When faced with an error regarding build path a "Quick fixable error" indicated 
 - Select “Apply & Close”
 
 **2. Errors dealing with import cannot be resolved message:**
-When faced with an error regarding the “import org.xembly.*;” not working properly, the build.gradle may have not imported properly. The dependences may need to be update to include Xembly. That can be found here: https://github.com/yegor256/xembly.
+When faced with an error regarding the “import org.xembly.*;” not working properly a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, which could mean that the build.gradle may not have been imported properly. The dependencies may need to be update to include Xembly. That can be found here: https://github.com/yegor256/xembly.
 
 ## Authors 
 - Suha Siddiqui
