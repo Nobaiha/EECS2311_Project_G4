@@ -116,6 +116,11 @@ public class SaveFile extends JFrame {
 		saveFile.add(filereadyLabel);
 		
 		Button button = new Button("Home");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		button.setFont(new Font("Calibri", Font.PLAIN, 20));
 		button.setBounds(10, 689, 249, 69);
 		saveFile.add(button);
