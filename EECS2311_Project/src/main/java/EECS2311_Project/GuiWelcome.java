@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class GuiWelcome extends JFrame {
 
@@ -96,6 +98,11 @@ public class GuiWelcome extends JFrame {
 		label_2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		label_2.setBounds(10, 133, 874, 49);
 		contentPane.add(label_2);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
+		lblNewLabel.setBounds(180, 198, 500, 262);
+		contentPane.add(lblNewLabel);
 	}
 
 }

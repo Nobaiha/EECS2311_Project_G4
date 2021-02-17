@@ -13,6 +13,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Label;
+
 import javax.swing.SwingConstants;
 import java.awt.Button;
 import java.awt.event.ActionListener;
@@ -20,6 +22,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class SaveFile extends JFrame {
 	
@@ -60,15 +63,26 @@ public class SaveFile extends JFrame {
 		setContentPane(saveFile);
 		saveFile.setLayout(null);
 		
-		JLabel saveLabel = new JLabel("Would you like to save the file?");
-		saveLabel.setBounds(120, 315, 668, 71);
-		saveLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		saveLabel.setFont(new Font("Calibri", Font.BOLD, 35));
+		Label label_4 = new Label("TM");
+		label_4.setBounds(372, 10, 28, 21);
+		saveFile.add(label_4);
+		
+		Label label_3 = new Label("TAB-2-MusicXML");
+		label_3.setForeground(new Color(0, 51, 153));
+		label_3.setFont(new Font("Arial Black", Font.BOLD, 35));
+		label_3.setBounds(10, 10, 372, 49);
+		saveFile.add(label_3);
+		
+		
+		JLabel saveLabel = new JLabel("in your computer or would you like to exit TAB-2-MusicXML?");
+		saveLabel.setBounds(10, 179, 885, 49);
+		saveLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		saveLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
 		saveLabel.setBackground(new Color(248, 248, 255));
 		saveFile.add(saveLabel);
 		
-		Button Yesbutton = new Button("YES");
-		Yesbutton.setBounds(159, 496, 148, 97);
+		Button Yesbutton = new Button("Yes");
+		Yesbutton.setBounds(151, 268, 249, 69);
 		Yesbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 JFileChooser fileChooser = new JFileChooser();
@@ -85,20 +99,25 @@ public class SaveFile extends JFrame {
 		Yesbutton.setFont(new Font("Calibri", Font.PLAIN, 20));
 		saveFile.add(Yesbutton);
 		
-		Button NObutton = new Button("NO");
-		NObutton.setBounds(604, 496, 148, 97);
-		NObutton.setFont(new Font("Calibri", Font.PLAIN, 20));
-		NObutton.addActionListener(new ActionListener() {
+		Button Nobutton = new Button("No");
+		Nobutton.setBounds(526, 268, 249, 69);
+		Nobutton.setFont(new Font("Calibri", Font.PLAIN, 20));
+		Nobutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				System.exit(0);
 			}
 		});
-		saveFile.add(NObutton);
+		saveFile.add(Nobutton);
 		
-		JLabel filereadyLabel = new JLabel("YOUR FILE IS READY!");
-		filereadyLabel.setFont(new Font("Calibri", Font.BOLD, 68));
-		filereadyLabel.setBounds(174, 88, 694, 92);
+		JLabel filereadyLabel = new JLabel("Your musicXML file is read! Would you like to save the file in a specific location on");
+		filereadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
+		filereadyLabel.setBounds(10, 139, 895, 49);
 		saveFile.add(filereadyLabel);
+		
+		Button button = new Button("Home");
+		button.setFont(new Font("Calibri", Font.PLAIN, 20));
+		button.setBounds(10, 689, 249, 69);
+		saveFile.add(button);
 	}
 }
