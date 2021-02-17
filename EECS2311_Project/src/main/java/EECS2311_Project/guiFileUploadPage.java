@@ -21,6 +21,7 @@ import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.JTextArea;
+import java.awt.TextArea;
 
 public class guiFileUploadPage extends JFrame {
 
@@ -57,6 +58,7 @@ public class guiFileUploadPage extends JFrame {
 		setContentPane(uploadFileWindow);
 		uploadFileWindow.setLayout(null);
 		SaveFile s = new SaveFile();
+		
 		JLabel messageLabel = new JLabel("No file currently selected");
 		messageLabel.setBackground(new Color(255, 255, 255));
 		messageLabel.setFont(new Font("Calibri", Font.ITALIC, 20));
@@ -82,7 +84,7 @@ public class guiFileUploadPage extends JFrame {
 					textArea1.read(br, null);
 					br.close();
 					textArea1.requestFocus();
-					messageLabel.setText(fileName);
+					messageLabel.setText(fileName.toString());
 				}
 				catch(Exception exception) {
 					JOptionPane.showMessageDialog(null, e);
@@ -104,6 +106,7 @@ public class guiFileUploadPage extends JFrame {
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 30));
 		instructionLabel2.setBounds(47, 75, 787, 63);
 		uploadFileWindow.add(instructionLabel2);
+		
 		JButton enterButton = new JButton("Enter");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
