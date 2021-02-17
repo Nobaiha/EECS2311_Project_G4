@@ -4,14 +4,13 @@
 
 ## Requirements
 - JavaSE-1.8 
+- Gradle
 
 ## Installing & Running 
 You can install the project on to Eclipse in *two* ways. 
 
 **1.** 
-- Fork the project. 
-- Clone the project on your computer with GitHub Desktop.
-- Open eclipse. 
+- Clone the project.
 - Import it into eclipse. 
 
 **2.** 
@@ -20,7 +19,14 @@ You can install the project on to Eclipse in *two* ways.
 - Open eclipse. 
 - Import the project into eclipse.
 
-Once the project is imported, from the package explorer menu go to EECS2311_Project  → src/main/java → EECS2311_project → open **Main.java** and run the code. 
+Once the project is imported, from the Gradle tasks menu please hit **build**, and then hit **run** for Gradle to automatically download the dependencies and run the main class. When selecting a tab to process, please use one of the two provided examples as they have been tested to work. Please refer to the user manual included in the project for more information.
+
+## Dependencies
+- [Xembly](https://github.com/yegor256/xembly)
+
+## Known Bugs
+- Not all tabs are supported, only certain guitar tabs are.
+- Selecting a wrong input file type or invalid tab will crash the program.
 
 If it is showing some compiler errors please refer to the next section. 
 
