@@ -114,17 +114,11 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel_1.setBounds(33, 269, 838, 49);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy, on the current version");
+		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy. Enjoy!");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblNewLabel_2.setBounds(20, 329, 864, 38);
 		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("of the T.2.M. Enjoy!");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblNewLabel_3.setBounds(39, 377, 826, 38);
-		contentPane.add(lblNewLabel_3);
 		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
