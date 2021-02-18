@@ -52,10 +52,12 @@ If it is showing some compiler errors please refer to the next section.
   When faced with an error regarding the “import org.xembly.*;” not working properly a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, which could mean that the build.gradle may not have been imported properly. 
  - The dependencies may need to be updated to include Xembly. That can be found here: https://github.com/yegor256/xembly.
 
+**3. If all else fails:**
+  Uninstall and reinstall whatever Java workspace you are using.
+
 ## Authors 
 - Suha Siddiqui
 - Nobaiha Zaman Rayta
 - Zhilong Lin
 - Martin Brejniak
 - Patchanon Suepai
-
