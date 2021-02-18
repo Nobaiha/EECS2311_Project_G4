@@ -16,6 +16,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class GuiWelcome extends JFrame {
 
@@ -85,9 +86,9 @@ public class GuiWelcome extends JFrame {
 		pasteButton.setBounds(533, 555, 249, 69);
 		contentPane.add(pasteButton);
 		
-		Label instructionLabel2 = new Label("Pick which method you would like to use to upload your tab.");
+		Label instructionLabel2 = new Label("Pick a method you would like to use to upload your tab.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionLabel2.setBounds(10, 466, 885, 49);
+		instructionLabel2.setBounds(10, 463, 885, 49);
 		contentPane.add(instructionLabel2);
 		
 		Label instructionLabel1 = new Label("Welcome to your personal tablature to music XML converter,");
@@ -96,29 +97,33 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(instructionLabel1);
 		
 		Label updateUserLabel = new Label("");
-		updateUserLabel.setText(System.getProperty("user.name"));
+		updateUserLabel.setText(System.getProperty("user.name")+"!");
 		updateUserLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
-		updateUserLabel.setBounds(10, 133, 874, 49);
+		updateUserLabel.setBounds(10, 122, 874, 49);
 		contentPane.add(updateUserLabel);
 		
 		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar (and ");
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel.setBounds(10, 215, 838, 49);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel.setBounds(33, 210, 838, 49);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("eventually percussion) music, and converts them into a musicXML");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(10, 262, 838, 49);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_1.setBounds(33, 269, 838, 49);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("file. This user manual will go over how to install  the current version");
-		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel_2.setBounds(10, 321, 864, 38);
+		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy, on the current version");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_2.setBounds(20, 329, 864, 38);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("of the T.2.M and how to use it. Enjoy!");
-		lblNewLabel_3.setFont(new Font("Calibri", Font.PLAIN, 30));
-		lblNewLabel_3.setBounds(10, 369, 826, 38);
+		JLabel lblNewLabel_3 = new JLabel("of the T.2.M. Enjoy!");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_3.setBounds(39, 377, 826, 38);
 		contentPane.add(lblNewLabel_3);
 		
 		/*JLabel logoImageLabel = new JLabel("");
