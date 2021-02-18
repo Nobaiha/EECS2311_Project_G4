@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Label;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
@@ -26,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.UIManager;
 
 public class paste extends JFrame {
 
@@ -60,17 +62,24 @@ public class paste extends JFrame {
 		pasteBody.setLayout(null);
 		//modifications m=new modifications();
 		SaveFile s = new SaveFile();
-		JLabel PasteLabel = new JLabel("PASTE");
-		PasteLabel.setBounds(0, 0, 891, 105);
-		PasteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		PasteLabel.setBackground(new Color(255, 240, 245));
+		
+		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
+		standardHeaderLabel.setForeground(new Color(0, 51, 153));
+		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
+		standardHeaderLabel.setBounds(10, 10, 372, 49);
+		pasteBody.add(standardHeaderLabel);
+		
+		JLabel PasteLabel = new JLabel("Copy some tabalature into your clipboard and paste in the text box ");
+		PasteLabel.setBounds(10, 69, 891, 67);
+		PasteLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		PasteLabel.setBackground(new Color(248, 248, 255));
 		PasteLabel.setForeground(new Color(0, 0, 0));
-		PasteLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 86));
+		PasteLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
 		pasteBody.add(PasteLabel);
 		
 		TextArea pasteArea = new TextArea();
-		pasteArea.setBackground(new Color(240, 248, 255));
-		pasteArea.setBounds(38, 128, 821, 489);
+		pasteArea.setBackground(new Color(255, 255, 255));
+		pasteArea.setBounds(20, 166, 856, 511);
 		pasteBody.add(pasteArea);
 		Button enterButton = new Button("Enter");
 		enterButton.addActionListener(new ActionListener() {
@@ -92,12 +101,20 @@ public class paste extends JFrame {
 				}
 			}
 		});
-		enterButton.setBackground(new Color(240, 248, 255));
-		enterButton.setFont(new Font("Calibri", Font.BOLD, 30));
+		enterButton.setBackground(UIManager.getColor("Button.background"));
+		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setForeground(new Color(0, 0, 0));
-		enterButton.setBounds(354, 645, 161, 67);
+		enterButton.setBounds(336, 696, 224, 41);
 		pasteBody.add(enterButton);
 		
+		JLabel lblNewLabel = new JLabel("below:");
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
+		lblNewLabel.setBounds(10, 122, 201, 38);
+		pasteBody.add(lblNewLabel);
+		
+		Label tmLabel = new Label("TM");
+		tmLabel.setBounds(386, 10, 28, 21);
+		pasteBody.add(tmLabel);
+		
 	}
-	
 }

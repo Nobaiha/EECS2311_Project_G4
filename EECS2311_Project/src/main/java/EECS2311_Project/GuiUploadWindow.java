@@ -128,7 +128,7 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		enterButton.setBounds(353, 717, 224, 41);
+		enterButton.setBounds(340, 702, 224, 41);
 		contentPane.add(enterButton);
 		
 		
