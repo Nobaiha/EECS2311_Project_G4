@@ -101,10 +101,29 @@ public class GuiWelcome extends JFrame {
 		updateUserLabel.setBounds(10, 133, 874, 49);
 		contentPane.add(updateUserLabel);
 		
+		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar (and ");
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
+		lblNewLabel.setBounds(10, 215, 838, 49);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("eventually percussion) music, and converts them into a musicXML");
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 30));
+		lblNewLabel_1.setBounds(10, 262, 838, 49);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("file. This user manual will go over how to install  the current version");
+		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 30));
+		lblNewLabel_2.setBounds(10, 321, 864, 38);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("of the T.2.M and how to use it. Enjoy!");
+		lblNewLabel_3.setFont(new Font("Calibri", Font.PLAIN, 30));
+		lblNewLabel_3.setBounds(10, 369, 826, 38);
+		contentPane.add(lblNewLabel_3);
+		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
 		logoImageLabel.setBounds(180, 198, 500, 262);
 		contentPane.add(logoImageLabel);*/
 	}
-
 }
