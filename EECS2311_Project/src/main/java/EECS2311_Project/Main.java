@@ -7,15 +7,14 @@ import java.util.*;
 import java.util.regex.*;
 
 /**
- * The main class.
+ * The main class. Takes all other classes and uses them.
  *
  * @author Team 4 EECS2311 Winter 2021
  */
 
-
 public class Main {
 
-    //temp global to keep track of elements in measures.
+//Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
 
@@ -31,11 +30,11 @@ public class Main {
         ArrayList<String> testLines = new ArrayList<>();
         ArrayList<String> drumTestLines = new ArrayList<>();
 
-        //might need to change the file path depending on system.
+        //Might need to change the file path depending on system.
         File inputFile = new File(file);
 
-        //need to check for some others too, sometimes E is a D?
-        //string tuning can be changed, needs to be accounted for
+        //Need to check for some others too, sometimes E is a D?
+        //String tuning can be changed, needs to be accounted for
         Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
         //Need to check for alternatives such as CC HH, etc.
         Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
@@ -44,7 +43,7 @@ public class Main {
         //Maybe need to edit later as sometimes there is information on top of the bars???
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
-                //removes all spaces.
+            	//removes all spaces.
                 String nextLine = sc.nextLine().replaceAll("\\s", "");
                 //System.out.println(nextLine);
                 Matcher matcher = pattern.matcher(nextLine);
@@ -58,7 +57,7 @@ public class Main {
                 }
             }
         } catch (FileNotFoundException e) {
-            //Send error not found here.
+        	//Send error not found here.
             e.printStackTrace();
         }
         if (testLines.size() > drumTestLines.size()) {
@@ -69,12 +68,12 @@ public class Main {
     }
 
     public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
-        //Creates array of notes
+    	//Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
-            //System.out.println(list);
+        	//System.out.println(list);
             String[] tempArray = list.split("-", -1);
-            //converts to arraylist, prob a better way to do this.
+            //Converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
         }
 
