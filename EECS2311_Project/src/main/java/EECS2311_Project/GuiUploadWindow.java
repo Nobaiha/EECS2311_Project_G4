@@ -71,7 +71,7 @@ public class GuiUploadWindow extends JFrame {
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
-		sp.setBounds(10, 259, 885, 429);
+		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
 		
 		Button browseButton = new Button("Browse");
@@ -136,7 +136,7 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		enterButton.setBounds(340, 702, 224, 41);
+		enterButton.setBounds(339, 638, 224, 41);
 		contentPane.add(enterButton);
 		
 		

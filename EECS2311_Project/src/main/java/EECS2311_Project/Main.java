@@ -7,23 +7,37 @@ import java.util.*;
 import java.util.regex.*;
 
 /**
- * The main class.
+ * The main class. Takes all other classes and uses them.
  *
  * @author Team 4 EECS2311 Winter 2021
  */
 
-
 public class Main {
 
-    //temp global to keep track of elements in measures.
+	//Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
 
+    /**
+	 * This checks to see if the input file is a ".txt" file.
+	 * 
+	 * @param file is the name of the input file.
+	 * @return true if the file is of type ".txt". Fails if otherwise.
+	 */
     public static boolean fileChecker(String file) {
         int indexOfExt = file.lastIndexOf(".") + 1;
         return file.substring(indexOfExt).equals("txt");
     }
 
+    /**
+	 * This reads the text file, extracts the infomation, and 
+	 * places it in an ArrayList. It detects whether its a
+	 * drum or guitar tab.  
+	 * 
+	 * @param file is the name of the input file.
+	 * @return an ArrayList of the guitar/drum notes.
+	 * @exception It throws FileNotFoundException if the file is not found.
+	 */
     public static Object[] fileParser(String file) throws FileNotFoundException {
         if (!fileChecker(file)) {
             throw new FileNotFoundException("Unsupported file type");
@@ -31,11 +45,11 @@ public class Main {
         ArrayList<String> testLines = new ArrayList<>();
         ArrayList<String> drumTestLines = new ArrayList<>();
 
-        //might need to change the file path depending on system.
+        //Might need to change the file path depending on system.
         File inputFile = new File(file);
 
-        //need to check for some others too, sometimes E is a D?
-        //string tuning can be changed, needs to be accounted for
+        //Need to check for some others too, sometimes E is a D?
+        //String tuning can be changed, needs to be accounted for
         Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
         //Need to check for alternatives such as CC HH, etc.
         Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
@@ -44,7 +58,7 @@ public class Main {
         //Maybe need to edit later as sometimes there is information on top of the bars???
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
-                //removes all spaces.
+            	//removes all spaces.
                 String nextLine = sc.nextLine().replaceAll("\\s", "");
                 //System.out.println(nextLine);
                 Matcher matcher = pattern.matcher(nextLine);
@@ -58,7 +72,7 @@ public class Main {
                 }
             }
         } catch (FileNotFoundException e) {
-            //Send error not found here.
+        	//Send error not found here.
             e.printStackTrace();
         }
         if (testLines.size() > drumTestLines.size()) {
@@ -68,13 +82,20 @@ public class Main {
         }
     }
 
+    /**
+	 * This takes the information for the guitar tab ArrayList, picks out
+	 * the important information, and places them into variables.
+	 * 
+	 * @param noteArray is the ArrayList with the converted ".txt" file.
+	 * @return an ArrayList of the guitar tab information.
+	 */
     public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
-        //Creates array of notes
+    	//Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
-            //System.out.println(list);
+        	//System.out.println(list);
             String[] tempArray = list.split("-", -1);
-            //converts to arraylist, prob a better way to do this.
+            //Converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
         }
 
@@ -145,6 +166,13 @@ public class Main {
         return guitarNoteArray;
     }
 
+    /**
+	 * This takes the information for the drum tab ArrayList, picks out
+	 * the important information, and places them into variables.
+	 * 
+	 * @param noteArray is the ArrayList with the converted ".txt" file.
+	 * @return an ArrayList of the drum tab information.
+	 */
     public static ArrayList<DrumNote> drumNoteParser(ArrayList<String> noteArray) {
         //drum test case
         ArrayList<DrumNote> drumNoteArray = new ArrayList<>();
@@ -226,6 +254,13 @@ public class Main {
         return drumNoteArray;
     }
 
+    /**
+	 * Takes all the information gathered from the guitar tab
+	 * and makes an XML file with it.
+	 * 
+	 * @param measyres is an ArrayList of the guitar tab information.
+	 * @return an XML file.
+	 */
     public static String guitarXMLParser(ArrayList<Measure> measures) {
         //XML print attempt
         if (measures.size() == 0) {
@@ -383,6 +418,13 @@ public class Main {
         //System.out.println(xml);
     }
 
+    /**
+	 * Takes all the information gathered from the drum tab
+	 * and makes an XML file with it.
+	 * 
+	 * @param drumNoteArray is an ArrayList of the drum tab information.
+	 * @return an XML file.
+	 */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
         if (drumNoteArray.size() == 0) {
             return null;
@@ -462,6 +504,12 @@ public class Main {
         //System.out.println(xml);
     }
 
+    /**
+	 * This saves the XML file that was created.
+	 * 
+	 * @param file is the file that was input.
+	 * @param xml is the XML file.
+	 */
     public static void saveFile(File file, String xml) {
         try {
             FileWriter xmlFile = new FileWriter(file);
@@ -483,6 +531,9 @@ public class Main {
         return null;
     }*/
 
+    /**
+	 * TODO
+	 */
     public static void start(String filePath) throws FileNotFoundException {
         Object[] notes = fileParser(filePath);
         ArrayList<String> noteArray = (ArrayList<String>) notes[1];
@@ -529,6 +580,9 @@ public class Main {
         }
     }
 
+    /**
+	 * This starts up the GUI.
+	 */
     public static void main(String[] args) {
         GuiWelcome welcomePage = new GuiWelcome();
         welcomePage.setVisible(true);
