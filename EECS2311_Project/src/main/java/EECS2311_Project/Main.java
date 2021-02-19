@@ -14,7 +14,7 @@ import java.util.regex.*;
 
 public class Main {
 
-//Temp global to keep track of elements in measures.
+	//Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
 
