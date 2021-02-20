@@ -60,7 +60,7 @@ If it is showing some compiler errors please refer to the next section.
  - The dependencies may need to be updated to include Xembly. That can be found here: https://github.com/yegor256/xembly.
 
 **3. If all else fails:**
-  Uninstall and reinstall the current Java workspace you are using.
+  Reinstall and update the current Java workspace and Eclipse version you are using.
 
 ## Authors 
 - Suha Siddiqui
