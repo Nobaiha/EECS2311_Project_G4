@@ -4,7 +4,11 @@
 
 ## Requirements
 - JavaSE-15 
-- Gradle
+- Gradle 6.3
+
+Please ensure you have the latest version of Gradle and Java 15 or else the project will not build.
+- [JavaSE-15](https://www.oracle.com/kr/java/technologies/javase-jdk15-downloads.html)
+- Gradle is updated within Eclipse. Please check under Window -> Preferences -> Gradle.
 
 ## Installing & Running 
 You can install the project on to Eclipse in *two* ways. 
@@ -37,6 +41,9 @@ If it is showing some compiler errors please refer to the next section.
 ## How to deal with compiler errors
 **1. Errors dealing with build path:** 
   When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, with the message "Multiple markers at the line" over the package explorer. To deal with this issue: 
+  
+- Ensure you have updated to Java 15 and Gradle 6.3
+- Once Gradle has been updated, please hit refresh Gradle project.
 - Navigate towards the package explorer.
 - Right click on the appropriate file with the build path error described above.
 - Click on the option “Configure Build Path”.
