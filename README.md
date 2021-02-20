@@ -44,7 +44,7 @@ If it is showing some compiler errors please refer to the next section.
 - Select the appropriate java system.
 - Click on remove.
 - Highlight “classpath”.
-- Click “add library” →  JRE system library → “Next” → Execution environment → From drop down menu select javaSE-1.8
+- Click “add library” →  JRE system library → “Next” → Execution environment → From drop down menu select javaSE-15
 - Select “Finish”.
 - Select “Apply & Close”.
 
