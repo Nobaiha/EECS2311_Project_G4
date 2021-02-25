@@ -70,6 +70,7 @@ public class GuiUploadWindow extends JFrame {
 		contentPane.add(fileSelectedLabel);
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
+		tabDisplayTextArea.setFont(new Font("Lucida Console", Font.PLAIN, 20));
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
@@ -104,6 +105,21 @@ public class GuiUploadWindow extends JFrame {
 		browseButton.setFont(new Font("Calibri", Font.BOLD, 15));
 		browseButton.setBounds(730, 195, 134, 41);
 		contentPane.add(browseButton);
+
+		Button homeButton = new Button("Back");
+		homeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+				new GuiWelcome().setVisible(true);
+			}
+		});
+
+		homeButton.setBackground(UIManager.getColor("Button.background"));
+		homeButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		homeButton.setForeground(new Color(0, 0, 0));
+		homeButton.setBounds(10, 638, 150, 41);
+		contentPane.add(homeButton);
 		
 		Label tmLabel = new Label("TM");
 		tmLabel.setBounds(372, 10, 28, 21);
