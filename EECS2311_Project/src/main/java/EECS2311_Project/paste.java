@@ -79,7 +79,7 @@ public class paste extends JFrame {
 		
 		TextArea pasteArea = new TextArea();
 		pasteArea.setBackground(new Color(255, 255, 255));
-		pasteArea.setBounds(20, 166, 856, 511);
+		pasteArea.setBounds(20, 166, 861, 435);
 		pasteBody.add(pasteArea);
 		Button enterButton = new Button("Enter");
 		enterButton.addActionListener(new ActionListener() {
@@ -104,8 +104,23 @@ public class paste extends JFrame {
 		enterButton.setBackground(UIManager.getColor("Button.background"));
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setForeground(new Color(0, 0, 0));
-		enterButton.setBounds(336, 696, 224, 41);
+		enterButton.setBounds(340, 620, 224, 41);
 		pasteBody.add(enterButton);
+
+		Button homeButton = new Button("Back");
+		homeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+				new GuiWelcome().setVisible(true);
+			}
+		});
+
+		homeButton.setBackground(UIManager.getColor("Button.background"));
+		homeButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		homeButton.setForeground(new Color(0, 0, 0));
+		homeButton.setBounds(20, 620, 150, 41);
+		pasteBody.add(homeButton);
 		
 		JLabel lblNewLabel = new JLabel("below:");
 		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
