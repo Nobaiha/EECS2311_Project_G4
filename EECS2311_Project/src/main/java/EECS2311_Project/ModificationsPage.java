@@ -59,34 +59,36 @@ public class ModificationsPage extends JFrame {
 		tmLabel.setBounds(388, 10, 28, 21);
 		contentPane.add(tmLabel);
 		
-		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able to \r\n\r\n");
-		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
+		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able\r\n\r\n");
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 26));
 		instructionLabel1.setBounds(10, 103, 875, 49);
 		contentPane.add(instructionLabel1);
 		
 		JLabel instructionLabel2 = new JLabel("to enter the composer and title of your tab!");
-		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 28));
 		instructionLabel2.setBounds(10, 150, 865, 49);
 		contentPane.add(instructionLabel2);
 		
 		JLabel composerLabel = new JLabel("Composer:");
-		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 22));
-		composerLabel.setBounds(56, 262, 116, 31);
+		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
+		composerLabel.setBounds(56, 262, 177, 31);
 		contentPane.add(composerLabel);
 		
 		textFieldComposer = new JTextField();
-		textFieldComposer.setBounds(243, 252, 372, 49);
+		textFieldComposer.setFont(new Font("Calibri", Font.PLAIN, 22));
+		textFieldComposer.setBounds(243, 252, 463, 49);
 		contentPane.add(textFieldComposer);
 		textFieldComposer.setColumns(10);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
-		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 22));
-		titleLabel.setBounds(56, 364, 116, 31);
+		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
+		titleLabel.setBounds(52, 363, 166, 31);
 		contentPane.add(titleLabel);
 		
 		textFieldTitle = new JTextField();
+		textFieldTitle.setFont(new Font("Calibri", Font.PLAIN, 22));
 		textFieldTitle.setColumns(10);
-		textFieldTitle.setBounds(243, 354, 372, 49);
+		textFieldTitle.setBounds(243, 354, 463, 49);
 		contentPane.add(textFieldTitle);
 		
 		Button enterButton = new Button("Enter");
