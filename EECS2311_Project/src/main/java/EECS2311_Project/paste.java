@@ -104,7 +104,9 @@ public class paste extends JFrame {
 		enterButton.setBackground(UIManager.getColor("Button.background"));
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setForeground(new Color(0, 0, 0));
-		enterButton.setBounds(340, 620, 224, 41);
+
+		enterButton.setBounds(344, 620, 224, 41);
+
 		pasteBody.add(enterButton);
 
 		Button homeButton = new Button("Back");
