@@ -56,7 +56,7 @@ public class GuiUploadWindow extends JFrame {
 		instructionsLabel1.setBounds(10, 73, 885, 65);
 		contentPane.add(instructionsLabel1);
 		
-		Label instructionsLabel2 = new Label("tablature music.");
+		Label instructionsLabel2 = new Label("tablature music or paste it in the window below.");
 		instructionsLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionsLabel2.setBounds(10, 114, 885, 65);
 		contentPane.add(instructionsLabel2);

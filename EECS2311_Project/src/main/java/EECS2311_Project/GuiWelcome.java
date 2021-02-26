@@ -61,7 +61,7 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(standardHeaderLabel);
 		
 		GuiUploadWindow m = new GuiUploadWindow();
-		Button browseButton = new Button("Browse Tab");
+		Button browseButton = new Button("Upload Tab");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -70,23 +70,10 @@ public class GuiWelcome extends JFrame {
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		browseButton.setBounds(151, 555, 249, 69);
+		browseButton.setBounds(328, 549, 249, 69);
 		contentPane.add(browseButton);
 		
-		paste p = new paste();
-		Button pasteButton = new Button("Paste Tab");
-		pasteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-                p.setVisible(true);
-			}
-		});
-		pasteButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		pasteButton.setBounds(533, 555, 249, 69);
-		contentPane.add(pasteButton);
-		
-		Label instructionLabel2 = new Label("Pick a method you would like to use to upload your tab.");
+		Label instructionLabel2 = new Label("Click the button below to upload your tab.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel2.setBounds(10, 463, 885, 49);
 		contentPane.add(instructionLabel2);
