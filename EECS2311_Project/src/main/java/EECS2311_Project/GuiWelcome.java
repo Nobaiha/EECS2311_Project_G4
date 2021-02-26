@@ -61,7 +61,7 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(standardHeaderLabel);
 		
 		GuiUploadWindow m = new GuiUploadWindow();
-		Button browseButton = new Button("Browse Tab");
+		Button browseButton = new Button("Upload Tab");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -70,23 +70,10 @@ public class GuiWelcome extends JFrame {
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		browseButton.setBounds(151, 555, 249, 69);
+		browseButton.setBounds(328, 549, 249, 69);
 		contentPane.add(browseButton);
 		
-		paste p = new paste();
-		Button pasteButton = new Button("Paste Tab");
-		pasteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-                p.setVisible(true);
-			}
-		});
-		pasteButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		pasteButton.setBounds(533, 555, 249, 69);
-		contentPane.add(pasteButton);
-		
-		Label instructionLabel2 = new Label("Pick a method you would like to use to upload your tab.");
+		Label instructionLabel2 = new Label("Click the button below to upload your tab.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel2.setBounds(10, 463, 885, 49);
 		contentPane.add(instructionLabel2);
@@ -114,17 +101,11 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel_1.setBounds(33, 269, 838, 49);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy, on the current version");
+		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy. Enjoy!");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblNewLabel_2.setBounds(20, 329, 864, 38);
 		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("of the T.2.M. Enjoy!");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblNewLabel_3.setBounds(39, 377, 826, 38);
-		contentPane.add(lblNewLabel_3);
 		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));

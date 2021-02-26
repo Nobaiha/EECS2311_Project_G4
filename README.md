@@ -1,10 +1,14 @@
-# EECS2311_Project_G4
+# TAB-2-MusicXML™
 ## Introduction
   The TAB-2-MusicXML™ interface system is a java based application that can be downloaded on to a personal computer that will convert tablature made for percussion and guitar in “.txt” format to musicXML code which will output as a downloadable file in musicXML format that can be used as sheet music or tab sheet music. The final output, at minimum, will contain work details (such as titles and musicians) and attributes (such as time signature and sufficient bars).
 
 ## Requirements
-- JavaSE-1.8 
-- Gradle
+- JavaSE-15 
+- Gradle 6.3
+
+Please ensure you have the latest version of Gradle and Java 15 and Eclipse is using these versions or else the project will not build.
+- [JavaSE-15](https://www.oracle.com/kr/java/technologies/javase-jdk15-downloads.html)
+- Gradle is updated within Eclipse. Please check under Window -> Preferences -> Gradle.
 
 ## Installing & Running 
 You can install the project on to Eclipse in *two* ways. 
@@ -36,7 +40,10 @@ If it is showing some compiler errors please refer to the next section.
 
 ## How to deal with compiler errors
 **1. Errors dealing with build path:** 
-  When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, with the message "Multiple markers at the line" over the package explorer. To deal with this issue: 
+  When faced with an error regarding build path a "Quick fixable error" indicated with a light-bulb with an 'x' will appear, with the message "Multiple markers at the line" over the package explorer. This means your Java version or Gradle version is not compatible with our program. Please update to the minimum required version and point Eclipse to use these versions. To deal with this issue: 
+  
+- Ensure you have updated to Java 15 and Gradle 6.3.
+- Once Gradle has been updated, please hit refresh Gradle project.
 - Navigate towards the package explorer.
 - Right click on the appropriate file with the build path error described above.
 - Click on the option “Configure Build Path”.
@@ -44,7 +51,7 @@ If it is showing some compiler errors please refer to the next section.
 - Select the appropriate java system.
 - Click on remove.
 - Highlight “classpath”.
-- Click “add library” →  JRE system library → “Next” → Execution environment → From drop down menu select javaSE-1.8
+- Click “add library” →  JRE system library → “Next” → Execution environment → From drop down menu select javaSE-15
 - Select “Finish”.
 - Select “Apply & Close”.
 
@@ -53,7 +60,7 @@ If it is showing some compiler errors please refer to the next section.
  - The dependencies may need to be updated to include Xembly. That can be found here: https://github.com/yegor256/xembly.
 
 **3. If all else fails:**
-  Uninstall and reinstall whatever Java workspace you are using.
+  Reinstall and update the current Java workspace and Eclipse version you are using.
 
 ## Authors 
 - Suha Siddiqui
