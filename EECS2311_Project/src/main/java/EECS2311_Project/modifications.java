@@ -77,7 +77,7 @@ public class modifications extends JFrame {
 			modificationBody.add(fracValue);
 			fracValue.setColumns(10);
 
-			Button Submit = new Button("Submit");
+			/*Button Submit = new Button("Submit");
 			Submit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
@@ -90,7 +90,7 @@ public class modifications extends JFrame {
 			});
 			Submit.setFont(new Font("Calibri", Font.BOLD, 30));
 			Submit.setBounds(292, 556, 214, 115);
-			modificationBody.add(Submit);
+			modificationBody.add(Submit);*/
 
 			JLabel name = new JLabel("Name of the music piece:");
 			name.setFont(new Font("Calibri", Font.BOLD, 30));

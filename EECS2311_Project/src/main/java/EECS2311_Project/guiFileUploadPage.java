@@ -57,7 +57,7 @@ public class guiFileUploadPage extends JFrame {
 		uploadFileWindow.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(uploadFileWindow);
 		uploadFileWindow.setLayout(null);
-		SaveFile s = new SaveFile();
+		//SaveFile s = new SaveFile();
 		
 		JLabel messageLabel = new JLabel("No file currently selected");
 		messageLabel.setBackground(new Color(255, 255, 255));
@@ -119,7 +119,7 @@ public class guiFileUploadPage extends JFrame {
 					FileWriter fw = new FileWriter(file);
 					fw.write(pastedTab);
 					fw.close();
-					Main.start(file.toString());
+					Main.start(file.toString(), "","");
 					file.delete();
 					//s.setVisible(true);
 				} catch (Exception exception) {
