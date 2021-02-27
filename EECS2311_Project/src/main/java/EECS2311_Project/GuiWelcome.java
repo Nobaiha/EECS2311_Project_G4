@@ -60,20 +60,21 @@ public class GuiWelcome extends JFrame {
 		standardHeaderLabel.setBounds(10, 10, 372, 49);
 		contentPane.add(standardHeaderLabel);
 		
-		GuiUploadWindow m = new GuiUploadWindow();
-		Button browseButton = new Button("Upload Tab");
+		//GuiUploadWindow guiUploadWindow = new GuiUploadWindow();
+		ModificationsPage modificationsPage = new ModificationsPage();
+		Button browseButton = new Button("Start");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
-                m.setVisible(true);
+                modificationsPage.setVisible(true);
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		browseButton.setBounds(328, 549, 249, 69);
 		contentPane.add(browseButton);
 		
-		Label instructionLabel2 = new Label("Click the button below to upload your tab.");
+		Label instructionLabel2 = new Label("Click the button below to start.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel2.setBounds(10, 463, 885, 49);
 		contentPane.add(instructionLabel2);
