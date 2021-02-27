@@ -5,29 +5,23 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Label;
 
-import javax.swing.SwingConstants;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 
 public class SaveFile extends JFrame {
-	
+
 	protected Component parent;
-	private String xml = "";
+	private static String xml;
 
 	private JPanel saveFile;
 
@@ -38,7 +32,7 @@ public class SaveFile extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SaveFile frame = new SaveFile();
+					SaveFile frame = new SaveFile(xml);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,14 +41,11 @@ public class SaveFile extends JFrame {
 		});
 	}
 
-	public void setXml(String xml) {
-		this.xml = xml;
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SaveFile() {
+	public SaveFile(String xml) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		saveFile = new JPanel();
@@ -74,16 +65,29 @@ public class SaveFile extends JFrame {
 		saveFile.add(label_3);
 		
 		
-		JLabel saveLabel = new JLabel("in your computer or would you like to exit?");
+		/*JLabel saveLabel = new JLabel("in your computer or would you like to exit?");
 		saveLabel.setBounds(10, 179, 885, 49);
 		saveLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		saveLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
 		saveLabel.setBackground(new Color(248, 248, 255));
-		saveFile.add(saveLabel);
+		saveFile.add(saveLabel);*/
+		/*Label instructionsLabel1 = new Label("Your music XML file is ready!");
+		instructionsLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionsLabel1.setBounds(10, 73, 885, 65);
+		saveFile.add(instructionsLabel1);*/
+
+		JTextArea tabDisplayTextArea = new JTextArea();
+		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 11));
+		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
+		sp.setBounds(10, 159, 885, 459);
+		saveFile.add(sp);
+		tabDisplayTextArea.setText(xml);
+		tabDisplayTextArea.setCaretPosition(0);
 		
-		Button Yesbutton = new Button("Save");
-		Yesbutton.setBounds(151, 268, 249, 69);
-		Yesbutton.addActionListener(new ActionListener() {
+		Button yesButton = new Button("Save");
+		//yesButton.setBounds(151, 268, 249, 69);
+		yesButton.setBounds(339, 638, 224, 41);
+		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 JFileChooser fileChooser = new JFileChooser();
 			        fileChooser.setSelectedFile(new File("guitarTab.musicxml"));
@@ -91,29 +95,31 @@ public class SaveFile extends JFrame {
 			        int userSelection = fileChooser.showSaveDialog(SaveFile.this);
 			        if (userSelection == JFileChooser.APPROVE_OPTION) {
 			            File file = fileChooser.getSelectedFile();
-			            Main.saveFile(file, xml);
+			            Main.saveFile(file, tabDisplayTextArea.getText());
 			            setVisible(false);
+			            dispose();
+			            new GuiWelcome().setVisible(true);
 				}
 			}
 		});
-		Yesbutton.setFont(new Font("Calibri", Font.PLAIN, 20));
-		saveFile.add(Yesbutton);
+		yesButton.setFont(new Font("Calibri", Font.PLAIN, 20));
+		saveFile.add(yesButton);
 		
-		Button Nobutton = new Button("Exit");
-		Nobutton.setBounds(526, 268, 249, 69);
-		Nobutton.setFont(new Font("Calibri", Font.PLAIN, 20));
-		Nobutton.addActionListener(new ActionListener() {
+		Button noButton = new Button("Exit");
+		noButton.setBounds(739, 638, 150, 41);
+		noButton.setFont(new Font("Calibri", Font.PLAIN, 20));
+		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				System.exit(0);
 			}
 		});
-		saveFile.add(Nobutton);
+		saveFile.add(noButton);
 		
-		JLabel filereadyLabel = new JLabel("Your musicXML file is ready! Would you like to save the file");
-		filereadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
-		filereadyLabel.setBounds(10, 139, 895, 49);
-		saveFile.add(filereadyLabel);
+		JLabel fileReadyLabel = new JLabel("Your musicXML file is ready!");
+		fileReadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
+		fileReadyLabel.setBounds(10, 100, 895, 49);
+		saveFile.add(fileReadyLabel);
 		
 		Button button = new Button("Home");
 		button.addActionListener(new ActionListener() {
@@ -124,7 +130,7 @@ public class SaveFile extends JFrame {
 			}
 		});
 		button.setFont(new Font("Calibri", Font.PLAIN, 20));
-		button.setBounds(10, 689, 249, 69);
+		button.setBounds(10, 638, 150, 41);
 		saveFile.add(button);
 	}
 }
