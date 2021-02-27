@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import java.awt.Canvas;
 import java.awt.Button;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ModificationsPage extends JFrame {
 
@@ -60,17 +62,17 @@ public class ModificationsPage extends JFrame {
 		contentPane.add(tmLabel);
 		
 		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able\r\n\r\n");
-		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 26));
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 20));
 		instructionLabel1.setBounds(10, 103, 875, 49);
 		contentPane.add(instructionLabel1);
 		
 		JLabel instructionLabel2 = new JLabel("to enter the composer and title of your tab!");
-		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 28));
+		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 20));
 		instructionLabel2.setBounds(10, 150, 865, 49);
 		contentPane.add(instructionLabel2);
 		
 		JLabel composerLabel = new JLabel("Composer:");
-		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
+		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
 		composerLabel.setBounds(56, 262, 177, 31);
 		contentPane.add(composerLabel);
 		
@@ -81,7 +83,7 @@ public class ModificationsPage extends JFrame {
 		textFieldComposer.setColumns(10);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
-		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
+		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
 		titleLabel.setBounds(52, 363, 166, 31);
 		contentPane.add(titleLabel);
 		
@@ -97,5 +99,14 @@ public class ModificationsPage extends JFrame {
 		enterButton.setBackground(SystemColor.menu);
 		enterButton.setBounds(340, 597, 224, 41);
 		contentPane.add(enterButton);
+
+		enterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GuiUploadWindow guiUploadWindow = new GuiUploadWindow(textFieldTitle.getText(), textFieldComposer.getText());
+				setVisible(false);
+				dispose();
+				guiUploadWindow.setVisible(true);
+			}
+		});
 	}
 }
