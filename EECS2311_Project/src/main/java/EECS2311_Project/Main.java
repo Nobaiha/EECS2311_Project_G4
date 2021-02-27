@@ -534,7 +534,7 @@ public class Main {
             //System.exit(0);
             Desktop.getDesktop().open(file);
         } catch (Exception e) {
-            new Error("There was an error saving your file, please retry.");
+            new Error("There was an error saving your file, please retry.", tabTitle, tabComposer);
         }
     }
 
@@ -589,11 +589,11 @@ public class Main {
                 //saveFile.setXml(xml);
                 saveFile.setVisible(true);
             }else{
-                new Error("Error parsing, please ensure tab is in correct format.");
+                new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer);
             }
         } else {
             //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
-            Error error = new Error("Error parsing, please ensure tab is in correct format.");
+            Error error = new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer);
 
         }
     }

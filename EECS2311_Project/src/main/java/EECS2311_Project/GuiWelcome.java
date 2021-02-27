@@ -96,13 +96,13 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel.setBounds(33, 210, 838, 49);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("eventually percussion) music, and converts them into a musicXML");
+		JLabel lblNewLabel_1 = new JLabel("eventually percussion) music, and converts them into a musicXML.");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblNewLabel_1.setBounds(33, 269, 838, 49);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("file to make reading music all the more easy. Enjoy!");
+		JLabel lblNewLabel_2 = new JLabel("Enjoy!");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblNewLabel_2.setBounds(20, 329, 864, 38);

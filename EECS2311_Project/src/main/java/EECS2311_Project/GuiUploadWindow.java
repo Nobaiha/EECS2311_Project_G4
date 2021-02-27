@@ -93,13 +93,13 @@ public class GuiUploadWindow extends JFrame {
 					}else{
 						setVisible(false);
 						dispose();
-						new Error("File type not supported, please ensure file is a .txt");
+						new Error("File type not supported, please ensure file is a .txt", title, composer);
 					}
 				}
 				catch(Exception exception) {
 					setVisible(false);
 					dispose();
-					new Error("File type not supported, please ensure file is a .txt");
+					new Error("File type not supported, please ensure file is a .txt", title, composer);
 				}
 			}
 		});
@@ -150,7 +150,7 @@ public class GuiUploadWindow extends JFrame {
 				} catch (Exception exception) {
 					setVisible(false);
 					dispose();
-					new Error("Error parsing, please ensure tab is in correct format.");
+					new Error("Error parsing, please ensure tab is in correct format.", title, composer);
 				}
 				//setVisible(false);
 			}
