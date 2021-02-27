@@ -2,6 +2,7 @@ package EECS2311_Project;
 
 import org.xembly.*;
 
+import java.awt.*;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
@@ -17,6 +18,10 @@ public class Main {
 	//Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
+
+    static String tabTitle = "";
+    static String tabComposer = "";
+
 
     /**
 	 * This checks to see if the input file is a ".txt" file.
@@ -36,7 +41,7 @@ public class Main {
 	 * 
 	 * @param file is the name of the input file.
 	 * @return an ArrayList of the guitar/drum notes.
-	 * @exception It throws FileNotFoundException if the file is not found.
+	 * @exception FileNotFoundException throws FileNotFoundException if the file is not found.
 	 */
     public static Object[] fileParser(String file) throws FileNotFoundException {
         if (!fileChecker(file)) {
@@ -258,7 +263,7 @@ public class Main {
 	 * Takes all the information gathered from the guitar tab
 	 * and makes an XML file with it.
 	 * 
-	 * @param measyres is an ArrayList of the guitar tab information.
+	 * @param measures is an ArrayList of the guitar tab information.
 	 * @return an XML file.
 	 */
     public static String guitarXMLParser(ArrayList<Measure> measures) {
@@ -270,11 +275,22 @@ public class Main {
         directives
                 .add("score-partwise")
                 .attr("version", "3.0")
+                .add("work")
+                .add("work-title")
+                .set(tabTitle)
+                .up()
+                .up()
+                .add("identification")
+                .add("creator")
+                .attr("type", "composer")
+                .set(tabComposer)
+                .up()
+                .up()
                 .add("part-list")
                 .add("score-part")
                 .attr("id", "P1")
                 .add("part-name")
-                .set("Name here.") //change this to name of music
+                .set("Guitar") //change this to name of music
                 .up()
                 .up()
                 .up()
@@ -515,10 +531,10 @@ public class Main {
             FileWriter xmlFile = new FileWriter(file);
             xmlFile.write(xml);
             xmlFile.close();
-            System.exit(0);
+            //System.exit(0);
+            Desktop.getDesktop().open(file);
         } catch (Exception e) {
-            System.out.println("Error");
-            new Error().setVisible(true);
+            new Error("There was an error saving your file, please retry.");
         }
     }
 
@@ -534,7 +550,9 @@ public class Main {
     /**
 	 * TODO
 	 */
-    public static void start(String filePath) throws FileNotFoundException {
+    public static void start(String filePath, String title, String composer) throws FileNotFoundException {
+        tabTitle = title;
+        tabComposer = composer;
         Object[] notes = fileParser(filePath);
         ArrayList<String> noteArray = (ArrayList<String>) notes[1];
         if (notes[0] == "guitar") {
@@ -567,16 +585,16 @@ public class Main {
             String xml = guitarXMLParser(measureArrayList);
             if (xml != null) {
                 //saveFile(xml);
-                SaveFile saveFile = new SaveFile();
-                saveFile.setXml(xml);
+                SaveFile saveFile = new SaveFile(xml);
+                //saveFile.setXml(xml);
                 saveFile.setVisible(true);
             }else{
-                new Error().setVisible(true);
+                new Error("Error parsing, please ensure tab is in correct format.");
             }
         } else {
             //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
-            Error error = new Error();
-            error.setVisible(true);
+            Error error = new Error("Error parsing, please ensure tab is in correct format.");
+
         }
     }
 
