@@ -14,6 +14,7 @@ dependencies {
 
     //Xembly for xml
     implementation 'com.jcabi.incubator:xembly:0.25.0'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
 }
 
 test {
