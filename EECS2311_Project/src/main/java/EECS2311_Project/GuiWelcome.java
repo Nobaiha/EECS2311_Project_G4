@@ -73,7 +73,7 @@ public class GuiWelcome extends JFrame {
 		browseButton.setBounds(328, 549, 249, 69);
 		contentPane.add(browseButton);
 		
-		Label instructionLabel2 = new Label("Click the button below to start.");
+		Label instructionLabel2 = new Label("Click the button below to upload your tablature.");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel2.setBounds(10, 463, 885, 49);
 		contentPane.add(instructionLabel2);
@@ -89,23 +89,17 @@ public class GuiWelcome extends JFrame {
 		updateUserLabel.setBounds(10, 122, 874, 49);
 		contentPane.add(updateUserLabel);
 		
-		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar (and ");
+		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar music,\r\n");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblNewLabel.setBounds(33, 210, 838, 49);
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
+		lblNewLabel.setBounds(33, 254, 838, 49);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("eventually percussion) music, and converts them into a musicXML.");
+		JLabel lblNewLabel_1 = new JLabel("and converts them into a musicXML. Enjoy!\r\n");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblNewLabel_1.setBounds(33, 269, 838, 49);
+		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
+		lblNewLabel_1.setBounds(33, 313, 838, 49);
 		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Enjoy!");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 24));
-		lblNewLabel_2.setBounds(20, 329, 864, 38);
-		contentPane.add(lblNewLabel_2);
 		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));

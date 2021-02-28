@@ -77,7 +77,7 @@ public class SaveFile extends JFrame {
 		saveFile.add(instructionsLabel1);*/
 
 		JTextArea tabDisplayTextArea = new JTextArea();
-		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 11));
+		tabDisplayTextArea.setFont(new Font("Lucida Console", Font.PLAIN, 20));
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 159, 885, 459);
 		saveFile.add(sp);
