@@ -70,7 +70,7 @@ public class GuiUploadWindow extends JFrame {
 		contentPane.add(fileSelectedLabel);
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
-		tabDisplayTextArea.setFont(new Font("Lucida Console", Font.PLAIN, 20));
+		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 17));
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
