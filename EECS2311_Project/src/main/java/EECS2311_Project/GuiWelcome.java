@@ -60,7 +60,6 @@ public class GuiWelcome extends JFrame {
 		standardHeaderLabel.setBounds(10, 10, 372, 49);
 		contentPane.add(standardHeaderLabel);
 		
-		//GuiUploadWindow guiUploadWindow = new GuiUploadWindow();
 		ModificationsPage modificationsPage = new ModificationsPage();
 		Button browseButton = new Button("Start");
 		browseButton.addActionListener(new ActionListener() {
