@@ -164,7 +164,6 @@ public class MainTest {
         measures.add(measure);
         assertNotNull(Main.guitarXMLParser(measures));
 
-
         measures.clear();
         assertNull(Main.guitarXMLParser(measures));
     }
