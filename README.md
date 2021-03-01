@@ -2,6 +2,12 @@
 ## Introduction
   The TAB-2-MusicXML™ interface system is a java based application that can be downloaded on to a personal computer that will convert tablature made for percussion and guitar in “.txt” format to musicXML code which will output as a downloadable file in musicXML format that can be used as sheet music or tab sheet music. The final output, at minimum, will contain work details (such as titles and musicians) and attributes (such as time signature and sufficient bars).
 
+## Documentation
+  All documents you might need can be found in the Docuementation folder on this Github page. Such Documents include:
+  - The System Requirements Specification (SRS)
+  - User Manual
+  - Testing Document
+
 ## Requirements
 - JavaSE-15 
 - Gradle 6.3
