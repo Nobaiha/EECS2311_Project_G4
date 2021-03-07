@@ -134,7 +134,7 @@ public class GuiUploadWindow extends JFrame {
 		
 		
 		
-		Button enterButton = new Button("Enter");
+		Button enterButton = new Button("Convert");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String pastedTab = tabDisplayTextArea.getText();

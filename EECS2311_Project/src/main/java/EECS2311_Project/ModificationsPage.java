@@ -93,7 +93,7 @@ public class ModificationsPage extends JFrame {
 		textFieldTitle.setBounds(243, 354, 463, 49);
 		contentPane.add(textFieldTitle);
 		
-		Button enterButton = new Button("Enter");
+		Button enterButton = new Button("Next");
 		enterButton.setForeground(Color.BLACK);
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setBackground(SystemColor.menu);
