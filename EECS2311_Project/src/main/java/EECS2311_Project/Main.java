@@ -589,7 +589,7 @@ public class Main {
             //System.exit(0);
             Desktop.getDesktop().open(file);
         } catch (Exception e) {
-            new Error("There was an error saving your file, please retry.", tabTitle, tabComposer);
+            new Error("There was an error saving your file, please retry.", "", "","");
         }
     }
 
@@ -603,7 +603,7 @@ public class Main {
     }*/
 
     /**
-     * 
+     *
      */
     public static void start(String filePath, String title, String composer) throws FileNotFoundException {
         tabTitle = title;
@@ -644,11 +644,11 @@ public class Main {
                 //saveFile.setXml(xml);
                 saveFile.setVisible(true);
             } else {
-                new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer);
+                new Error("Error parsing, please ensure tab is in correct format.", "", "","");
             }
         } else {
             //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
-            Error error = new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer);
+            Error error = new Error("Error parsing, please ensure tab is in correct format.", "", "","");
 
         }
     }

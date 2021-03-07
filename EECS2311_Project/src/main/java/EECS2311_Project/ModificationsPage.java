@@ -23,6 +23,10 @@ public class ModificationsPage extends JFrame {
 	private JTextField textFieldComposer;
 	private JTextField textFieldTitle;
 
+	private static String composer;
+	private static String title;
+	private static String content;
+
 	/**
 	 * Launch the application.
 	 */
@@ -30,7 +34,7 @@ public class ModificationsPage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificationsPage frame = new ModificationsPage();
+					ModificationsPage frame = new ModificationsPage(title,composer, content);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +46,7 @@ public class ModificationsPage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModificationsPage() {
+	public ModificationsPage(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		contentPane = new JPanel();
@@ -81,6 +85,7 @@ public class ModificationsPage extends JFrame {
 		textFieldComposer.setBounds(243, 252, 463, 49);
 		contentPane.add(textFieldComposer);
 		textFieldComposer.setColumns(10);
+		textFieldComposer.setText(composer);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
 		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
@@ -92,8 +97,9 @@ public class ModificationsPage extends JFrame {
 		textFieldTitle.setColumns(10);
 		textFieldTitle.setBounds(243, 354, 463, 49);
 		contentPane.add(textFieldTitle);
+		textFieldTitle.setText(title);
 		
-		Button enterButton = new Button("Next");
+		Button enterButton = new Button("Confirm");
 		enterButton.setForeground(Color.BLACK);
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setBackground(SystemColor.menu);
@@ -102,7 +108,7 @@ public class ModificationsPage extends JFrame {
 
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GuiUploadWindow guiUploadWindow = new GuiUploadWindow(textFieldTitle.getText(), textFieldComposer.getText());
+				GuiUploadWindow guiUploadWindow = new GuiUploadWindow(textFieldTitle.getText(), textFieldComposer.getText(),content);
 				setVisible(false);
 				dispose();
 				guiUploadWindow.setVisible(true);

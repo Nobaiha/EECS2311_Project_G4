@@ -60,13 +60,14 @@ public class GuiWelcome extends JFrame {
 		standardHeaderLabel.setBounds(10, 10, 372, 49);
 		contentPane.add(standardHeaderLabel);
 		
-		ModificationsPage modificationsPage = new ModificationsPage();
+		//ModificationsPage modificationsPage = new ModificationsPage();
+		GuiUploadWindow guiUploadWindow = new GuiUploadWindow("","","");
 		Button browseButton = new Button("Start");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
-                modificationsPage.setVisible(true);
+                guiUploadWindow.setVisible(true);
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));

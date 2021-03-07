@@ -98,7 +98,7 @@ public class SaveFile extends JFrame {
 			            Main.saveFile(file, tabDisplayTextArea.getText());
 			            setVisible(false);
 			            dispose();
-			            new GuiWelcome().setVisible(true);
+			            new GuiUploadWindow("","","").setVisible(true);
 				}
 			}
 		});
