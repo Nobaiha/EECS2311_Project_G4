@@ -84,7 +84,7 @@ public class SaveFile extends JFrame {
 		tabDisplayTextArea.setText(xml);
 		tabDisplayTextArea.setCaretPosition(0);
 		
-		Button yesButton = new Button("Save");
+		Button yesButton = new Button("Download");
 		//yesButton.setBounds(151, 268, 249, 69);
 		yesButton.setBounds(339, 638, 224, 41);
 		yesButton.addActionListener(new ActionListener() {
