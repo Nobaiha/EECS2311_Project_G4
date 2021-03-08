@@ -63,12 +63,12 @@ public class ModificationsPage extends JFrame {
 		tmLabel.setBounds(388, 10, 28, 21);
 		contentPane.add(tmLabel);
 		
-		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able\r\n\r\n");
+		JLabel instructionLabel1 = new JLabel("This page will allow you to add optional modifications to your tab. You are able to skip this page\r\n\r\n");
 		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 20));
 		instructionLabel1.setBounds(10, 103, 875, 49);
 		contentPane.add(instructionLabel1);
 		
-		JLabel instructionLabel2 = new JLabel("to enter the composer and title of your tab! (Optional)");
+		JLabel instructionLabel2 = new JLabel("if there are no changes to be made by pressing the button labeled \"Next\".");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 20));
 		instructionLabel2.setBounds(10, 150, 865, 49);
 		contentPane.add(instructionLabel2);
