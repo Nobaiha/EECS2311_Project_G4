@@ -118,21 +118,21 @@ public class ModificationsPage extends JFrame {
 		lblTimeSignature.setBounds(56, 463, 166, 31);
 		contentPane.add(lblTimeSignature);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(243, 398, 288, 41);
-		contentPane.add(comboBox_1);
+		JComboBox keyComboBox_1 = new JComboBox();
+		keyComboBox_1.setBounds(243, 398, 288, 41);
+		contentPane.add(keyComboBox_1);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"4", "2", "3", "6", "9", "12"}));
-		comboBox_2.setFont(new Font("Calibri", Font.PLAIN, 22));
-		comboBox_2.setBounds(243, 461, 54, 34);
-		contentPane.add(comboBox_2);
+		JComboBox timeSigNumComboBox_2 = new JComboBox();
+		timeSigNumComboBox_2.setModel(new DefaultComboBoxModel(new String[] {"4", "2", "3", "6", "9", "12"}));
+		timeSigNumComboBox_2.setFont(new Font("Calibri", Font.PLAIN, 22));
+		timeSigNumComboBox_2.setBounds(243, 461, 54, 34);
+		contentPane.add(timeSigNumComboBox_2);
 		
-		JComboBox comboBox_2_1 = new JComboBox();
-		comboBox_2_1.setModel(new DefaultComboBoxModel(new String[] {"4", "1", "2", "8", "16"}));
-		comboBox_2_1.setFont(new Font("Calibri", Font.PLAIN, 22));
-		comboBox_2_1.setBounds(334, 461, 54, 34);
-		contentPane.add(comboBox_2_1);
+		JComboBox timeSigDenomboBox_3 = new JComboBox();
+		timeSigDenomboBox_3.setModel(new DefaultComboBoxModel(new String[] {"4", "1", "2", "8", "16"}));
+		timeSigDenomboBox_3.setFont(new Font("Calibri", Font.PLAIN, 22));
+		timeSigDenomboBox_3.setBounds(334, 461, 54, 34);
+		contentPane.add(timeSigDenomboBox_3);
 		
 		JLabel lblKey_1 = new JLabel("/");
 		lblKey_1.setFont(new Font("Calibri", Font.BOLD, 28));
