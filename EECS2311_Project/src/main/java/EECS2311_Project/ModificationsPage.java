@@ -74,7 +74,7 @@ public class ModificationsPage extends JFrame {
 		contentPane.add(instructionLabel2);
 		
 		JLabel composerLabel = new JLabel("Composer:");
-		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+		composerLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		composerLabel.setBounds(56, 262, 177, 31);
 		contentPane.add(composerLabel);
 		
@@ -85,7 +85,7 @@ public class ModificationsPage extends JFrame {
 		textFieldComposer.setColumns(10);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
-		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+		titleLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		titleLabel.setBounds(56, 331, 166, 31);
 		contentPane.add(titleLabel);
 		
@@ -103,7 +103,7 @@ public class ModificationsPage extends JFrame {
 		contentPane.add(enterButton);
 		
 		JLabel lblKey = new JLabel("Key:");
-		lblKey.setFont(new Font("Calibri", Font.PLAIN, 18));
+		lblKey.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		lblKey.setBounds(56, 404, 166, 31);
 		contentPane.add(lblKey);
 		
@@ -114,7 +114,7 @@ public class ModificationsPage extends JFrame {
 		contentPane.add(comboBox);
 		
 		JLabel lblTimeSignature = new JLabel("Time Signature:");
-		lblTimeSignature.setFont(new Font("Calibri", Font.PLAIN, 18));
+		lblTimeSignature.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		lblTimeSignature.setBounds(56, 463, 166, 31);
 		contentPane.add(lblTimeSignature);
 		
