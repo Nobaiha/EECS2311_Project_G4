@@ -1,3 +1,4 @@
+import EECS2311_Project.DrumNote;
 import EECS2311_Project.GuitarNote;
 import EECS2311_Project.Main;
 import EECS2311_Project.Measure;
@@ -147,6 +148,29 @@ public class MainTest {
         testNoteArray.add(input);
         guitarNotes = Main.guitarNoteParser(testNoteArray);
         assertEquals(0, guitarNotes.size());
+
+    }
+    
+    /**
+     * Given a line of drum notes, the function will store these notes in an array
+     * Covers the case where a valid drum line is given, and where an invalid one is given
+     */
+    @Test
+    public void drumNoteParser() {
+    	
+        String input = "HH|--x-x-x-x-x-x-x-|----------------|";
+        ArrayList<String> testNoteArray = new ArrayList<>();
+        testNoteArray.add(input);
+        
+        ArrayList<DrumNote> drumNotes = Main.drumNoteParser(testNoteArray);
+        assertEquals(7, drumNotes.size());
+        assertEquals('x',drumNotes.get(0).noteValue);
+
+        input = "HH|---";
+        testNoteArray.clear();
+        testNoteArray.add(input);
+        drumNotes = Main.drumNoteParser(testNoteArray);
+        assertEquals(0, drumNotes.size());
 
     }
 
