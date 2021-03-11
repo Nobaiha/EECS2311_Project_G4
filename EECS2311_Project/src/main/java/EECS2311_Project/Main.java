@@ -65,7 +65,7 @@ public class Main {
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
                 String nextLine = sc.nextLine();
-                tabContents += nextLine;
+                tabContents += nextLine + "\n";
                 //removes all spaces.
                 String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
@@ -823,9 +823,7 @@ public class Main {
             }
             String xml = guitarXMLParser(measureArrayList);
             if (xml != null) {
-                //saveFile(xml);
-                SaveFile saveFile = new SaveFile(xml);
-                //saveFile.setXml(xml);
+                SaveFile saveFile = new SaveFile(tabTitle,tabComposer,tabContents,xml);
                 saveFile.setVisible(true);
             } else {
                 new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer,tabContents);
