@@ -64,17 +64,18 @@ public class Main {
         //Maybe need to edit later as sometimes there is information on top of the bars???
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
-                tabContents += sc.nextLine();
+                String nextLine = sc.nextLine();
+                tabContents += nextLine;
                 //removes all spaces.
-                String nextLine = sc.nextLine().replaceAll("\\s", "");
+                String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
-                Matcher matcher = pattern.matcher(nextLine);
+                Matcher matcher = pattern.matcher(cleanedLine);
                 if (matcher.find()) {
-                    testLines.add(nextLine);
+                    testLines.add(cleanedLine);
                 } else {
-                    Matcher drumMatcher = drumPattern.matcher(nextLine);
+                    Matcher drumMatcher = drumPattern.matcher(cleanedLine);
                     if (drumMatcher.find()) {
-                        drumTestLines.add(nextLine);
+                        drumTestLines.add(cleanedLine);
                     }
                 }
             }
