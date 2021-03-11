@@ -26,6 +26,7 @@ public class GuiUploadWindow extends JFrame {
 	private static String content;
 	private static String lastDir;
 	private static String filePath;
+
 	/**
 	 * Launch the application.
 	 */
@@ -193,5 +194,17 @@ public class GuiUploadWindow extends JFrame {
 		
 		
 		
+	}
+
+	public static void setTabTitle(String title) {
+		GuiUploadWindow.title = title;
+	}
+
+	public static void setContent(String content) {
+		GuiUploadWindow.content = content;
+	}
+
+	public static void setComposer(String composer) {
+		GuiUploadWindow.composer = composer;
 	}
 }
