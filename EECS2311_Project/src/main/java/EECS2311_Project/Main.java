@@ -21,6 +21,7 @@ public class Main {
 
     static String tabTitle = "";
     static String tabComposer = "";
+    static String tabContents = "";
 
 
     /**
@@ -63,6 +64,7 @@ public class Main {
         //Maybe need to edit later as sometimes there is information on top of the bars???
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
+                tabContents += sc.nextLine();
                 //removes all spaces.
                 String nextLine = sc.nextLine().replaceAll("\\s", "");
                 //System.out.println(nextLine);
@@ -770,7 +772,7 @@ public class Main {
             //System.exit(0);
             Desktop.getDesktop().open(file);
         } catch (Exception e) {
-            new Error("There was an error saving your file, please retry.", "", "","");
+            new Error("There was an error saving your file, please retry.", tabTitle, tabComposer,tabContents);
         }
     }
 
@@ -825,11 +827,11 @@ public class Main {
                 //saveFile.setXml(xml);
                 saveFile.setVisible(true);
             } else {
-                new Error("Error parsing, please ensure tab is in correct format.", "", "","");
+                new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer,tabContents);
             }
         } else {
             //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
-            Error error = new Error("Error parsing, please ensure tab is in correct format.", "", "","");
+            Error error = new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer,tabContents);
 
         }
     }
