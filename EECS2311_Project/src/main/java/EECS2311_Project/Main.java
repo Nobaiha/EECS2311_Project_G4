@@ -56,7 +56,7 @@ public class Main {
 
         //Need to check for some others too, sometimes E is a D?
         //String tuning can be changed, needs to be accounted for
-        Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
+        Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg|])");
         //Need to check for alternatives such as CC HH, etc.
         Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
 
@@ -65,8 +65,14 @@ public class Main {
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
                 String nextLine = sc.nextLine();
+                //System.out.println(nextLine);
                 tabContents += nextLine + "\n";
                 //removes all spaces.
+                if(nextLine.equals("")){
+                    //System.out.println("linebreak");
+                    testLines.add(" ");
+                    drumTestLines.add(" ");
+                }
                 String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
                 Matcher matcher = pattern.matcher(cleanedLine);
@@ -101,7 +107,7 @@ public class Main {
         //Creates array of notes
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
-            //System.out.println(list);
+            System.out.println(list);
             String[] tempArray = list.split("-", -1);
             //Converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
@@ -121,7 +127,8 @@ public class Main {
             //System.out.println(str);
             //checks for old regex expression which represents a note (e,a,b,d...)
             Matcher matcher = pattern.matcher(str);
-            if (matcher.find() && str.substring(1).equals("|")) {
+
+            if (str.startsWith("|") || str.substring(1).equals("|")) {
                 //If it has gone through 6 iterations (6 strings) dont reset the measure count
                 if (repeatTimes == 6) {
                     repeatTimes = 0;
@@ -155,7 +162,7 @@ public class Main {
                 //will update regex when encountering new patterns.
                 noteNum++;
                 for (String character : str.split("(?<=[PHph]|/|\\\\)")) {
-                    System.out.println(character);
+                    //System.out.println(character);
                     GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, character);
                     guitarNoteArray.add(tempGuitarNote);
                     noteNum += character.length();
