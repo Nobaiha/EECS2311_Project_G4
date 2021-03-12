@@ -18,6 +18,10 @@ public class Main {
     //Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
+    static HashMap<String, LinkedHashSet<Integer>> repeatMeasures = new HashMap<>();
+    static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
+    static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
+    static ArrayList<Integer> repeatAmout = new ArrayList<>();
 
     static String tabTitle = "";
     static String tabComposer = "";
@@ -68,7 +72,7 @@ public class Main {
                 //System.out.println(nextLine);
                 tabContents += nextLine + "\n";
                 //removes all spaces.
-                if(nextLine.equals("")){
+                if(!nextLine.contains("|")){
                     //System.out.println("linebreak");
                     testLines.add(" ");
                     drumTestLines.add(" ");
@@ -105,68 +109,118 @@ public class Main {
      */
     public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
         //Creates array of notes
-        ArrayList<String> strArray = new ArrayList<>();
+        ArrayList<String[]> strArray = new ArrayList<>();
+        System.out.println("Printing notearray");
         for (String list : noteArray) {
             System.out.println(list);
             String[] tempArray = list.split("-", -1);
-            //Converts to arraylist, prob a better way to do this.
-            Collections.addAll(strArray, tempArray);
+            //System.out.println(Arrays.toString(tempArray));
+            strArray.add(tempArray);
         }
-
         ArrayList<GuitarNote> guitarNoteArray = new ArrayList<>();
 
         int measureNum = 1;
         int noteNum = 1;
         int stringVal = 0;
-        int repeatTimes = 0;
+        //int repeatTimes = 0;
         int measureMem = 1;
+        boolean repeat = false;
         Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
 
         //Iterates through the parsed string array and makes an array of note objects
-        for (String str : strArray) {
-            //System.out.println(str);
-            //checks for old regex expression which represents a note (e,a,b,d...)
-            Matcher matcher = pattern.matcher(str);
-
-            if (str.startsWith("|") || str.substring(1).equals("|")) {
-                //If it has gone through 6 iterations (6 strings) dont reset the measure count
-                if (repeatTimes == 6) {
-                    repeatTimes = 0;
-                    stringVal = 0;
-                    measureMem = measureNum;
-                } else {
+        for (String[] array : strArray) {
+            System.out.println(Arrays.toString(array));
+            if(array[0].equals(" ")){
+                //repeatTimes = 0;
+                stringVal = 0;
+                measureMem = measureNum;
+            }
+            int counter = 0;
+            for (String str : array) {
+                //System.out.println(str);
+                //checks for old regex expression which represents a note (e,a,b,d...)
+                if(str.equals(" ")){
+                    //do nothing
+                }else if(str.equals("||") && counter == 0){
+                    //do repeat.
+                    //measuresElement.put(measureNum, noteNum);
                     measureNum = measureMem;
+                    //change notenum to an array than contains repeat value and note number.
+                    noteNum = 1;
+                    repeatStarts.add(measureNum);
+                    measureNum++;
+                    repeat = true;
                 }
-                //Sets string # to the index at which the char is located, 0 represents e 1 represents A... etc.
-                noteNum = 1;
-                //stringVal = str.trim().toLowerCase().charAt(0);
-                stringVal++;
-                repeatTimes++;
-            } else if (str.contains("|")) {
-                //Increase measure count if it encounters |
-                //Count end of measure here.
-                measuresElement.put(measureNum, noteNum);
-                noteNum = 1;
-                measureNum++;
-                if (str.length() > 1) {
-                    //Extract this to separate function? duplicate code in function below.
-                    GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, str.substring(1));
-                    guitarNoteArray.add(tempGuitarNote);
+                else if(str.equals("||")){
+                    measuresElement.put(measureNum, noteNum);
+                    noteNum = 1;
+                    if(repeat){
+                        repeat = false;
+                        repeatEnds.add(measureNum);
+                    }else{
+                        repeat = true;
+                        repeatStarts.add(measureNum);
+                    }
+                    measureNum++;
                 }
-            } else if (str.length() == 0) {
-                //if blank, increase note count.
-                noteNum++;
-            } else {
-                //Otherwise create a new note with the string as the note value.
-                //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
-                //will update regex when encountering new patterns.
-                noteNum++;
-                for (String character : str.split("(?<=[PHph]|/|\\\\)")) {
-                    //System.out.println(character);
-                    GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, character);
-                    guitarNoteArray.add(tempGuitarNote);
-                    noteNum += character.length();
+                else if (str.length() == 0) {
+                    //if blank, increase note count.
+                    noteNum++;
                 }
+                else if(str.length() >= 2 && str.endsWith("|") && Character.isDigit(str.charAt(0))){
+                    repeat = false;
+                    noteNum++;
+                    measuresElement.put(measureNum, noteNum);
+                    noteNum = 1;
+                    repeatEnds.add(measureNum);
+                    measureNum++;
+                    repeatAmout.add(Character.getNumericValue(str.charAt(0)));
+                }else if(str.length() >= 2 && str.endsWith("|")){
+                    repeat = false;
+                    noteNum++;
+                    measuresElement.put(measureNum, noteNum);
+                    noteNum = 1;
+                    repeatEnds.add(measureNum);
+                    measureNum++;
+                }
+                else if (str.contains("|") && counter == 0) {
+                    //System.out.println("New measure");
+                    measureNum = measureMem;
+                    noteNum = 1;
+                    //stringVal = str.trim().toLowerCase().charAt(0);
+                    stringVal++;
+                    //repeatTimes++;
+                } else if (str.contains("|")) {
+                    //System.out.println("Case where | is first");
+                    //Increase measure count if it encounters |
+                    //Count end of measure here.
+                    if(str.startsWith("*")){
+                        noteNum++;
+                    }
+                    measuresElement.put(measureNum, noteNum);
+                    noteNum = 1;
+                    if(str.endsWith("*")){
+                        noteNum++;
+                    }
+                    measureNum++;
+                    /*if (str.length() > 1) {
+                        //Extract this to separate function? duplicate code in function below.
+                        GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, str.substring(1));
+                        guitarNoteArray.add(tempGuitarNote);
+                    }*/
+                } else {
+                    //Otherwise create a new note with the string as the note value.
+                    //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
+                    //will update regex when encountering new patterns.
+                    noteNum++;
+                    for (String character : str.split("(?<=[PHph]|/|\\\\)")) {
+                        //System.out.println(character);
+                        GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, character);
+                        guitarNoteArray.add(tempGuitarNote);
+                        noteNum += character.length();
+                    }
+                }
+                counter++;
             }
         }
         //Test print the array
@@ -177,6 +231,9 @@ public class Main {
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
         }*/
+        System.out.println("Repeat starts at: " + repeatStarts.toString());
+        System.out.println("Repeat ends at: " + repeatEnds.toString());
+        System.out.println("Repeat amount: " + repeatAmout.toString());
         //System.out.println(measuresElement);
         measuresElement.forEach((k, v) -> measures.add(new Measure(v, k)));
         return guitarNoteArray;
@@ -809,6 +866,7 @@ public class Main {
         if (notes[0] == "guitar") {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
             for (GuitarNote guitarNote : guitarNoteArray) {
+                //System.out.println("setting music note");
                 guitarNote.setMusicNote();
                 /*System.out.println("String: " + guitarNote.stringValue);
                 System.out.println("Measure: " + guitarNote.measure);
@@ -838,10 +896,12 @@ public class Main {
                 SaveFile saveFile = new SaveFile(tabTitle, tabComposer, tabContents, xml);
                 saveFile.setVisible(true);
             } else {
+                System.out.println("xml is null");
                 new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer, tabContents);
             }
         } else {
             //ArrayList<DrumNote> drumNoteArray = drumNoteParser(noteArray);
+            System.out.println("not a guitar tab");
             Error error = new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer, tabContents);
 
         }
