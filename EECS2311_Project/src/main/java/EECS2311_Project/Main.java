@@ -797,8 +797,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println("error");
         }
+        
+        System.out.println(xml);
         return xml;
-        //System.out.println(xml);
+        
     }
 
     /**
