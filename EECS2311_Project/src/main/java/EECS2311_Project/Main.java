@@ -281,22 +281,22 @@ public class Main {
                 .add("work")
                 .add("work-title")
                 .set(tabTitle)
-                .up()
-                .up()
+                .up()//work-title
+                .up()//work
                 .add("identification")
                 .add("creator")
                 .attr("type", "composer")
                 .set(tabComposer)
-                .up()
-                .up()
+                .up()//creator
+                .up()//identification
                 .add("part-list")
                 .add("score-part")
                 .attr("id", "P1")
                 .add("part-name")
                 .set("Guitar") //change this to name of music
-                .up()
-                .up()
-                .up()
+                .up()//part-name
+                .up()//score-part
+                .up()//part-list
                 .add("part")
                 .attr("id", "P1");
         for (int i = 0; i < measures.size(); i++) {
@@ -508,20 +508,20 @@ public class Main {
         	.add("work")
         	.add("work-title")
         	.set(tabTitle)
-        	.up()
-        	.up()
+        	.up()//work-title
+        	.up()//work
         	.add("identification")
         	.add("creator")
         	.attr("type", "composer")
         	.set(tabComposer)
-        	.up()
-        	.up()
+        	.up()//creator
+        	.up()//identification
         	.add("part-list")
         	.add("score-part")
         	.attr("id", "P1")
         	.add("part-name")
         	.set("Drumset") //change this to name of music
-        	.up()
+        	.up()//part-name
         	
         	
         	.add("score-instrument")
@@ -692,57 +692,101 @@ public class Main {
         	.up()  
         	.up()
         	
-        	.up()
-        	.up();
+        	.up()//score-part
+        	.up()//part-list
         	
-//        for (int i = 0; i < 2; i++) {
-//            directives.add("measure")
-//                    .attr("number", i + 1)
-//                    .add("attributes")
-//                    .add("divisions")
-//                    .set("1")
-//                    .up()
-//                    .add("time")
-//                    .add("beats")
-//                    .set(4)
-//                    .up()
-//                    .add("beat-type")
-//                    .set(4)
-//                    .up()
-//                    .up()
-//                    .add("clef")
-//                    .add("sign")
-//                    .set("G")
-//                    .up()
-//                    .add("line")
-//                    .set(2)
-//                    .up()
-//                    .up()
-//                    .up();
-//            for (DrumNote drumNote : drumNoteArray) {
-//                if (drumNote.measure == i + 1) {
-//                    //process note here later
-//                    directives
-//                            .add("note")
-//                            .add("pitch")
-//                            .add("step")
-//                            .set(drumNote.noteValue)
-//                            .up()
-//                            .add("octave")
-//                            .set(4)
-//                            .up()
-//                            .up()
-//                            .add("duration")
-//                            .set(4)
-//                            .up()
-//                            .add("type")
-//                            .set("whole")
-//                            .up()
-//                            .up();
-//                }
-//            }
-//            directives.up();
-//        }
+        	.add("part")
+        	.attr("id","P1");
+        	
+        for (int i = 0; i < 2; i++) {
+            directives.add("measure")
+                    .attr("number", i + 1)
+                    .add("attributes")
+                    .add("divisions")
+                    .set("4")
+                    .up()//divisions
+                    .add("key")
+                    .add("fifths")
+                    .set(0)
+                    .up()//fifths
+                    .up()//key
+                    
+                    .add("time")
+                    .add("beats")
+                    .set(4)
+                    .up()//beat
+                    .add("beat-type")
+                    .set(4)
+                    .up()//beat-type
+                    .up()//time
+                    
+                    .add("clef")
+                    .add("sign")
+                    .set("percussion")
+                    .up()//sign
+                    .add("line")
+                    .set(2)
+                    .up()//line
+                    .up()//clef
+
+                    .up();//attributes
+            for (DrumNote drumNote : drumNoteArray) {
+                if (drumNote.measure == i + 1) {
+                    //process note here later
+                    directives
+                            .add("note")
+                            .add("unpitched")
+                            .add("display-step")
+                            .set("G")//TODO
+                            .up()//display-step
+                            .add("display-octave")
+                            .up()//display-octave
+                            .up()//unpitched
+                            
+                            .add("duration")
+                            .set(2)//TODO
+                            .up()//duration
+                            
+                            .add("instrument")
+                            .attr("id", drumNote.part)//TODO
+                            .up()//instrument
+                            
+                            .add("voice")
+                            .set(1)//TODO
+                            .up()//voice
+                            
+                            .add("type")
+                            .set("eighth")//TODO
+                            .up()//type
+                            
+                            .add("stem")
+                            .set("up")//TODO
+                            .up()//stem
+                            
+                            .add("notehead")
+                            .set(drumNote.noteValue)
+                            .up()//notehead
+                            
+                            //if () {
+                            		.add("beam")
+                            		.attr("number", "1")
+                            		//if () {
+                            		.set("continue")
+                            		//} else if() {
+                            		//.set("begin")
+                					//} else {
+                            		//.set("end")
+                            		.up()//beam
+                            		//}
+                            //}
+
+                            .up();//note
+                }
+            }
+        }
+        directives.up()//measure
+        .up()//part
+        .up();//score-partwise
         
         String xml = null;
         try {
