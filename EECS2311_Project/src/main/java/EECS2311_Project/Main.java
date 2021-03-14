@@ -18,10 +18,13 @@ public class Main {
     //Temp global to keep track of elements in measures.
     static HashMap<Integer, Integer> measuresElement = new HashMap<>();
     static ArrayList<Measure> measures = new ArrayList<>();
-    static HashMap<String, LinkedHashSet<Integer>> repeatMeasures = new HashMap<>();
     static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
     static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
     static ArrayList<Integer> repeatAmout = new ArrayList<>();
+    static ArrayList<Integer> topRepeatStarts = new ArrayList<>();
+    static ArrayList<Integer> topRepeatEnds = new ArrayList<>();
+    static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
+    static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
 
     static String tabTitle = "";
     static String tabComposer = "";
@@ -60,7 +63,7 @@ public class Main {
 
         //Need to check for some others too, sometimes E is a D?
         //String tuning can be changed, needs to be accounted for
-        Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg|])");
+        Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg|]||(?i)\\brepeat\\b)");
         //Need to check for alternatives such as CC HH, etc.
         Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
 
@@ -69,7 +72,7 @@ public class Main {
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
                 String nextLine = sc.nextLine();
-                //System.out.println(nextLine);
+                System.out.println(nextLine);
                 tabContents += nextLine + "\n";
                 //removes all spaces.
                 if(!nextLine.contains("|")){
@@ -77,15 +80,15 @@ public class Main {
                     testLines.add(" ");
                     drumTestLines.add(" ");
                 }
-                String cleanedLine = nextLine.replaceAll("\\s", "");
+                //String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
-                Matcher matcher = pattern.matcher(cleanedLine);
+                Matcher matcher = pattern.matcher(nextLine);
                 if (matcher.find()) {
-                    testLines.add(cleanedLine);
+                    testLines.add(nextLine);
                 } else {
-                    Matcher drumMatcher = drumPattern.matcher(cleanedLine);
+                    Matcher drumMatcher = drumPattern.matcher(nextLine);
                     if (drumMatcher.find()) {
-                        drumTestLines.add(cleanedLine);
+                        drumTestLines.add(nextLine);
                     }
                 }
             }
@@ -110,10 +113,10 @@ public class Main {
     public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
         //Creates array of notes
         ArrayList<String[]> strArray = new ArrayList<>();
-        System.out.println("Printing notearray");
+        //System.out.println("Printing notearray");
         for (String list : noteArray) {
             System.out.println(list);
-            String[] tempArray = list.split("-", -1);
+            String[] tempArray = list.split("[-\\s]", -1);
             //System.out.println(Arrays.toString(tempArray));
             strArray.add(tempArray);
         }
@@ -124,36 +127,70 @@ public class Main {
         int stringVal = 0;
         //int repeatTimes = 0;
         int measureMem = 1;
-        boolean repeat = false;
-        Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
+        boolean repeat;
+        boolean topRepeat = false;
+        boolean repeatFlag = false;
+        int repeatNum;
+        int measureChars = 1;
+        //Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher;
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String[] array : strArray) {
             System.out.println(Arrays.toString(array));
-            if(array[0].equals(" ")){
+            if(topRepeat){
+                topRepeatStarts.remove(topRepeatStarts.size() - 1);
+            }
+            topRepeat = false;
+            repeat = false;
+            repeatNum = 0;
+            if(array[0].contains(" ")){
                 //repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
+
             }
             int counter = 0;
+            //lowercases the repeat for checking
+            for(int i = 0; i < array.length; i++){
+                array[i] = array[i].toLowerCase();
+            }
+            if(Arrays.asList(array).contains("repeat")){
+                topRepeat = true;
+            }
             for (String str : array) {
                 //System.out.println(str);
-                //checks for old regex expression which represents a note (e,a,b,d...)
-                if(str.equals(" ")){
-                    //do nothing
-                }else if(str.equals("||") && counter == 0){
+                if(topRepeatStarts.contains(measureChars)){
+                    repeatStarts.add(measureNum);
+                    //topRepeatMeasuresStarts.add(measureNum);
+                }if(topRepeatEnds.contains(measureChars)){
+                    repeatEnds.add(measureNum);
+                    //topRepeatMeasuresEnds.add(measureNum);
+                }
+                //System.out.println(str);
+                if(topRepeat && pattern.matcher(str).find()){
+                    repeatNum += str.length() + 1;
+                    //System.out.println(str);
+                    //System.out.println("repeat num is: " + repeatNum);
+                    repeatFlag = true;
+                    repeatAmout.add(Integer.parseInt(str.replaceAll("\\D+","")));
+                }
+                else if(topRepeat && str.contains("repeat")){
+                    repeatNum += str.length() + 1;
+                }
+                else if(str.equals("||") && counter == 0){
                     //do repeat.
                     //measuresElement.put(measureNum, noteNum);
                     measureNum = measureMem;
                     //change notenum to an array than contains repeat value and note number.
-                    noteNum = 1;
                     repeatStarts.add(measureNum);
                     measureNum++;
                     repeat = true;
+                    noteNum = 1;
                 }
                 else if(str.equals("||")){
                     measuresElement.put(measureNum, noteNum);
-                    noteNum = 1;
                     if(repeat){
                         repeat = false;
                         repeatEnds.add(measureNum);
@@ -161,13 +198,10 @@ public class Main {
                         repeat = true;
                         repeatStarts.add(measureNum);
                     }
+                    noteNum = 1;
                     measureNum++;
                 }
-                else if (str.length() == 0) {
-                    //if blank, increase note count.
-                    noteNum++;
-                }
-                else if(str.length() >= 2 && str.endsWith("|") && Character.isDigit(str.charAt(0))){
+                else if(str.length() >= 2 && str.endsWith("|") && Character.isDigit(str.charAt(0)) && stringVal == 1){
                     repeat = false;
                     noteNum++;
                     measuresElement.put(measureNum, noteNum);
@@ -175,40 +209,82 @@ public class Main {
                     repeatEnds.add(measureNum);
                     measureNum++;
                     repeatAmout.add(Character.getNumericValue(str.charAt(0)));
-                }else if(str.length() >= 2 && str.endsWith("|")){
+                }/*else if(str.startsWith("*") && str.endsWith("|")){
                     repeat = false;
                     noteNum++;
                     measuresElement.put(measureNum, noteNum);
                     noteNum = 1;
                     repeatEnds.add(measureNum);
                     measureNum++;
-                }
+                }*/
                 else if (str.contains("|") && counter == 0) {
                     //System.out.println("New measure");
-                    measureNum = measureMem;
-                    noteNum = 1;
                     //stringVal = str.trim().toLowerCase().charAt(0);
-                    stringVal++;
+                    if(topRepeat){
+                        //repeatNum++;
+                        repeatNum = 1;
+                        //System.out.println("1repeat num is: " + repeatNum);
+                        topRepeatStarts.add(repeatNum);
+                        repeat = true;
+                    }else{
+                        measureNum = measureMem;
+                        noteNum = 1;
+                        stringVal++;
+                    }
                     //repeatTimes++;
                 } else if (str.contains("|")) {
                     //System.out.println("Case where | is first");
                     //Increase measure count if it encounters |
                     //Count end of measure here.
-                    if(str.startsWith("*")){
-                        noteNum++;
+                    if(topRepeat && repeat){
+                        repeatNum += 2;
+                        if(repeatFlag){
+                            topRepeatEnds.add(repeatNum);
+                            repeatFlag = false;
+                        }else{
+                            topRepeatStarts.remove(topRepeatStarts.size() - 1);
+                        }
+                        topRepeatStarts.add(repeatNum);
+                        //System.out.println("Inside str contains repeat num is: " + repeatNum);
+                        //topRepeatEnds.add(repeatNum);
+                        //topRepeatStarts.add(repeatNum);
+                        //repeat = false;
+                        //topRepeat = false;
+                        counter = -1;
                     }
-                    measuresElement.put(measureNum, noteNum);
-                    noteNum = 1;
-                    if(str.endsWith("*")){
-                        noteNum++;
+                    else if(topRepeat){
+                        //repeatNum++;
+                        //repeatNum = 1;
+                        //System.out.println("2repeat num is: " + repeatNum);
+                        topRepeatStarts.add(repeatNum);
+                        repeatNum = 1;
+                        repeat = true;
+                    } else{
+                        if(str.startsWith("*")){
+                            noteNum++;
+                        }
+                        measuresElement.put(measureNum, noteNum);
+                        measureChars += noteNum + 1;
+                        //System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
+                        noteNum = 1;
+                        if(str.endsWith("*")){
+                            noteNum++;
+                        }
+                        measureNum++;
                     }
-                    measureNum++;
                     /*if (str.length() > 1) {
                         //Extract this to separate function? duplicate code in function below.
                         GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, str.substring(1));
                         guitarNoteArray.add(tempGuitarNote);
                     }*/
-                } else {
+                }
+                else if (str.length() == 0) { // move this to bottom, add top repeat check inside.
+                    //if blank, increase note count.
+                    if(topRepeat){
+                        repeatNum++;
+                    }
+                    noteNum++;
+                }else if(!topRepeat) {
                     //Otherwise create a new note with the string as the note value.
                     //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
                     //will update regex when encountering new patterns.
@@ -220,21 +296,31 @@ public class Main {
                         noteNum += character.length();
                     }
                 }
+                /*if(topRepeat) {
+                    System.out.println("Element was : " + str);
+                    System.out.println("Repeat num is " + repeatNum);
+                    System.out.println();
+                }*/
                 counter++;
             }
         }
         //Test print the array
-        /*for (GuitarNote guitarNote : guitarNoteArray) {
+        for (GuitarNote guitarNote : guitarNoteArray) {
             System.out.println("String: " + guitarNote.stringValue);
             System.out.println("Measure number: " + guitarNote.measure);
             System.out.println("Element number: " + guitarNote.noteNumber);
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
-        }*/
+        }
         System.out.println("Repeat starts at: " + repeatStarts.toString());
         System.out.println("Repeat ends at: " + repeatEnds.toString());
         System.out.println("Repeat amount: " + repeatAmout.toString());
-        //System.out.println(measuresElement);
+        System.out.println();
+        System.out.println("Top repeat starts at: " + topRepeatStarts.toString());
+        System.out.println("Top repeat ends at: " + topRepeatEnds.toString());
+        System.out.println("Top repeat amount: " + repeatAmout.toString());
+        System.out.println("Top repeat offset: " + measureChars);
+        System.out.println(measuresElement);
         measuresElement.forEach((k, v) -> measures.add(new Measure(v, k)));
         return guitarNoteArray;
     }
@@ -861,6 +947,15 @@ public class Main {
         tabTitle = title;
         tabComposer = composer;
         tabContents = "";
+
+        measuresElement = new HashMap<>();
+        measures = new ArrayList<>();
+        repeatStarts = new LinkedHashSet<>();
+        repeatEnds = new LinkedHashSet<>();
+        repeatAmout = new ArrayList<>();
+        topRepeatStarts = new ArrayList<>();
+        topRepeatEnds = new ArrayList<>();
+
         Object[] notes = fileParser(filePath);
         ArrayList<String> noteArray = (ArrayList<String>) notes[1];
         if (notes[0] == "guitar") {
