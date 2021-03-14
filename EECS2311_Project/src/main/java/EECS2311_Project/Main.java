@@ -125,7 +125,7 @@ public class Main {
         int measureNum = 1;
         int noteNum = 1;
         int stringVal = 0;
-        //int repeatTimes = 0;
+        int repeatTimes = 0;
         int measureMem = 1;
         boolean repeat;
         boolean topRepeat = false;
@@ -145,8 +145,9 @@ public class Main {
             topRepeat = false;
             repeat = false;
             repeatNum = 0;
-            if(array[0].contains(" ")){
-                //repeatTimes = 0;
+            System.out.println(array.length);
+            if(array.length < 4){
+                repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
 
@@ -230,8 +231,8 @@ public class Main {
                         measureNum = measureMem;
                         noteNum = 1;
                         stringVal++;
+                        repeatTimes++;
                     }
-                    //repeatTimes++;
                 } else if (str.contains("|")) {
                     //System.out.println("Case where | is first");
                     //Increase measure count if it encounters |
@@ -284,7 +285,7 @@ public class Main {
                         repeatNum++;
                     }
                     noteNum++;
-                }else if(!topRepeat) {
+                }else if(!topRepeat && stringVal != 0) {
                     //Otherwise create a new note with the string as the note value.
                     //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
                     //will update regex when encountering new patterns.
