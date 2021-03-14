@@ -146,7 +146,7 @@ public class Main {
             repeat = false;
             repeatNum = 0;
             System.out.println(array.length);
-            if(array.length < 4){
+            if(repeatTimes == 6){
                 repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
