@@ -740,6 +740,7 @@ public class Main {
                             .set("G")//TODO
                             .up()//display-step
                             .add("display-octave")
+                            .set(5)
                             .up()//display-octave
                             .up()//unpitched
                             
