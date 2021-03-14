@@ -784,9 +784,10 @@ public class Main {
                             .up();//note
                 }
             }
+            
+            directives.up();//measure
         }
-        directives.up()//measure
-        .up()//part
+        directives.up()//part
         .up();//score-partwise
         
         String xml = null;
