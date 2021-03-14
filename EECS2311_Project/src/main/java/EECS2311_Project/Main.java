@@ -75,7 +75,7 @@ public class Main {
                 System.out.println(nextLine);
                 tabContents += nextLine + "\n";
                 //removes all spaces.
-                if(!nextLine.contains("|")){
+                if (!nextLine.contains("|")) {
                     //System.out.println("linebreak");
                     testLines.add(" ");
                     drumTestLines.add(" ");
@@ -139,14 +139,14 @@ public class Main {
         //Iterates through the parsed string array and makes an array of note objects
         for (String[] array : strArray) {
             System.out.println(Arrays.toString(array));
-            if(topRepeat){
+            if (topRepeat) {
                 topRepeatStarts.remove(topRepeatStarts.size() - 1);
             }
             topRepeat = false;
             repeat = false;
             repeatNum = 0;
             System.out.println(array.length);
-            if(repeatTimes == 6){
+            if (repeatTimes == 6) {
                 repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
@@ -154,33 +154,32 @@ public class Main {
             }
             int counter = 0;
             //lowercases the repeat for checking
-            for(int i = 0; i < array.length; i++){
+            for (int i = 0; i < array.length; i++) {
                 array[i] = array[i].toLowerCase();
             }
-            if(Arrays.asList(array).contains("repeat")){
+            if (Arrays.asList(array).contains("repeat")) {
                 topRepeat = true;
             }
             for (String str : array) {
                 //System.out.println(str);
-                if(topRepeatStarts.contains(measureChars)){
+                if (topRepeatStarts.contains(measureChars)) {
                     repeatStarts.add(measureNum);
                     //topRepeatMeasuresStarts.add(measureNum);
-                }if(topRepeatEnds.contains(measureChars)){
+                }
+                if (topRepeatEnds.contains(measureChars)) {
                     repeatEnds.add(measureNum);
                     //topRepeatMeasuresEnds.add(measureNum);
                 }
                 //System.out.println(str);
-                if(topRepeat && pattern.matcher(str).find()){
+                if (topRepeat && pattern.matcher(str).find()) {
                     repeatNum += str.length() + 1;
                     //System.out.println(str);
                     //System.out.println("repeat num is: " + repeatNum);
                     repeatFlag = true;
-                    repeatAmout.add(Integer.parseInt(str.replaceAll("\\D+","")));
-                }
-                else if(topRepeat && str.contains("repeat")){
+                    repeatAmout.add(Integer.parseInt(str.replaceAll("\\D+", "")));
+                } else if (topRepeat && str.contains("repeat")) {
                     repeatNum += str.length() + 1;
-                }
-                else if(str.equals("||") && counter == 0){
+                } else if (str.equals("||") && counter == 0) {
                     //do repeat.
                     //measuresElement.put(measureNum, noteNum);
                     measureNum = measureMem;
@@ -189,20 +188,18 @@ public class Main {
                     measureNum++;
                     repeat = true;
                     noteNum = 1;
-                }
-                else if(str.equals("||")){
+                } else if (str.equals("||")) {
                     measuresElement.put(measureNum, noteNum);
-                    if(repeat){
+                    if (repeat) {
                         repeat = false;
                         repeatEnds.add(measureNum);
-                    }else{
+                    } else {
                         repeat = true;
                         repeatStarts.add(measureNum);
                     }
                     noteNum = 1;
                     measureNum++;
-                }
-                else if(str.length() >= 2 && str.endsWith("|") && Character.isDigit(str.charAt(0)) && stringVal == 1){
+                } else if (str.length() >= 2 && str.endsWith("|") && Character.isDigit(str.charAt(0)) && stringVal == 1) {
                     repeat = false;
                     noteNum++;
                     measuresElement.put(measureNum, noteNum);
@@ -217,17 +214,16 @@ public class Main {
                     noteNum = 1;
                     repeatEnds.add(measureNum);
                     measureNum++;
-                }*/
-                else if (str.contains("|") && counter == 0) {
+                }*/ else if (str.contains("|") && counter == 0) {
                     //System.out.println("New measure");
                     //stringVal = str.trim().toLowerCase().charAt(0);
-                    if(topRepeat){
+                    if (topRepeat) {
                         //repeatNum++;
                         repeatNum = 1;
                         //System.out.println("1repeat num is: " + repeatNum);
                         topRepeatStarts.add(repeatNum);
                         repeat = true;
-                    }else{
+                    } else {
                         measureNum = measureMem;
                         noteNum = 1;
                         stringVal++;
@@ -237,12 +233,12 @@ public class Main {
                     //System.out.println("Case where | is first");
                     //Increase measure count if it encounters |
                     //Count end of measure here.
-                    if(topRepeat && repeat){
+                    if (topRepeat && repeat) {
                         repeatNum += 2;
-                        if(repeatFlag){
+                        if (repeatFlag) {
                             topRepeatEnds.add(repeatNum);
                             repeatFlag = false;
-                        }else{
+                        } else {
                             topRepeatStarts.remove(topRepeatStarts.size() - 1);
                         }
                         topRepeatStarts.add(repeatNum);
@@ -252,23 +248,22 @@ public class Main {
                         //repeat = false;
                         //topRepeat = false;
                         counter = -1;
-                    }
-                    else if(topRepeat){
+                    } else if (topRepeat) {
                         //repeatNum++;
                         //repeatNum = 1;
                         //System.out.println("2repeat num is: " + repeatNum);
                         topRepeatStarts.add(repeatNum);
                         repeatNum = 1;
                         repeat = true;
-                    } else{
-                        if(str.startsWith("*")){
+                    } else {
+                        if (str.startsWith("*")) {
                             noteNum++;
                         }
                         measuresElement.put(measureNum, noteNum);
                         measureChars += noteNum + 1;
                         //System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
                         noteNum = 1;
-                        if(str.endsWith("*")){
+                        if (str.endsWith("*")) {
                             noteNum++;
                         }
                         measureNum++;
@@ -278,14 +273,13 @@ public class Main {
                         GuitarNote tempGuitarNote = new GuitarNote(measureNum, noteNum, stringVal, str.substring(1));
                         guitarNoteArray.add(tempGuitarNote);
                     }*/
-                }
-                else if (str.length() == 0) { // move this to bottom, add top repeat check inside.
+                } else if (str.length() == 0) { // move this to bottom, add top repeat check inside.
                     //if blank, increase note count.
-                    if(topRepeat){
+                    if (topRepeat) {
                         repeatNum++;
                     }
                     noteNum++;
-                }else if(!topRepeat && stringVal != 0) {
+                } else if (!topRepeat && stringVal != 0) {
                     //Otherwise create a new note with the string as the note value.
                     //splits each "block" into smaller individual notes, only checks for alphabet chars in between right now
                     //will update regex when encountering new patterns.
@@ -457,6 +451,35 @@ public class Main {
         for (int i = 0; i < measures.size(); i++) {
             directives.add("measure")
                     .attr("number", i + 1);
+            if(repeatEnds.contains(i + 2)){
+                directives.add("barline")
+                        .attr("location", "right")
+                        .add("bar-style")
+                        .set("light-heavy").up()
+                        .add("repeat")
+                        .attr("direction","backward").up().up();
+            }
+            if (repeatStarts.contains(i + 1)) {
+                int repeatTimes;
+                try{
+                    repeatTimes = repeatAmout.get(0);
+                }catch (Exception e){
+                    repeatTimes = 2;
+                }
+                directives.add("barline")
+                        .attr("location", "left")
+                        .add("bar-style")
+                        .set("heavy-light").up()
+                        .add("repeat")
+                        .attr("direction","forward").up().up()
+                        .add("direction")
+                        .attr("placement","above")
+                        .add("direction-type")
+                        .add("words").attr("relative-x","256.17")
+                        .attr("relative-y","16.01")
+                        .set("Repeat " + repeatTimes + "times").up().up().up();
+                repeatAmout.remove(0);
+            }
             //sets the first measure to include tab details and clef etc.
             if (i == 0) {
                 directives
@@ -548,7 +571,7 @@ public class Main {
                     //process note here later
                     directives
                             .add("note");
-                    if(guitarNote.grace){
+                    if (guitarNote.grace) {
                         directives.add("grace").up();
                     }
                     if (guitarNote.chord) {
