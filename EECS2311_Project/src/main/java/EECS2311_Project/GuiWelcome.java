@@ -51,13 +51,13 @@ public class GuiWelcome extends JFrame {
 		contentPane.setLayout(null);
 		
 		Label tmLabel = new Label("TM");
-		tmLabel.setBounds(372, 10, 28, 21);
+		tmLabel.setBounds(373, 25, 28, 21);
 		contentPane.add(tmLabel);
 		
 		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
 		standardHeaderLabel.setForeground(new Color(0, 51, 153));
-		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
-		standardHeaderLabel.setBounds(10, 10, 372, 49);
+		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 40));
+		standardHeaderLabel.setBounds(37, 37, 418, 49);
 		contentPane.add(standardHeaderLabel);
 		
 		//ModificationsPage modificationsPage = new ModificationsPage();
@@ -70,33 +70,31 @@ public class GuiWelcome extends JFrame {
                 guiUploadWindow.setVisible(true);
 			}
 		});
-		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		browseButton.setFont(new Font("Calibri", Font.BOLD, 25));
 		browseButton.setBounds(328, 549, 249, 69);
 		contentPane.add(browseButton);
 		
 		Label instructionLabel2 = new Label("Click the button below to upload your tablature.");
+		instructionLabel2.setAlignment(Label.CENTER);
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionLabel2.setBounds(10, 463, 885, 49);
+		instructionLabel2.setBounds(160, 445, 643, 49);
 		contentPane.add(instructionLabel2);
 		
-		Label instructionLabel1 = new Label("Welcome to your personal tablature to music XML converter,");
-		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionLabel1.setBounds(10, 78, 874, 49);
+		Label instructionLabel1 = new Label("Welcome to your personal tablature to music XML converter!");
+		instructionLabel1.setAlignment(Label.CENTER);
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 28));
+		instructionLabel1.setBounds(48, 144, 823, 49);
 		contentPane.add(instructionLabel1);
 		
-		Label updateUserLabel = new Label("");
-		updateUserLabel.setText(System.getProperty("user.name")+"!");
-		updateUserLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
-		updateUserLabel.setBounds(10, 122, 874, 49);
-		contentPane.add(updateUserLabel);
-		
 		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar music,\r\n");
+		lblNewLabel.setForeground(new Color(186, 85, 211));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel.setBounds(33, 254, 838, 49);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("and converts them into a musicXML. Enjoy!\r\n");
+		lblNewLabel_1.setForeground(new Color(186, 85, 211));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel_1.setBounds(33, 313, 838, 49);
