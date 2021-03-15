@@ -50,7 +50,7 @@ public class ModificationsPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(248, 248, 255));
+		contentPane.setBackground(new Color(230, 230, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -66,42 +66,44 @@ public class ModificationsPage extends JFrame {
 		contentPane.add(tmLabel);
 		
 		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able\r\n\r\n");
-		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 20));
+		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel1.setBounds(10, 103, 875, 49);
 		contentPane.add(instructionLabel1);
 		
 		JLabel instructionLabel2 = new JLabel("to enter the composer and title of your tab!");
-		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 20));
+		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
 		instructionLabel2.setBounds(10, 150, 865, 49);
 		contentPane.add(instructionLabel2);
 		
 		JLabel composerLabel = new JLabel("Composer:");
-		composerLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
-		composerLabel.setBounds(56, 262, 177, 31);
+		composerLabel.setForeground(new Color(148, 0, 211));
+		composerLabel.setFont(new Font("Calibri", Font.BOLD, 23));
+		composerLabel.setBounds(56, 309, 177, 31);
 		contentPane.add(composerLabel);
 		
 		textFieldComposer = new JTextField();
 		textFieldComposer.setFont(new Font("Calibri", Font.PLAIN, 22));
-		textFieldComposer.setBounds(243, 252, 463, 49);
+		textFieldComposer.setBounds(243, 300, 463, 49);
 		contentPane.add(textFieldComposer);
 		textFieldComposer.setColumns(10);
 		textFieldComposer.setText(composer);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
-		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
-		titleLabel.setBounds(52, 363, 166, 31);
+		titleLabel.setForeground(new Color(148, 0, 211));
+		titleLabel.setFont(new Font("Calibri", Font.BOLD, 23));
+		titleLabel.setBounds(56, 419, 166, 31);
 		contentPane.add(titleLabel);
 		
 		textFieldTitle = new JTextField();
 		textFieldTitle.setFont(new Font("Calibri", Font.PLAIN, 22));
 		textFieldTitle.setColumns(10);
-		textFieldTitle.setBounds(243, 354, 463, 49);
+		textFieldTitle.setBounds(243, 410, 463, 49);
 		contentPane.add(textFieldTitle);
 		textFieldTitle.setText(title);
 		
 		Button enterButton = new Button("Confirm");
 		enterButton.setForeground(Color.BLACK);
-		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		enterButton.setFont(new Font("Calibri", Font.BOLD, 25));
 		enterButton.setBackground(SystemColor.menu);
 		enterButton.setBounds(340, 597, 224, 41);
 		contentPane.add(enterButton);
