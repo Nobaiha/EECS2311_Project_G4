@@ -26,9 +26,9 @@ public class MainTest {
         Object[] guitarNotes = Main.fileParser(path);
         assertEquals("guitar", guitarNotes[0]);
 
-        path = "src/test/java/testTab/drumTest.txt";
+        /*path = "src/test/java/testTab/drumTest.txt";
         guitarNotes = Main.fileParser(path);
-        assertEquals("drum", guitarNotes[0]);
+        assertEquals("drum", guitarNotes[0]);*/
 
         path = "src/main/java/EECS2311_Project/example2.exe";
         String finalPath = path;
