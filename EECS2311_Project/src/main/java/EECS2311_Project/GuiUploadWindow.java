@@ -23,6 +23,10 @@ public class GuiUploadWindow extends JFrame {
 
 	private static String composer;
 	private static String title;
+	private static String content;
+	private static String lastDir;
+	private static String filePath;
+
 	/**
 	 * Launch the application.
 	 */
@@ -30,7 +34,7 @@ public class GuiUploadWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GuiUploadWindow frame = new GuiUploadWindow(title, composer);
+					GuiUploadWindow frame = new GuiUploadWindow(title, composer, content);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +46,7 @@ public class GuiUploadWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GuiUploadWindow(String title, String composer) {
+	public GuiUploadWindow(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		JPanel contentPane = new JPanel();
@@ -70,18 +74,32 @@ public class GuiUploadWindow extends JFrame {
 		contentPane.add(fileSelectedLabel);
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
-		tabDisplayTextArea.setFont(new Font("Lucida Console", Font.PLAIN, 20));
+
+		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 17));
+		tabDisplayTextArea.setText(content);
+
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
+
+		if(filePath != null && !tabDisplayTextArea.getText().equals("")){
+			fileSelectedLabel.setText(filePath);
+		}
 		
 		Button browseButton = new Button("Browse");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser choosingFile = new JFileChooser();
+				JFileChooser choosingFile;
+				if(lastDir != null) {
+					choosingFile = new JFileChooser(lastDir);
+				}else{
+					choosingFile = new JFileChooser();
+				}
 				choosingFile.showOpenDialog(null);
 				File fileSelected = choosingFile.getSelectedFile();
 				String fileName= fileSelected.getAbsolutePath();
+				filePath = fileName;
+				lastDir = fileSelected.getParent();
 				try {
 					if(Main.fileChecker(fileName)) {
 						FileReader fileReader = new FileReader(fileName);
@@ -89,17 +107,17 @@ public class GuiUploadWindow extends JFrame {
 						tabDisplayTextArea.read(bufferReader, null);
 						bufferReader.close();
 						tabDisplayTextArea.requestFocus();
-						fileSelectedLabel.setText(fileName);
+						fileSelectedLabel.setText(filePath);
 					}else{
 						setVisible(false);
 						dispose();
-						new Error("File type not supported, please ensure file is a .txt", title, composer);
+						new Error("File type not supported, please ensure file is a .txt", title, composer,tabDisplayTextArea.getText());
 					}
 				}
 				catch(Exception exception) {
 					setVisible(false);
 					dispose();
-					new Error("File type not supported, please ensure file is a .txt", title, composer);
+					new Error("File type not supported, please ensure file is a .txt", title, composer,tabDisplayTextArea.getText());
 				}
 			}
 		});
@@ -112,7 +130,7 @@ public class GuiUploadWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
-				new ModificationsPage().setVisible(true);
+				new GuiWelcome().setVisible(true);
 			}
 		});
 
@@ -134,7 +152,7 @@ public class GuiUploadWindow extends JFrame {
 		
 		
 		
-		Button enterButton = new Button("Enter");
+		Button enterButton = new Button("Convert");
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String pastedTab = tabDisplayTextArea.getText();
@@ -150,7 +168,7 @@ public class GuiUploadWindow extends JFrame {
 				} catch (Exception exception) {
 					setVisible(false);
 					dispose();
-					new Error("Error parsing, please ensure tab is in correct format.", title, composer);
+					new Error("Error parsing, please ensure tab is in correct format.", title, composer,tabDisplayTextArea.getText());
 				}
 				//setVisible(false);
 			}
@@ -158,11 +176,37 @@ public class GuiUploadWindow extends JFrame {
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setBounds(339, 638, 224, 41);
 		contentPane.add(enterButton);
+
+		Button modButton = new Button("Modifications");
+		modButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificationsPage modificationsPage = new ModificationsPage(title,composer,tabDisplayTextArea.getText());
+				setVisible(false);
+				modificationsPage.setVisible(true);
+			}
+		});
+
+		modButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		modButton.setBounds(671, 638, 224, 41);
+		contentPane.add(modButton);
+
 		
 		
 		
 		
 		
 		
+	}
+
+	public static void setTabTitle(String title) {
+		GuiUploadWindow.title = title;
+	}
+
+	public static void setContent(String content) {
+		GuiUploadWindow.content = content;
+	}
+
+	public static void setComposer(String composer) {
+		GuiUploadWindow.composer = composer;
 	}
 }

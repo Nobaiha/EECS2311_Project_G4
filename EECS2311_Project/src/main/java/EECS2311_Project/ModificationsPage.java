@@ -25,6 +25,10 @@ public class ModificationsPage extends JFrame {
 	private JTextField textFieldComposer;
 	private JTextField textFieldTitle;
 
+	private static String composer;
+	private static String title;
+	private static String content;
+
 	/**
 	 * Launch the application.
 	 */
@@ -32,7 +36,7 @@ public class ModificationsPage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificationsPage frame = new ModificationsPage();
+					ModificationsPage frame = new ModificationsPage(title,composer, content);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,11 +48,11 @@ public class ModificationsPage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModificationsPage() {
+	public ModificationsPage(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(248, 248, 255));
+		contentPane.setBackground(new Color(230, 230, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -63,39 +67,53 @@ public class ModificationsPage extends JFrame {
 		tmLabel.setBounds(388, 10, 28, 21);
 		contentPane.add(tmLabel);
 		
+
 		JLabel instructionLabel1 = new JLabel("This page will allow you to add optional modifications to your tab. You are able to skip this page\r\n\r\n");
 		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 20));
+
 		instructionLabel1.setBounds(10, 103, 875, 49);
 		contentPane.add(instructionLabel1);
 		
-		JLabel instructionLabel2 = new JLabel("if there are no changes to be made by pressing the button labeled \"Next\".");
+
+		JLabel instructionLabel2 = new JLabel("if there are no changes to be made by pressing the button labeled \"Confirm\".");
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 20));
+
 		instructionLabel2.setBounds(10, 150, 865, 49);
 		contentPane.add(instructionLabel2);
 		
 		JLabel composerLabel = new JLabel("Composer:");
+
 		composerLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		composerLabel.setBounds(56, 262, 177, 31);
+
 		contentPane.add(composerLabel);
 		
 		textFieldComposer = new JTextField();
 		textFieldComposer.setFont(new Font("Calibri", Font.PLAIN, 22));
-		textFieldComposer.setBounds(243, 252, 463, 49);
+		textFieldComposer.setBounds(243, 253, 463, 49);
 		contentPane.add(textFieldComposer);
 		textFieldComposer.setColumns(10);
+		textFieldComposer.setText(composer);
 		
 		JLabel titleLabel = new JLabel("Title of Tab:");
+
 		titleLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		titleLabel.setBounds(56, 331, 166, 31);
+
 		contentPane.add(titleLabel);
 		
 		textFieldTitle = new JTextField();
 		textFieldTitle.setFont(new Font("Calibri", Font.PLAIN, 22));
 		textFieldTitle.setColumns(10);
+
 		textFieldTitle.setBounds(243, 322, 463, 49);
+
 		contentPane.add(textFieldTitle);
+		textFieldTitle.setText(title);
 		
-		Button enterButton = new Button("Next");
+
+		Button enterButton = new Button("Confirm");
+
 		enterButton.setForeground(Color.BLACK);
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		enterButton.setBackground(SystemColor.menu);
@@ -141,7 +159,7 @@ public class ModificationsPage extends JFrame {
 
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GuiUploadWindow guiUploadWindow = new GuiUploadWindow(textFieldTitle.getText(), textFieldComposer.getText());
+				GuiUploadWindow guiUploadWindow = new GuiUploadWindow(textFieldTitle.getText(), textFieldComposer.getText(),content);
 				setVisible(false);
 				dispose();
 				guiUploadWindow.setVisible(true);
