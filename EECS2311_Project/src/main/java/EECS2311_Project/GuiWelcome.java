@@ -51,13 +51,13 @@ public class GuiWelcome extends JFrame {
 		contentPane.setLayout(null);
 		
 		Label tmLabel = new Label("TM");
-		tmLabel.setBounds(373, 25, 28, 21);
+		tmLabel.setBounds(434, 10, 28, 21);
 		contentPane.add(tmLabel);
 		
 		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
 		standardHeaderLabel.setForeground(new Color(0, 51, 153));
 		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 40));
-		standardHeaderLabel.setBounds(37, 37, 418, 49);
+		standardHeaderLabel.setBounds(10, 25, 418, 49);
 		contentPane.add(standardHeaderLabel);
 		
 		//ModificationsPage modificationsPage = new ModificationsPage();
@@ -75,15 +75,14 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(browseButton);
 		
 		Label instructionLabel2 = new Label("Click the button below to upload your tablature.");
-		instructionLabel2.setAlignment(Label.CENTER);
 		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionLabel2.setBounds(-36, 443, 977, 49);
+		instructionLabel2.setBounds(131, 473, 646, 49);
 		contentPane.add(instructionLabel2);
 		
 		Label instructionLabel1 = new Label("Welcome to your personal tablature to music XML converter!");
 		instructionLabel1.setAlignment(Label.CENTER);
 		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 28));
-		instructionLabel1.setBounds(48, 144, 823, 49);
+		instructionLabel1.setBounds(48, 169, 823, 49);
 		contentPane.add(instructionLabel1);
 		
 		JLabel lblNewLabel = new JLabel("The TAB-2-MusicXML\u2122 (T.2.M) converter takes TABs of guitar music,\r\n");

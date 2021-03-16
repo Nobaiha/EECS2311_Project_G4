@@ -75,7 +75,7 @@ public class GuiUploadWindow extends JFrame {
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
 
-		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 17));
+		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 22));
 		tabDisplayTextArea.setText(content);
 
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
