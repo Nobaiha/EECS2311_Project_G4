@@ -80,14 +80,14 @@ public class SaveFile extends JFrame {
 		saveFile.add(instructionsLabel1);*/
 
 		JTextArea tabDisplayTextArea = new JTextArea();
-		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 17));
+		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 22));
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 159, 885, 459);
 		saveFile.add(sp);
 		tabDisplayTextArea.setText(xml);
 		tabDisplayTextArea.setCaretPosition(0);
 		
-		Button yesButton = new Button("Save");
+		Button yesButton = new Button("Download");
 		//yesButton.setBounds(151, 268, 249, 69);
 		yesButton.setBounds(339, 638, 224, 41);
 		yesButton.addActionListener(new ActionListener() {
@@ -103,12 +103,12 @@ public class SaveFile extends JFrame {
 				}
 			}
 		});
-		yesButton.setFont(new Font("Calibri", Font.PLAIN, 20));
+		yesButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		saveFile.add(yesButton);
 		
 		Button noButton = new Button("Exit");
 		noButton.setBounds(739, 638, 150, 41);
-		noButton.setFont(new Font("Calibri", Font.PLAIN, 20));
+		noButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -130,7 +130,7 @@ public class SaveFile extends JFrame {
 				new GuiUploadWindow(title,composer,content).setVisible(true);
 			}
 		});
-		button.setFont(new Font("Calibri", Font.PLAIN, 20));
+		button.setFont(new Font("Calibri", Font.PLAIN, 25));
 		button.setBounds(10, 638, 150, 41);
 		saveFile.add(button);
 	}
