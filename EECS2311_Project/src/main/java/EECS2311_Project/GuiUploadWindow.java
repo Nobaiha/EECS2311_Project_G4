@@ -24,6 +24,8 @@ public class GuiUploadWindow extends JFrame {
 	private static String composer;
 	private static String title;
 	private static String content;
+	private static String lastDir;
+	private static String filePath;
 	/**
 	 * Launch the application.
 	 */
@@ -79,13 +81,24 @@ public class GuiUploadWindow extends JFrame {
 		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
 		
+		if(filePath != null && !tabDisplayTextArea.getText().equals("")){
+			fileSelectedLabel.setText(filePath);
+		}
+		
 		Button browseButton = new Button("Browse");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser choosingFile = new JFileChooser();
+				JFileChooser choosingFile;
+				if(lastDir != null) {
+					choosingFile = new JFileChooser(lastDir);
+				}else{
+					choosingFile = new JFileChooser();
+				}
 				choosingFile.showOpenDialog(null);
 				File fileSelected = choosingFile.getSelectedFile();
 				String fileName= fileSelected.getAbsolutePath();
+				filePath = fileName;
+				lastDir = fileSelected.getParent();
 				try {
 					if(Main.fileChecker(fileName)) {
 						FileReader fileReader = new FileReader(fileName);
@@ -93,7 +106,7 @@ public class GuiUploadWindow extends JFrame {
 						tabDisplayTextArea.read(bufferReader, null);
 						bufferReader.close();
 						tabDisplayTextArea.requestFocus();
-						fileSelectedLabel.setText(fileName);
+						fileSelectedLabel.setText(filePath);
 					}else{
 						setVisible(false);
 						dispose();
@@ -175,6 +188,19 @@ public class GuiUploadWindow extends JFrame {
 		modButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		modButton.setBounds(671, 638, 224, 41);
 		contentPane.add(modButton);
+		
+	}
+
+	public static void setTabTitle(String title) {
+		GuiUploadWindow.title = title;
+	}
+
+	public static void setContent(String content) {
+		GuiUploadWindow.content = content;
+	}
+
+	public static void setComposer(String composer) {
+		GuiUploadWindow.composer = composer;
 
 		
 		

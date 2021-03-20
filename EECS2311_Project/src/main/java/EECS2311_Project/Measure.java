@@ -51,6 +51,10 @@ public class Measure {
     public void processDuration() {
         ArrayList<Integer> samePositionNotes = new ArrayList<>();
         for (int i = 0; i < guitarNotes.size(); i++) {
+        	int offset = 0;
+            if(guitarNotes.get(i).grace){
+                offset = 1;
+            }
             if (i == guitarNotes.size() - 1) {
                 int thisDur = guitarNotes.get(i).noteNumber;
                 if (!samePositionNotes.isEmpty()) {
@@ -59,12 +63,12 @@ public class Measure {
                         if(j != 0) {
                             temp.setChord(true);
                         }
-                        temp.setDuration(elementMax - temp.noteNumber);
+                        temp.setDuration(elementMax - temp.noteNumber - offset);
                     }
                     samePositionNotes.clear();
                     guitarNotes.get(i).setChord(true);
                 }
-                guitarNotes.get(i).setDuration(elementMax - thisDur);
+                guitarNotes.get(i).setDuration(elementMax - thisDur - offset);
             } else {
                 if (guitarNotes.get(i).noteNumber == guitarNotes.get(i + 1).noteNumber) {
                     samePositionNotes.add(i);
@@ -76,13 +80,13 @@ public class Measure {
                             if(j != 0) {
                                 temp.setChord(true);
                             }
-                            temp.setDuration(nextDur - temp.noteNumber - guitarNotes.get(i).noteValue.length());
+                            temp.setDuration(nextDur - temp.noteNumber - guitarNotes.get(i).noteValue.length() - offset);
                         }
                         samePositionNotes.clear();
                         guitarNotes.get(i).setChord(true);
                     }
                     int thisDur = guitarNotes.get(i).noteNumber;
-                    guitarNotes.get(i).setDuration(nextDur - thisDur - guitarNotes.get(i).noteValue.length());
+                    guitarNotes.get(i).setDuration(nextDur - thisDur - guitarNotes.get(i).noteValue.length() - offset);
                 }
             }
         }

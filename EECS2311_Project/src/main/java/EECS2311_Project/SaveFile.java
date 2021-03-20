@@ -22,6 +22,9 @@ public class SaveFile extends JFrame {
 
 	protected Component parent;
 	private static String xml;
+	private static String title;
+	private static String composer;
+	private static String content;
 
 	private JPanel saveFile;
 
@@ -32,7 +35,7 @@ public class SaveFile extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SaveFile frame = new SaveFile(xml);
+					SaveFile frame = new SaveFile(title, composer, content, xml);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +48,7 @@ public class SaveFile extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SaveFile(String xml) {
+	public SaveFile(String title, String composer, String content, String xml) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		saveFile = new JPanel();
@@ -96,9 +99,8 @@ public class SaveFile extends JFrame {
 			        if (userSelection == JFileChooser.APPROVE_OPTION) {
 			            File file = fileChooser.getSelectedFile();
 			            Main.saveFile(file, tabDisplayTextArea.getText());
-			            setVisible(false);
-			            dispose();
-			            new GuiUploadWindow("","","").setVisible(true);
+			          //new GuiUploadWindow("","","").setVisible(true);
+
 				}
 			}
 		});
@@ -121,12 +123,12 @@ public class SaveFile extends JFrame {
 		fileReadyLabel.setBounds(10, 100, 895, 49);
 		saveFile.add(fileReadyLabel);
 		
-		Button button = new Button("Home");
+		Button button = new Button("Edit");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
-				new GuiWelcome().setVisible(true);
+				new GuiUploadWindow(title,composer,content).setVisible(true);
 			}
 		});
 		button.setFont(new Font("Calibri", Font.PLAIN, 25));
