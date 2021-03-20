@@ -919,7 +919,7 @@ public class Main {
             String xml = guitarXMLParser(measureArrayList);
             if (xml != null) {
                 //saveFile(xml);
-                SaveFile saveFile = new SaveFile(xml);
+                SaveFile saveFile = new SaveFile(tabTitle, tabComposer, "", xml);
                 //saveFile.setXml(xml);
                 saveFile.setVisible(true);
             } else {
@@ -940,4 +940,3 @@ public class Main {
         welcomePage.setVisible(true);
     }
 }
-
