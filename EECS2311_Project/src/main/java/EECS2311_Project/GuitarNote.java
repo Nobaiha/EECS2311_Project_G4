@@ -24,7 +24,6 @@ public class GuitarNote {
     public boolean hammer;
     public boolean harmonic;
     public boolean chord;
-    public boolean grace;
    //overload const. with pull off1/2
 
     
@@ -52,14 +51,11 @@ public class GuitarNote {
 
     public void setMusicNote(){
         //convert the noteNumber here to musicNote.
-        if(noteValue.startsWith("g")){
-            grace = true;
-        }
         if(noteValue.contains("p")){
             pull = true;
         }else if(noteValue.contains("h")){
             hammer = true;
-        }else if(noteValue.contains("(") || noteValue.contains("[") || noteValue.contains("<")){
+        }else if(noteValue.contains("(")){
             harmonic = true;
             this.noteNumber += 2; //shift note value to end of harmonic value
         }
