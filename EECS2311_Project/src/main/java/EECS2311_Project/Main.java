@@ -778,9 +778,9 @@ public class Main {
                             	directives.attr("id", "P1-I36");
                             } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
                             	
-                            	if (drumNote.noteValue == 'x') { //Closed
+                            	if (drumNote.noteValue == 'x') { //Closed High hat
                             		directives.attr("id", "P1-I43");
-                            	} else if (drumNote.noteValue == 'o') { //Open
+                            	} else if (drumNote.noteValue == 'o') { //Open High hat
                             		directives.attr("id", "P1-I47");
                             	} else {
                             		directives.attr("id", "P1-I43");
