@@ -25,6 +25,7 @@ public class GuitarNote {
     public boolean harmonic;
     public boolean chord;
     public boolean grace;
+    public boolean bass = false;
    //overload const. with pull off1/2
 
     
@@ -66,53 +67,89 @@ public class GuitarNote {
         //will be more like slides, bends... etc
         noteValue = noteValue.replaceAll("\\D+",""); //takes only the digits after extracting modifiers
         int remainder = Integer.parseInt(this.noteValue) % 12;
-        if(this.stringValue == 1){
-            String[] notes = {"E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+8);
-            this.octave = 4 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 8){
-                this.octave++;
+        if(!bass) {
+            if (this.stringValue == 1) {
+                String[] notes = {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 8);
+                this.octave = 4 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 8) {
+                    this.octave++;
+                }
+            } else if (this.stringValue == 2) {
+                String[] notes = {"B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 1);
+                this.octave = 3 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 1) {
+                    this.octave++;
+                }
+            } else if (this.stringValue == 3) {
+                String[] notes = {"G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 5);
+                this.octave = 3 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 5) {
+                    this.octave++;
+                }
+            } else if (this.stringValue == 4) {
+                String[] notes = {"D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 10);
+                this.octave = 3 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 10) {
+                    this.octave++;
+                }
+            } else if (this.stringValue == 5) {
+                String[] notes = {"A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 3);
+                this.octave = 2 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 3) {
+                    this.octave++;
+                }
+            } else if (this.stringValue == 6) {
+                String[] notes = {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12 + 8);
+                this.octave = 2 + octaveChange;
+                if (Integer.parseInt(this.noteValue) >= 8) {
+                    this.octave++;
+                }
             }
-        }else if(this.stringValue == 2){
-            String[] notes = {"B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+1);
-            this.octave = 3 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 1){
-                this.octave++;
-            }
-        }else if(this.stringValue == 3){
-            String[] notes = {"G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+5);
-            this.octave = 3 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 5){
-                this.octave++;
-            }
-        }else if(this.stringValue == 4){
-            String[] notes = {"D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+10);
-            this.octave = 3 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 10){
-                this.octave++;
-            }
-        }else if(this.stringValue == 5){
-            String[] notes = {"A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+3);
-            this.octave = 2 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 3){
-                this.octave++;
-            }
-        }else if(this.stringValue == 6){
-            String[] notes = {"E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E"};
-            this.musicNote = notes[remainder];
-            int octaveChange = Integer.parseInt(this.noteValue) / (12+8);
-            this.octave = 2 + octaveChange;
-            if(Integer.parseInt(this.noteValue) >= 8){
-                this.octave++;
+        }else{
+            if(this.stringValue == 1){
+                String[] notes = {"G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12+5);
+                this.octave = 2 + octaveChange;
+                if(Integer.parseInt(this.noteValue) >= 5){
+                    this.octave++;
+                }
+            }else if(this.stringValue == 2){
+                String[] notes = {"D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12+10);
+                this.octave = 2 + octaveChange;
+                if(Integer.parseInt(this.noteValue) >= 10){
+                    this.octave++;
+                }
+            }else if(this.stringValue == 3){
+                String[] notes = {"A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12+3);
+                this.octave = 3 + octaveChange;
+                if(Integer.parseInt(this.noteValue) >= 3){
+                    this.octave++;
+                }
+            }else if(this.stringValue == 4){
+                String[] notes = {"E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E"};
+                this.musicNote = notes[remainder];
+                int octaveChange = Integer.parseInt(this.noteValue) / (12+8);
+                this.octave = 3 + octaveChange;
+                if(Integer.parseInt(this.noteValue) >= 8){
+                    this.octave++;
+                }
             }
         }
         if(this.musicNote.contains("#")){
