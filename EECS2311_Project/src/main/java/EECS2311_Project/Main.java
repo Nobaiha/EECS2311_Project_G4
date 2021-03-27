@@ -26,6 +26,8 @@ public class Main {
     static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
     static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
 
+    static int guitar = 0; //0 is guitar, 1 is bass.
+
     static String tabTitle = "";
     static String tabComposer = "";
     static String tabContents = "";
@@ -132,9 +134,16 @@ public class Main {
         boolean repeatFlag = false;
         int repeatNum;
         int measureChars = 1;
+        int repeatMax = 6;
         //Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher;
+
+        if(guitar == 0){
+            repeatMax = 6;
+        }else if(guitar == 1){
+            repeatMax = 4;
+        }
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String[] array : strArray) {
@@ -146,7 +155,7 @@ public class Main {
             repeat = false;
             repeatNum = 0;
             System.out.println(array.length);
-            if (repeatTimes == 6) {
+            if (repeatTimes == repeatMax) {
                 repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
@@ -441,9 +450,14 @@ public class Main {
                 .add("part-list")
                 .add("score-part")
                 .attr("id", "P1")
-                .add("part-name")
-                .set("Guitar") //change this to name of music
-                .up()
+                .add("part-name");
+                if(guitar == 0){
+                   directives.set("Guitar");
+                }else if(guitar == 1){
+                    directives.set("Bass");
+                }
+                 //change this to name of music
+                directives.up()
                 .up()
                 .up()
                 .add("part")
@@ -504,62 +518,103 @@ public class Main {
                         .up()
                         .up()
                         .add("staff-details")
-                        .add("staff-lines")
-                        .set(6)
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "1")
-                        .add("tuning-step")
-                        .set("E")
-                        .up()
-                        .add("tuning-octave")
-                        .set(2)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "2")
-                        .add("tuning-step")
-                        .set("A")
-                        .up()
-                        .add("tuning-octave")
-                        .set(2)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "3")
-                        .add("tuning-step")
-                        .set("D")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "4")
-                        .add("tuning-step")
-                        .set("G")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "5")
-                        .add("tuning-step")
-                        .set("B")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "6")
-                        .add("tuning-step")
-                        .set("E")
-                        .up()
-                        .add("tuning-octave")
-                        .set(4)
-                        .up()
+                        .add("staff-lines");
+                    if(guitar == 0){
+                        directives.set(6);
+                    }else if(guitar == 1){
+                        directives.set(4);
+                    }
+                        directives.up();
+                    if(guitar == 0) {
+                        directives.add("staff-tuning")
+                                .attr("line", "1")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "2")
+                                .add("tuning-step")
+                                .set("A")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "3")
+                                .add("tuning-step")
+                                .set("D")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "4")
+                                .add("tuning-step")
+                                .set("G")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "5")
+                                .add("tuning-step")
+                                .set("B")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "6")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(4);
+                    }else if(guitar == 1){
+                        directives.add("staff-tuning")
+                                .attr("line", "1")
+                                .add("tuning-step")
+                                .set("G")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "2")
+                                .add("tuning-step")
+                                .set("D")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "3")
+                                .add("tuning-step")
+                                .set("A")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "4")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3);
+                    }
+                        directives.up()
                         .up()
                         .up()
                         .up();
@@ -1107,6 +1162,9 @@ public class Main {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
             for (GuitarNote guitarNote : guitarNoteArray) {
                 //System.out.println("setting music note");
+                if (guitar == 1) {
+                    guitarNote.bass = true;
+                }
                 guitarNote.setMusicNote();
                 /*System.out.println("String: " + guitarNote.stringValue);
                 System.out.println("Measure: " + guitarNote.measure);
