@@ -69,7 +69,7 @@ public class GuiUploadWindow extends JFrame {
 		fileSelectedLabel.setForeground(new Color(192, 192, 192));
 		fileSelectedLabel.setOpaque(true);
 		fileSelectedLabel.setBackground(new Color(255, 255, 255));
-		fileSelectedLabel.setBounds(10, 196, 692, 41);
+		fileSelectedLabel.setBounds(10, 196, 450, 41);
 		contentPane.add(fileSelectedLabel);
 		
 		JTextArea tabDisplayTextArea = new JTextArea();
@@ -84,6 +84,22 @@ public class GuiUploadWindow extends JFrame {
 		if(filePath != null && !tabDisplayTextArea.getText().equals("")){
 			fileSelectedLabel.setText(filePath);
 		}
+
+		JComboBox intrsutmentDropDown = new JComboBox();
+		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 22));
+		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
+		intrsutmentDropDown.setBounds(630, 185, 150, 49);
+		contentPane.add(intrsutmentDropDown);
+
+		intrsutmentDropDown.addActionListener(e->{
+				JComboBox cb  = (JComboBox) e.getSource();
+				String instrument = (String)cb.getSelectedItem();
+				if(instrument.equals("Bass")){
+					Main.guitar = 1;
+				}else if(instrument.equals("Guitar")){
+					Main.guitar = 0;
+				}
+		});
 		
 		Button browseButton = new Button("Browse");
 		browseButton.addActionListener(new ActionListener() {
@@ -121,7 +137,7 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.BOLD, 15));
-		browseButton.setBounds(730, 195, 134, 41);
+		browseButton.setBounds(470, 195, 134, 41);
 		contentPane.add(browseButton);
 
 		Button homeButton = new Button("Back");
@@ -202,11 +218,5 @@ public class GuiUploadWindow extends JFrame {
 	public static void setComposer(String composer) {
 		GuiUploadWindow.composer = composer;
 
-		
-		
-		
-		
-		
-		
 	}
 }
