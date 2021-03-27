@@ -678,7 +678,9 @@ public class Main {
      * @return an XML file.
      */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
-        if (drumNoteArray.size() == 0) {
+        int voiceChange = 0;
+    	
+    	if (drumNoteArray.size() == 0) {
             return null;
         }
         //XML print attempt
@@ -981,26 +983,47 @@ public class Main {
                             	directives.attr("id", "P1-I36");
                             }
 
-                            directives.up()//instrument
+                            directives.up();//instrument
 
-                            .add("voice")
-                            .set(1)//TODO
-                            .up()//voice
+                            if (voiceChange == 0) {
+                            	directives.add("voice")
+                                .set(1)//TODO
+                                .up();//voice
+                            } else {
+                            	directives.add("voice")
+                                .set(2)//TODO
+                                .up();//voice
+                            }
+                            
 
-                            .add("type")
+                            directives.add("type")
                             .set("eighth")//TODO
-                            .up()//type
+                            .up();//type
 
-                            .add("stem")
-                            .set("up")//TODO
-                            .up()//stem
-
-                            .add("notehead")
-                            .set(drumNote.noteValue)
-                            .up()//notehead
+                            if (voiceChange == 0) {
+                            	directives.add("stem")
+                                .set("up")//TODO
+                                .up();//stem
+                            } else {
+                            	directives.add("stem")
+                                .set("down")//TODO
+                                .up();//stem
+                            }
+                            
+                            
+                            //voiceChange
+                            
+                            if (drumNote.noteValue == 'o') {
+                            	//Nothing
+                            } else {
+                            	directives.add("notehead")
+                                .set(drumNote.noteValue)
+                                .up();
+                            }
+                            
 
                             //if () {
-                            		.add("beam")
+                            directives.add("beam")
                             		.attr("number", "1")
                             		//if () {
                             		.set("continue")
