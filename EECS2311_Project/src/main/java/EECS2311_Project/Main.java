@@ -26,6 +26,9 @@ public class Main {
     static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
     static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
 
+    static int timeSig1;
+    static int timeSig2;
+
     static int guitar = 0; //0 is guitar, 1 is bass.
 
     static String tabTitle = "";
