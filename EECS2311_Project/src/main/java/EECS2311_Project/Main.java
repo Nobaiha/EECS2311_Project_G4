@@ -26,6 +26,11 @@ public class Main {
     static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
     static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
 
+    static int timeSig1;
+    static int timeSig2;
+
+    static int guitar = 0; //0 is guitar, 1 is bass.
+
     static String tabTitle = "";
     static String tabComposer = "";
     static String tabContents = "";
@@ -132,9 +137,16 @@ public class Main {
         boolean repeatFlag = false;
         int repeatNum;
         int measureChars = 1;
+        int repeatMax = 6;
         //Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg])");
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher;
+
+        if(guitar == 0){
+            repeatMax = 6;
+        }else if(guitar == 1){
+            repeatMax = 4;
+        }
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String[] array : strArray) {
@@ -146,7 +158,7 @@ public class Main {
             repeat = false;
             repeatNum = 0;
             System.out.println(array.length);
-            if (repeatTimes == 6) {
+            if (repeatTimes == repeatMax) {
                 repeatTimes = 0;
                 stringVal = 0;
                 measureMem = measureNum;
@@ -441,9 +453,14 @@ public class Main {
                 .add("part-list")
                 .add("score-part")
                 .attr("id", "P1")
-                .add("part-name")
-                .set("Guitar") //change this to name of music
-                .up()
+                .add("part-name");
+                if(guitar == 0){
+                   directives.set("Guitar");
+                }else if(guitar == 1){
+                    directives.set("Bass");
+                }
+                 //change this to name of music
+                directives.up()
                 .up()
                 .up()
                 .add("part")
@@ -504,62 +521,103 @@ public class Main {
                         .up()
                         .up()
                         .add("staff-details")
-                        .add("staff-lines")
-                        .set(6)
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "1")
-                        .add("tuning-step")
-                        .set("E")
-                        .up()
-                        .add("tuning-octave")
-                        .set(2)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "2")
-                        .add("tuning-step")
-                        .set("A")
-                        .up()
-                        .add("tuning-octave")
-                        .set(2)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "3")
-                        .add("tuning-step")
-                        .set("D")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "4")
-                        .add("tuning-step")
-                        .set("G")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "5")
-                        .add("tuning-step")
-                        .set("B")
-                        .up()
-                        .add("tuning-octave")
-                        .set(3)
-                        .up()
-                        .up()
-                        .add("staff-tuning")
-                        .attr("line", "6")
-                        .add("tuning-step")
-                        .set("E")
-                        .up()
-                        .add("tuning-octave")
-                        .set(4)
-                        .up()
+                        .add("staff-lines");
+                    if(guitar == 0){
+                        directives.set(6);
+                    }else if(guitar == 1){
+                        directives.set(4);
+                    }
+                        directives.up();
+                    if(guitar == 0) {
+                        directives.add("staff-tuning")
+                                .attr("line", "1")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "2")
+                                .add("tuning-step")
+                                .set("A")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "3")
+                                .add("tuning-step")
+                                .set("D")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "4")
+                                .add("tuning-step")
+                                .set("G")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "5")
+                                .add("tuning-step")
+                                .set("B")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "6")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(4);
+                    }else if(guitar == 1){
+                        directives.add("staff-tuning")
+                                .attr("line", "1")
+                                .add("tuning-step")
+                                .set("G")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "2")
+                                .add("tuning-step")
+                                .set("D")
+                                .up()
+                                .add("tuning-octave")
+                                .set(2)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "3")
+                                .add("tuning-step")
+                                .set("A")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3)
+                                .up()
+                                .up()
+                                .add("staff-tuning")
+                                .attr("line", "4")
+                                .add("tuning-step")
+                                .set("E")
+                                .up()
+                                .add("tuning-octave")
+                                .set(3);
+                    }
+                        directives.up()
                         .up()
                         .up()
                         .up();
@@ -678,12 +736,15 @@ public class Main {
      * @return an XML file.
      */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
-        if (drumNoteArray.size() == 0) {
+        int voiceChange = 0;
+    	
+    	if (drumNoteArray.size() == 0) {
             return null;
         }
         //XML print attempt
         Directives directives = new Directives();
-        directives.add("score-partwise")
+        directives
+        	.add("score-partwise")
         	.attr("version", "3.0")
         	.add("work")
         	.add("work-title")
@@ -702,182 +763,168 @@ public class Main {
         	.add("part-name")
         	.set("Drumset") //change this to name of music
         	.up()//part-name
-        	
-        	
+
+
         	.add("score-instrument")
         	.attr("id", "P1-I36")
         	.add("instrument-name")
         	.set("Bass Drum 1")
         	.up()  
         	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I37")
-        	.add("instrument-name")
-        	.set("Bass Drum 2")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I38")
-        	.add("instrument-name")
-        	.set("Side Stick")
-        	.up()  
-        	.up()
-        	
+
         	.add("score-instrument")
         	.attr("id", "P1-I39")
         	.add("instrument-name")
         	.set("Snare")
         	.up()  
         	.up()
-        	
+
         	.add("score-instrument")
         	.attr("id", "P1-I42")
         	.add("instrument-name")
         	.set("Low Floor Tom")
         	.up()  
         	.up()
-        	
+
         	.add("score-instrument")
         	.attr("id", "P1-I43")
         	.add("instrument-name")
         	.set("Closed Hi-Hat")
         	.up()  
         	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I44")
-        	.add("instrument-name")
-        	.set("High Floor Tom")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I45")
-        	.add("instrument-name")
-        	.set("Pedal Hi-Hat")
-        	.up()  
-        	.up()
-        	
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I44")
+//        	.add("instrument-name")
+//        	.set("High Floor Tom")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I45")
+//        	.add("instrument-name")
+//        	.set("Pedal Hi-Hat")
+//        	.up()  
+//        	.up()
+
         	.add("score-instrument")
         	.attr("id", "P1-I46")
         	.add("instrument-name")
         	.set("Low Tom")
         	.up()  
         	.up()
-        	
+
         	.add("score-instrument")
         	.attr("id", "P1-I47")
         	.add("instrument-name")
         	.set("Open Hi-Hat")
         	.up()  
         	.up()
-        	
+
         	.add("score-instrument")
         	.attr("id", "P1-I48")
         	.add("instrument-name")
         	.set("Low-Mid Tom")
         	.up()  
         	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I49")
-        	.add("instrument-name")
-        	.set("Hi-Mid Tom")
-        	.up()  
-        	.up()
-        	
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I49")
+//        	.add("instrument-name")
+//        	.set("Hi-Mid Tom")
+//        	.up()  
+//        	.up()
+
         	.add("score-instrument")
         	.attr("id", "P1-I50")
         	.add("instrument-name")
         	.set("Crash Cymbal 1")
         	.up()  
         	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I51")
-        	.add("instrument-name")
-        	.set("High Tom")
-        	.up()  
-        	.up()
-        	
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I51")
+//        	.add("instrument-name")
+//        	.set("High Tom")
+//        	.up()  
+//        	.up()
+
         	.add("score-instrument")
         	.attr("id", "P1-I52")
         	.add("instrument-name")
         	.set("Ride Cymbal 1")
         	.up()  
         	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I53")
-        	.add("instrument-name")
-        	.set("Chinese Cymbal")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I54")
-        	.add("instrument-name")
-        	.set("Ride Bell")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I55")
-        	.add("instrument-name")
-        	.set("Tambourine")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I56")
-        	.add("instrument-name")
-        	.set("Splash Cymbal")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I57")
-        	.add("instrument-name")
-        	.set("Cowbell")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I58")
-        	.add("instrument-name")
-        	.set("Crash Cymbal 2")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I60")
-        	.add("instrument-name")
-        	.set("Ride Cymbal 2")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I64")
-        	.add("instrument-name")
-        	.set("Open Hi Conga")
-        	.up()  
-        	.up()
-        	
-        	.add("score-instrument")
-        	.attr("id", "P1-I65")
-        	.add("instrument-name")
-        	.set("Low Conga")
-        	.up()  
-        	.up()
-        	
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I53")
+//        	.add("instrument-name")
+//        	.set("Chinese Cymbal")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I54")
+//        	.add("instrument-name")
+//        	.set("Ride Bell")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I55")
+//        	.add("instrument-name")
+//        	.set("Tambourine")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I56")
+//        	.add("instrument-name")
+//        	.set("Splash Cymbal")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I57")
+//        	.add("instrument-name")
+//        	.set("Cowbell")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I58")
+//        	.add("instrument-name")
+//        	.set("Crash Cymbal 2")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I60")
+//        	.add("instrument-name")
+//        	.set("Ride Cymbal 2")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I64")
+//        	.add("instrument-name")
+//        	.set("Open Hi Conga")
+//        	.up()  
+//        	.up()
+
+//        	.add("score-instrument")
+//        	.attr("id", "P1-I65")
+//        	.add("instrument-name")
+//        	.set("Low Conga")
+//        	.up()  
+//        	.up()
+
         	.up()//score-part
         	.up()//part-list
-        	
+
         	.add("part")
         	.attr("id","P1");
-        	
+
         for (int i = 0; i < 2; i++) {
             directives.add("measure")
                     .attr("number", i + 1)
@@ -890,7 +937,7 @@ public class Main {
                     .set(0)
                     .up()//fifths
                     .up()//key
-                    
+
                     .add("time")
                     .add("beats")
                     .set(4)
@@ -899,7 +946,7 @@ public class Main {
                     .set(4)
                     .up()//beat-type
                     .up()//time
-                    
+
                     .add("clef")
                     .add("sign")
                     .set("percussion")
@@ -916,40 +963,125 @@ public class Main {
                     directives
                             .add("note")
                             .add("unpitched")
-                            .add("display-step")
-                            .set("G")//TODO
-                            .up()//display-step
-                            .add("display-octave")
-                            .set(5)
-                            .up()//display-octave
+                            .add("display-step");
+                            if (drumNote.part == "SD" || drumNote.part == "S") { //Snare
+                            	directives.set("C");
+                            } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
+                            	directives.set("F");
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+                            	directives.set("G");
+                            } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
+                            	directives.set("F");
+                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            	directives.set("A");
+                            } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
+                            	directives.set("E");
+                            } else if (drumNote.part.equalsIgnoreCase("MT") || drumNote.part.equalsIgnoreCase("T2")) { //Medium Tom
+                            	directives.set("D");
+                            } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
+                            	directives.set("A");
+                            } else {
+                            	directives.set("F");
+                            }
+
+                            directives.up()//display-step
+                            .add("display-octave");
+                            if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
+                            	directives.set(4);
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("MT") || drumNote.part.equalsIgnoreCase("T2")) { //Medium Tom
+                            	directives.set(5);
+                            } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
+                            	directives.set(4);
+                            } else {
+                            	directives.set(4);
+                            }
+                            directives.up()//display-octave
                             .up()//unpitched
-                            
+
                             .add("duration")
                             .set(2)//TODO
                             .up()//duration
+
+                            .add("instrument");
+                            if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
+                            	directives.attr("id", "P1-I39");
+                            } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
+                            	directives.attr("id", "P1-I36");
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+
+                            	if (drumNote.noteValue == 'x') { //Closed High hat
+                            		directives.attr("id", "P1-I43");
+                            	} else if (drumNote.noteValue == 'o') { //Open High hat
+                            		directives.attr("id", "P1-I47");
+                            	} else {
+                            		directives.attr("id", "P1-I43");
+                            	}
+
+                            } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
+                            	directives.attr("id", "P1-I52");
+                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            	directives.attr("id", "P1-I50");
+                            } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
+                            	directives.attr("id", "P1-I48");
+                            } else if (drumNote.part.equalsIgnoreCase("MT") || drumNote.part.equalsIgnoreCase("T2")) { //Medium Tom
+                            	directives.attr("id", "P1-I46");
+                            } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
+                            	directives.attr("id", "P1-I42");
+                            } else {
+                            	directives.attr("id", "P1-I36");
+                            }
+
+                            directives.up();//instrument
+
+                            if (voiceChange == 0) {
+                            	directives.add("voice")
+                                .set(1)//TODO
+                                .up();//voice
+                            } else {
+                            	directives.add("voice")
+                                .set(2)//TODO
+                                .up();//voice
+                            }
                             
-                            .add("instrument")
-                            .attr("id", drumNote.part)//TODO
-                            .up()//instrument
-                            
-                            .add("voice")
-                            .set(1)//TODO
-                            .up()//voice
-                            
-                            .add("type")
+
+                            directives.add("type")
                             .set("eighth")//TODO
-                            .up()//type
+                            .up();//type
+
+                            if (voiceChange == 0) {
+                            	directives.add("stem")
+                                .set("up")//TODO
+                                .up();//stem
+                            } else {
+                            	directives.add("stem")
+                                .set("down")//TODO
+                                .up();//stem
+                            }
                             
-                            .add("stem")
-                            .set("up")//TODO
-                            .up()//stem
                             
-                            .add("notehead")
-                            .set(drumNote.noteValue)
-                            .up()//notehead
+                            //voiceChange
                             
+                            if (drumNote.noteValue == 'o') {
+                            	//Nothing
+                            } else {
+                            	directives.add("notehead")
+                                .set(drumNote.noteValue)
+                                .up();
+                            }
+                            
+
                             //if () {
-                            		.add("beam")
+                            directives.add("beam")
                             		.attr("number", "1")
                             		//if () {
                             		.set("continue")
@@ -964,12 +1096,12 @@ public class Main {
                             .up();//note
                 }
             }
-            
+
             directives.up();//measure
         }
         directives.up()//part
         .up();//score-partwise
-        
+
         String xml = null;
         try {
             xml = new Xembler(
@@ -978,10 +1110,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println("error");
         }
-        
+
         System.out.println(xml);
         return xml;
-        
+
     }
 
     /**
@@ -1033,6 +1165,9 @@ public class Main {
             ArrayList<GuitarNote> guitarNoteArray = guitarNoteParser(noteArray);
             for (GuitarNote guitarNote : guitarNoteArray) {
                 //System.out.println("setting music note");
+                if (guitar == 1) {
+                    guitarNote.bass = true;
+                }
                 guitarNote.setMusicNote();
                 /*System.out.println("String: " + guitarNote.stringValue);
                 System.out.println("Measure: " + guitarNote.measure);
@@ -1081,4 +1216,3 @@ public class Main {
         welcomePage.setVisible(true);
     }
 }
-
