@@ -51,7 +51,7 @@ public class Measure {
     public void processDuration() {
         ArrayList<Integer> samePositionNotes = new ArrayList<>();
         for (int i = 0; i < guitarNotes.size(); i++) {
-        	int offset = 0;
+            int offset = 0;
             if(guitarNotes.get(i).grace){
                 offset = 1;
             }

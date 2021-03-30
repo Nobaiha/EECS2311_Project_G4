@@ -99,8 +99,7 @@ public class SaveFile extends JFrame {
 			        if (userSelection == JFileChooser.APPROVE_OPTION) {
 			            File file = fileChooser.getSelectedFile();
 			            Main.saveFile(file, tabDisplayTextArea.getText());
-			          //new GuiUploadWindow("","","").setVisible(true);
-
+			            //new GuiUploadWindow("","","").setVisible(true);
 				}
 			}
 		});
@@ -122,7 +121,7 @@ public class SaveFile extends JFrame {
 		fileReadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
 		fileReadyLabel.setBounds(10, 100, 895, 49);
 		saveFile.add(fileReadyLabel);
-		
+
 		Button button = new Button("Edit");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

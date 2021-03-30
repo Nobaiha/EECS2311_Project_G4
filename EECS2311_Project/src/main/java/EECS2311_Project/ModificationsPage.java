@@ -142,14 +142,14 @@ public class ModificationsPage extends JFrame {
 		
 		JComboBox timeSigNumComboBox_2 = new JComboBox();
 		timeSigNumComboBox_2.setModel(new DefaultComboBoxModel(new String[] {"4", "2", "3", "6", "9", "12"}));
-		timeSigNumComboBox_2.setFont(new Font("Calibri", Font.PLAIN, 14));
-		timeSigNumComboBox_2.setBounds(243, 461, 60, 34);
+		timeSigNumComboBox_2.setFont(new Font("Calibri", Font.PLAIN, 22));
+		timeSigNumComboBox_2.setBounds(243, 461, 54, 34);
 		contentPane.add(timeSigNumComboBox_2);
 		
 		JComboBox timeSigDenomboBox_3 = new JComboBox();
 		timeSigDenomboBox_3.setModel(new DefaultComboBoxModel(new String[] {"4", "1", "2", "8", "16"}));
-		timeSigDenomboBox_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		timeSigDenomboBox_3.setBounds(334, 461, 60, 34);
+		timeSigDenomboBox_3.setFont(new Font("Calibri", Font.PLAIN, 22));
+		timeSigDenomboBox_3.setBounds(334, 461, 54, 34);
 		contentPane.add(timeSigDenomboBox_3);
 		
 		JLabel lblKey_1 = new JLabel("/");

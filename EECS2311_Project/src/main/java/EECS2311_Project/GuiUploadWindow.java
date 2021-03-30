@@ -26,6 +26,7 @@ public class GuiUploadWindow extends JFrame {
 	private static String content;
 	private static String lastDir;
 	private static String filePath;
+
 	/**
 	 * Launch the application.
 	 */
@@ -80,7 +81,7 @@ public class GuiUploadWindow extends JFrame {
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
 		sp.setBounds(10, 259, 885, 359);
 		contentPane.add(sp);
-		
+
 		if(filePath != null && !tabDisplayTextArea.getText().equals("")){
 			fileSelectedLabel.setText(filePath);
 		}
@@ -88,7 +89,7 @@ public class GuiUploadWindow extends JFrame {
 		JComboBox intrsutmentDropDown = new JComboBox();
 		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 22));
 		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
-		intrsutmentDropDown.setBounds(630, 185, 150, 49);
+		intrsutmentDropDown.setBounds(635, 197, 127, 40);
 		contentPane.add(intrsutmentDropDown);
 
 		intrsutmentDropDown.addActionListener(e->{
@@ -204,6 +205,12 @@ public class GuiUploadWindow extends JFrame {
 		modButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		modButton.setBounds(671, 638, 224, 41);
 		contentPane.add(modButton);
+
+		
+		
+		
+		
+		
 		
 	}
 
