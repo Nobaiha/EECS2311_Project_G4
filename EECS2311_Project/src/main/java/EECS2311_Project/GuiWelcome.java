@@ -3,6 +3,7 @@ package EECS2311_Project;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Label;
 
 import javax.swing.JFrame;
@@ -165,6 +166,12 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel_2_2.setBackground(new Color(153, 153, 204));
 		lblNewLabel_2_2.setBounds(0, 701, 905, 67);
 		contentPane.add(lblNewLabel_2_2);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		Image  image = new ImageIcon(this.getClass().getResource("/Tab-2-MusicXML_Logo_V3.png")).getImage();
+		lblNewLabel_5.setIcon(new ImageIcon(image));
+		lblNewLabel_5.setBounds(104, 41, 801, 258);
+		contentPane.add(lblNewLabel_5);
 		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
