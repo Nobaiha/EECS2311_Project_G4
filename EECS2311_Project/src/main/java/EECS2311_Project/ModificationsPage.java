@@ -135,7 +135,7 @@ public class ModificationsPage extends JFrame {
 		lblKey_1.setBounds(307, 454, 28, 57);
 		contentPane.add(lblKey_1);
 		
-		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");
+		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 Modifications");
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setForeground(Color.WHITE);

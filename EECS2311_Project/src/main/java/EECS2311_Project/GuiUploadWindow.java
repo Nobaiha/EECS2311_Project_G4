@@ -203,7 +203,7 @@ public class GuiUploadWindow extends JFrame {
 		modButton.setBounds(480, 639, 162, 41);
 		contentPane.add(modButton);
 		
-		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");
+		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 Upload");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
