@@ -57,12 +57,12 @@ public class GuiUploadWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Label instructionsLabel1 = new Label("Pick a file from your file explorer of type \".txt\" that contains your");
+		Label instructionsLabel1 = new Label("Pick a file from your file explorer of type \".txt\" that contains your tablature music or ");
 		instructionsLabel1.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionsLabel1.setBounds(10, 73, 885, 65);
 		contentPane.add(instructionsLabel1);
 		
-		Label instructionsLabel2 = new Label("tablature music or paste it in the window below.");
+		Label instructionsLabel2 = new Label("or paste it in the window below.");
 		instructionsLabel2.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionsLabel2.setBounds(10, 114, 885, 65);
 		contentPane.add(instructionsLabel2);
@@ -93,7 +93,7 @@ public class GuiUploadWindow extends JFrame {
 		intrsutmentDropDown.setBackground(Color.WHITE);
 		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 23));
 		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
-		intrsutmentDropDown.setBounds(657, 207, 127, 30);
+		intrsutmentDropDown.setBounds(657, 201, 127, 30);
 		contentPane.add(intrsutmentDropDown);
 
 		intrsutmentDropDown.addActionListener(e->{
@@ -185,8 +185,8 @@ public class GuiUploadWindow extends JFrame {
 				//setVisible(false);
 			}
 		});
-		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 25));
-		enterButton.setBounds(180, 639, 174, 41);
+		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
+		enterButton.setBounds(254, 639, 162, 41);
 		contentPane.add(enterButton);
 
 		Button modButton = new Button("Modifications");
@@ -199,8 +199,8 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 
-		modButton.setFont(new Font("Calibri Light", Font.PLAIN, 25));
-		modButton.setBounds(500, 639, 174, 41);
+		modButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
+		modButton.setBounds(480, 639, 162, 41);
 		contentPane.add(modButton);
 		
 		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");

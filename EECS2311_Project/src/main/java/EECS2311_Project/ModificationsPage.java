@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+import javax.swing.JTabbedPane;
 
 public class ModificationsPage extends JFrame {
 
@@ -57,30 +59,6 @@ public class ModificationsPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
-		standardHeaderLabel.setForeground(new Color(0, 51, 153));
-		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
-		standardHeaderLabel.setBounds(10, 10, 372, 49);
-		contentPane.add(standardHeaderLabel);
-		
-		Label tmLabel = new Label("TM");
-		tmLabel.setBounds(388, 10, 28, 21);
-		contentPane.add(tmLabel);
-		
-
-		JLabel instructionLabel1 = new JLabel("This page will allow you to add small modifications to your tab. You will be able to enter the composer,");
-		instructionLabel1.setFont(new Font("Calibri", Font.PLAIN, 20));
-
-		instructionLabel1.setBounds(10, 103, 875, 49);
-		contentPane.add(instructionLabel1);
-		
-
-		JLabel instructionLabel2 = new JLabel("title of your tab, key and time signature. Once finished, press \"Confirm\".");
-		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 20));
-
-		instructionLabel2.setBounds(10, 150, 865, 49);
-		contentPane.add(instructionLabel2);
-		
 		JLabel composerLabel = new JLabel("Composer:");
 
 		composerLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
@@ -115,9 +93,9 @@ public class ModificationsPage extends JFrame {
 		Button enterButton = new Button("Confirm");
 
 		enterButton.setForeground(Color.BLACK);
-		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		enterButton.setBackground(SystemColor.menu);
-		enterButton.setBounds(340, 597, 224, 41);
+		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
+		enterButton.setBackground(Color.WHITE);
+		enterButton.setBounds(387, 597, 162, 41);
 		contentPane.add(enterButton);
 		
 		JLabel lblKey = new JLabel("Key:");
@@ -156,6 +134,39 @@ public class ModificationsPage extends JFrame {
 		lblKey_1.setFont(new Font("Calibri", Font.BOLD, 28));
 		lblKey_1.setBounds(307, 454, 28, 57);
 		contentPane.add(lblKey_1);
+		
+		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblNewLabel.setBackground(new Color(153, 153, 204));
+		lblNewLabel.setBounds(0, 0, 905, 67);
+		contentPane.add(lblNewLabel);
+		
+		Label label = new Label("This page will allow you to add small modifications to your tab. You will be");
+		label.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		label.setBounds(10, 87, 885, 41);
+		contentPane.add(label);
+		
+		Label label_1 = new Label("able to enter the composer, title of your tab, key and time signature. Once ");
+		label_1.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		label_1.setBounds(10, 134, 885, 41);
+		contentPane.add(label_1);
+		
+		Label label_2 = new Label("finished, press \"Confirm\".");
+		label_2.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		label_2.setBounds(10, 188, 325, 34);
+		contentPane.add(label_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setOpaque(true);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblNewLabel_1.setBackground(new Color(153, 153, 204));
+		lblNewLabel_1.setBounds(0, 701, 905, 67);
+		contentPane.add(lblNewLabel_1);
 
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

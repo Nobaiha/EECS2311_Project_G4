@@ -69,13 +69,8 @@ public class GuiWelcome extends JFrame {
 			}
 		});
 		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		browseButton.setBounds(328, 549, 249, 69);
+		browseButton.setBounds(358, 575, 178, 43);
 		contentPane.add(browseButton);
-		
-		Label instructionLabel2 = new Label("Click the button below to upload your tablature.");
-		instructionLabel2.setFont(new Font("Calibri Light", Font.PLAIN, 22));
-		instructionLabel2.setBounds(189, 477, 598, 49);
-		contentPane.add(instructionLabel2);
 		
 		JLabel lblNewLabel = new JLabel("Welcome to TAB-2-MusicXML\u2122 (T.2.M) converter that takes TABs of guitar \r\n");
 		lblNewLabel.setForeground(new Color(102, 102, 255));
@@ -170,8 +165,13 @@ public class GuiWelcome extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("");
 		Image  image = new ImageIcon(this.getClass().getResource("/Tab-2-MusicXML_Logo_V3.png")).getImage();
 		lblNewLabel_5.setIcon(new ImageIcon(image));
-		lblNewLabel_5.setBounds(104, 41, 801, 258);
+		lblNewLabel_5.setBounds(52, 41, 801, 258);
 		contentPane.add(lblNewLabel_5);
+		
+		Label label = new Label("Click the button below to upload your tablature.");
+		label.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		label.setBounds(177, 490, 537, 43);
+		contentPane.add(label);
 		
 		/*JLabel logoImageLabel = new JLabel("");
 		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
