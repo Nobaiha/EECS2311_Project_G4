@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
+import java.awt.SystemColor;
 
 public class GuiUploadWindow extends JFrame {
 
@@ -87,9 +89,11 @@ public class GuiUploadWindow extends JFrame {
 		}
 
 		JComboBox intrsutmentDropDown = new JComboBox();
+		intrsutmentDropDown.setEditable(true);
+		intrsutmentDropDown.setBackground(Color.WHITE);
 		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 22));
 		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
-		intrsutmentDropDown.setBounds(635, 197, 127, 40);
+		intrsutmentDropDown.setBounds(657, 197, 127, 40);
 		contentPane.add(intrsutmentDropDown);
 
 		intrsutmentDropDown.addActionListener(e->{
@@ -103,6 +107,7 @@ public class GuiUploadWindow extends JFrame {
 		});
 		
 		Button browseButton = new Button("Browse");
+		browseButton.setBackground(Color.WHITE);
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser choosingFile;
@@ -150,25 +155,16 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 
-		homeButton.setBackground(UIManager.getColor("Button.background"));
+		homeButton.setBackground(Color.WHITE);
 		homeButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		homeButton.setForeground(new Color(0, 0, 0));
-		homeButton.setBounds(10, 638, 150, 41);
+		homeButton.setBounds(31, 686, 150, 41);
 		contentPane.add(homeButton);
-		
-		Label tmLabel = new Label("TM");
-		tmLabel.setBounds(372, 10, 28, 21);
-		contentPane.add(tmLabel);
-		
-		Label standardHeaderLabel = new Label("TAB-2-MusicXML");
-		standardHeaderLabel.setForeground(new Color(0, 51, 153));
-		standardHeaderLabel.setFont(new Font("Arial Black", Font.BOLD, 35));
-		standardHeaderLabel.setBounds(10, 10, 372, 49);
-		contentPane.add(standardHeaderLabel);
 		
 		
 		
 		Button enterButton = new Button("Convert");
+		enterButton.setBackground(Color.WHITE);
 		enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String pastedTab = tabDisplayTextArea.getText();
@@ -190,10 +186,11 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		enterButton.setBounds(339, 638, 224, 41);
+		enterButton.setBounds(292, 686, 224, 41);
 		contentPane.add(enterButton);
 
 		Button modButton = new Button("Modifications");
+		modButton.setBackground(Color.WHITE);
 		modButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ModificationsPage modificationsPage = new ModificationsPage(title,composer,tabDisplayTextArea.getText());
@@ -203,8 +200,23 @@ public class GuiUploadWindow extends JFrame {
 		});
 
 		modButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		modButton.setBounds(671, 638, 224, 41);
+		modButton.setBounds(645, 686, 224, 41);
 		contentPane.add(modButton);
+		
+		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblNewLabel.setBackground(new Color(153, 153, 204));
+		lblNewLabel.setBounds(0, 0, 905, 67);
+		lblNewLabel.setOpaque(true);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBackground(new Color(153, 153, 204));
+		lblNewLabel_1.setBounds(0, 642, 905, 126);
+		lblNewLabel_1.setOpaque(true);
+		contentPane.add(lblNewLabel_1);
 
 		
 		
