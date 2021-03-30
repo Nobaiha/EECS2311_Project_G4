@@ -58,12 +58,12 @@ public class GuiUploadWindow extends JFrame {
 		contentPane.setLayout(null);
 		
 		Label instructionsLabel1 = new Label("Pick a file from your file explorer of type \".txt\" that contains your");
-		instructionsLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionsLabel1.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionsLabel1.setBounds(10, 73, 885, 65);
 		contentPane.add(instructionsLabel1);
 		
 		Label instructionsLabel2 = new Label("tablature music or paste it in the window below.");
-		instructionsLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
+		instructionsLabel2.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionsLabel2.setBounds(10, 114, 885, 65);
 		contentPane.add(instructionsLabel2);
 		
@@ -91,9 +91,9 @@ public class GuiUploadWindow extends JFrame {
 		JComboBox intrsutmentDropDown = new JComboBox();
 		intrsutmentDropDown.setEditable(true);
 		intrsutmentDropDown.setBackground(Color.WHITE);
-		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 22));
+		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 23));
 		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
-		intrsutmentDropDown.setBounds(657, 197, 127, 40);
+		intrsutmentDropDown.setBounds(657, 207, 127, 30);
 		contentPane.add(intrsutmentDropDown);
 
 		intrsutmentDropDown.addActionListener(e->{
@@ -142,7 +142,7 @@ public class GuiUploadWindow extends JFrame {
 				}
 			}
 		});
-		browseButton.setFont(new Font("Calibri", Font.BOLD, 15));
+		browseButton.setFont(new Font("Calibri Light", Font.BOLD, 15));
 		browseButton.setBounds(470, 195, 134, 41);
 		contentPane.add(browseButton);
 
@@ -156,9 +156,9 @@ public class GuiUploadWindow extends JFrame {
 		});
 
 		homeButton.setBackground(Color.WHITE);
-		homeButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		homeButton.setFont(new Font("Calibri", Font.PLAIN, 15));
 		homeButton.setForeground(new Color(0, 0, 0));
-		homeButton.setBounds(31, 686, 150, 41);
+		homeButton.setBounds(10, 728, 109, 30);
 		contentPane.add(homeButton);
 		
 		
@@ -185,8 +185,8 @@ public class GuiUploadWindow extends JFrame {
 				//setVisible(false);
 			}
 		});
-		enterButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		enterButton.setBounds(292, 686, 224, 41);
+		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 25));
+		enterButton.setBounds(180, 639, 174, 41);
 		contentPane.add(enterButton);
 
 		Button modButton = new Button("Modifications");
@@ -199,8 +199,8 @@ public class GuiUploadWindow extends JFrame {
 			}
 		});
 
-		modButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		modButton.setBounds(645, 686, 224, 41);
+		modButton.setFont(new Font("Calibri Light", Font.PLAIN, 25));
+		modButton.setBounds(500, 639, 174, 41);
 		contentPane.add(modButton);
 		
 		JLabel lblNewLabel = new JLabel(" TAB - 2 - MusicXML\u2122 ");
@@ -212,11 +212,14 @@ public class GuiUploadWindow extends JFrame {
 		lblNewLabel.setOpaque(true);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBackground(new Color(153, 153, 204));
-		lblNewLabel_1.setBounds(0, 642, 905, 126);
-		lblNewLabel_1.setOpaque(true);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setOpaque(true);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblNewLabel_2.setBackground(new Color(153, 153, 204));
+		lblNewLabel_2.setBounds(0, 701, 905, 67);
+		contentPane.add(lblNewLabel_2);
 
 		
 		

@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import javax.swing.border.EtchedBorder;
 
 public class GuiWelcome extends JFrame {
 
@@ -50,6 +52,7 @@ public class GuiWelcome extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		contentPane = new JPanel();
+		contentPane.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.setBackground(new Color(248, 248, 255));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,8 +73,8 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(browseButton);
 		
 		Label instructionLabel2 = new Label("Click the button below to upload your tablature.");
-		instructionLabel2.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionLabel2.setBounds(131, 473, 646, 49);
+		instructionLabel2.setFont(new Font("Calibri Light", Font.PLAIN, 22));
+		instructionLabel2.setBounds(189, 477, 598, 49);
 		contentPane.add(instructionLabel2);
 		
 		JLabel lblNewLabel = new JLabel("Welcome to TAB-2-MusicXML\u2122 (T.2.M) converter that takes TABs of guitar \r\n");
@@ -88,7 +91,7 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel_1.setBounds(33, 359, 838, 49);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("  TAB - 2 - MusicXML\u2122");
+		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Poor Richard", Font.BOLD, 50));
 		lblNewLabel_2.setBackground(new Color(153, 153, 204));
@@ -101,12 +104,40 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(separator);
 		
 		JButton btnNewButton = new JButton("Learn More");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			public void openWebPage(String url){
+				   try {         
+				     java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+				   }
+				   catch (java.io.IOException e) {
+				       System.out.println(e.getMessage());
+				   }
+				}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				openWebPage("https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
+			}
+		});
 		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 15));
 		btnNewButton.setBackground(new Color(255, 255, 255));
 		btnNewButton.setBounds(309, 728, 109, 30);
 		contentPane.add(btnNewButton);
 		
 		JButton btnTutorial = new JButton("Tutorial");
+		btnTutorial.addMouseListener(new MouseAdapter() {
+			public void openWebPage(String url){
+				   try {         
+				     java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+				   }
+				   catch (java.io.IOException e) {
+				       System.out.println(e.getMessage());
+				   }
+				}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				openWebPage("https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
+			}
+		});
 		btnTutorial.setFont(new Font("Calibri", Font.PLAIN, 15));
 		btnTutorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,7 +150,7 @@ public class GuiWelcome extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("User manual:\r\n");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel_3.setBounds(178, 727, 121, 30);
+		lblNewLabel_3.setBounds(189, 727, 109, 30);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Live demo:\r\n");
