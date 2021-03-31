@@ -166,11 +166,11 @@ public class GuiWelcome extends JFrame {
 		
 		Label label = new Label("Click the button below to upload your tablature.");
 		label.setFont(new Font("Calibri Light", Font.PLAIN, 20));
-		label.setBounds(177, 490, 537, 43);
+		label.setBounds(229, 490, 537, 43);
 		contentPane.add(label);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/Tab-2-MusicXML_Logo_V3.png")));
+		lblNewLabel_5.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/Tab-2-MusicXML_Logo_V7.png")));
 		lblNewLabel_5.setBounds(91, 54, 702, 220);
 		contentPane.add(lblNewLabel_5);
 		
