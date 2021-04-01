@@ -6,7 +6,7 @@ public class drumTester {
 	
 	public static void main (String[] args){
 		
-		String input = "HH|--x-x-x-x-x-x-x-|--------x-------|";
+		String input = "BD|--x-x-x-o-x-x-x-|--------x-------|";
         ArrayList<String> testNoteArray = new ArrayList<>();
         testNoteArray.add(input);
         

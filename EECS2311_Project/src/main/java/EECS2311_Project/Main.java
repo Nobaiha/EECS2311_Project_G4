@@ -678,7 +678,8 @@ public class Main {
      * @return an XML file.
      */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
-        int voiceChange = 0;
+    	int voiceChange;
+    	int doOnce = 0;
     	
     	if (drumNoteArray.size() == 0) {
             return null;
@@ -868,7 +869,8 @@ public class Main {
         	.attr("id","P1");
 
         for (int i = 0; i < 2; i++) {
-            directives.add("measure")
+            doOnce = 0;
+        	directives.add("measure")
                     .attr("number", i + 1)
                     .add("attributes")
                     .add("divisions")
@@ -901,12 +903,25 @@ public class Main {
                     .up();//attributes
             for (DrumNote drumNote : drumNoteArray) {
                 if (drumNote.measure == i + 1) {
-                    //process note here later
-                    directives
-                            .add("note")
+                	voiceChange = 0;
+                	
+                	if ((drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) && doOnce == 0) {
+                		voiceChange = 1;
+                		doOnce = 1;
+                	}
+                	
+                	if (voiceChange != 0) {
+                		directives.add("backup")
+                		.add("duration")
+                		.set(16)//TODO
+                		.up()//duration
+                		.up();//backup
+                	}
+                	
+                	directives.add("note")
                             .add("unpitched")
                             .add("display-step");
-                            if (drumNote.part == "SD" || drumNote.part == "S") { //Snare
+                            if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
                             	directives.set("C");
                             } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
                             	directives.set("F");
@@ -987,11 +1002,11 @@ public class Main {
 
                             if (voiceChange == 0) {
                             	directives.add("voice")
-                                .set(1)//TODO
+                                .set(1)
                                 .up();//voice
                             } else {
                             	directives.add("voice")
-                                .set(2)//TODO
+                                .set(2)
                                 .up();//voice
                             }
                             
@@ -1002,11 +1017,11 @@ public class Main {
 
                             if (voiceChange == 0) {
                             	directives.add("stem")
-                                .set("up")//TODO
+                                .set("up")
                                 .up();//stem
                             } else {
                             	directives.add("stem")
-                                .set("down")//TODO
+                                .set("down")
                                 .up();//stem
                             }
                             
@@ -1023,19 +1038,19 @@ public class Main {
                             
 
                             //if () {
-                            directives.add("beam")
-                            		.attr("number", "1")
+                            //directives.add("beam")
+                            		//.attr("number", "1")
                             		//if () {
-                            		.set("continue")
+                            		//.set("continue")
                             		//} else if() {
                             		//.set("begin")
                 					//} else {
                             		//.set("end")
-                            		.up()//beam
+                            		//.up()//beam
                             		//}
                             //}
 
-                            .up();//note
+                            directives.up();//note
                 }
             }
 
