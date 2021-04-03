@@ -468,34 +468,36 @@ public class Main {
         for (int i = 0; i < measures.size(); i++) {
             directives.add("measure")
                     .attr("number", i + 1);
-            if(repeatEnds.contains(i + 2)){
-                directives.add("barline")
-                        .attr("location", "right")
-                        .add("bar-style")
-                        .set("light-heavy").up()
-                        .add("repeat")
-                        .attr("direction","backward").up().up();
-            }
-            if (repeatStarts.contains(i + 1)) {
-                int repeatTimes;
-                try{
-                    repeatTimes = repeatAmout.get(0);
-                }catch (Exception e){
-                    repeatTimes = 2;
+            if(repeatEnds.size() == repeatStarts.size()) {
+                if (repeatEnds.contains(i + 2)) {
+                    directives.add("barline")
+                            .attr("location", "right")
+                            .add("bar-style")
+                            .set("light-heavy").up()
+                            .add("repeat")
+                            .attr("direction", "backward").up().up();
                 }
-                directives.add("barline")
-                        .attr("location", "left")
-                        .add("bar-style")
-                        .set("heavy-light").up()
-                        .add("repeat")
-                        .attr("direction","forward").up().up()
-                        .add("direction")
-                        .attr("placement","above")
-                        .add("direction-type")
-                        .add("words").attr("relative-x","256.17")
-                        .attr("relative-y","16.01")
-                        .set("Repeat " + repeatTimes + "times").up().up().up();
-                repeatAmout.remove(0);
+                if (repeatStarts.contains(i + 1)) {
+                    int repeatTimes;
+                    try {
+                        repeatTimes = repeatAmout.get(0);
+                    } catch (Exception e) {
+                        repeatTimes = 2;
+                    }
+                    directives.add("barline")
+                            .attr("location", "left")
+                            .add("bar-style")
+                            .set("heavy-light").up()
+                            .add("repeat")
+                            .attr("direction", "forward").up().up()
+                            .add("direction")
+                            .attr("placement", "above")
+                            .add("direction-type")
+                            .add("words").attr("relative-x", "256.17")
+                            .attr("relative-y", "16.01")
+                            .set("Repeat " + repeatTimes + "times").up().up().up();
+                    repeatAmout.remove(0);
+                }
             }
             //sets the first measure to include tab details and clef etc.
             if (i == 0) {
@@ -648,8 +650,15 @@ public class Main {
                             .up()
                             .add("duration")
                             .set(guitarNote.duration)
-                            .up()
-                            .add("notations")
+                            .up();
+                    if(guitarNote.noteType != null){
+                        directives.add("type").set(guitarNote.noteType);
+                        if(guitarNote.noteDot){
+                            directives.up().add("dot");
+                        }
+                        directives.up();
+                    }
+                            directives.add("notations")
                             .add("technical");
                     if (guitarNote.harmonic) {
                         directives.add("harmonic")
@@ -1183,7 +1192,11 @@ public class Main {
                 if (guitar == 1) {
                     guitarNote.bass = true;
                 }
-                guitarNote.setMusicNote();
+                try {
+                    guitarNote.setMusicNote();
+                }catch(Exception exception){
+                    new Error("Error with at string " + guitarNote.stringValue + " at measure " + guitarNote.measure + " please double check your tab. ", tabTitle, tabComposer, tabContents);
+                }
                 /*System.out.println("String: " + guitarNote.stringValue);
                 System.out.println("Measure: " + guitarNote.measure);
                 System.out.println("Element number: " + guitarNote.noteNumber);
@@ -1205,6 +1218,7 @@ public class Main {
             for (Measure measure : measureArrayList) {
                 measure.sortNotes();
                 measure.processDuration();
+                measure.setNoteType();
                 //System.out.println(measure);
             }
             String xml = guitarXMLParser(measureArrayList);
