@@ -27,6 +27,8 @@ public class GuitarNote {
     public boolean chord;
     public boolean grace;
     public boolean bass = false;
+    public String noteType;
+    public boolean noteDot;
    //overload const. with pull off1/2
 
     
