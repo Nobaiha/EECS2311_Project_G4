@@ -196,7 +196,7 @@ public class Main {
                     //measuresElement.put(measureNum, noteNum);
                     measureNum = measureMem;
                     //change notenum to an array than contains repeat value and note number.
-                    repeatStarts.add(measureNum);
+                    repeatStarts.add(measureNum + 1);
                     measureNum++;
                     repeat = true;
                     noteNum = 1;
@@ -204,10 +204,10 @@ public class Main {
                     measuresElement.put(measureNum, noteNum);
                     if (repeat) {
                         repeat = false;
-                        repeatEnds.add(measureNum);
+                        repeatEnds.add(measureNum + 1);
                     } else {
                         repeat = true;
-                        repeatStarts.add(measureNum);
+                        repeatStarts.add(measureNum + 1);
                     }
                     noteNum = 1;
                     measureNum++;
@@ -216,7 +216,7 @@ public class Main {
                     noteNum++;
                     measuresElement.put(measureNum, noteNum);
                     noteNum = 1;
-                    repeatEnds.add(measureNum);
+                    repeatEnds.add(measureNum + 1);
                     measureNum++;
                     repeatAmout.add(Character.getNumericValue(str.charAt(0)));
                 }/*else if(str.startsWith("*") && str.endsWith("|")){
