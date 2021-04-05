@@ -96,24 +96,24 @@ public class Measure {
         double maxDuration = 0;
         int chordValue = -1;
         for(GuitarNote guitarNote : guitarNotes){
-            System.out.println("String: " + guitarNote.stringValue);
+            /*System.out.println("String: " + guitarNote.stringValue);
             System.out.println("Measure number: " + guitarNote.measure);
             System.out.println("Element number: " + guitarNote.noteNumber);
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println("Chord value: " + guitarNote.chord);
-            System.out.println();
+            System.out.println();*/
             if(guitarNote.chord && chordValue != guitarNote.noteNumber) {
                 chordValue = guitarNote.noteNumber;
-                System.out.println(maxDuration);
+                //System.out.println(maxDuration);
             }else if(!guitarNote.chord){
                 maxDuration += guitarNote.duration;
                 chordValue = guitarNote.noteNumber;
-                System.out.println(maxDuration);
+                //System.out.println(maxDuration);
             }
         }
         for(GuitarNote guitarNote : guitarNotes){
             double noteType = guitarNote.duration / maxDuration;
-            System.out.println(noteType);
+            //System.out.println(noteType);
             if(noteType == 0.5){
                 guitarNote.noteType = "half";
             }else if(noteType == 0.75){
