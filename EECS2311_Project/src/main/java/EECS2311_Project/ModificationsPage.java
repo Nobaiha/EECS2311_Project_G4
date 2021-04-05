@@ -129,6 +129,18 @@ public class ModificationsPage extends JFrame {
 		timeSigDenomboBox_3.setFont(new Font("Calibri", Font.PLAIN, 22));
 		timeSigDenomboBox_3.setBounds(334, 461, 54, 34);
 		contentPane.add(timeSigDenomboBox_3);
+
+		timeSigNumComboBox_2.addActionListener(e->{
+			JComboBox cb  = (JComboBox) e.getSource();
+			String timeSig1 = (String)cb.getSelectedItem();
+			Main.timeSig1 = Integer.parseInt(timeSig1);
+		});
+
+		timeSigDenomboBox_3.addActionListener(e->{
+			JComboBox cb  = (JComboBox) e.getSource();
+			String timeSig1 = (String)cb.getSelectedItem();
+			Main.timeSig2 = Integer.parseInt(timeSig1);
+		});
 		
 		JLabel lblKey_1 = new JLabel("/");
 		lblKey_1.setFont(new Font("Calibri", Font.BOLD, 28));
