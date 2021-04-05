@@ -173,16 +173,16 @@ public class Main {
                 topRepeat = true;
             }
             for (String str : array) {
-                //System.out.println(str);
+                System.out.println(str);
                 if (topRepeatStarts.contains(measureChars)) {
                     repeatStarts.add(measureNum);
                     //topRepeatMeasuresStarts.add(measureNum);
                 }
                 if (topRepeatEnds.contains(measureChars)) {
+                    System.out.println("Adding to repeat ends " + measureNum);
                     repeatEnds.add(measureNum);
                     //topRepeatMeasuresEnds.add(measureNum);
                 }
-                //System.out.println(str);
                 if (topRepeat && pattern.matcher(str).find()) {
                     repeatNum += str.length() + 1;
                     //System.out.println(str);
@@ -254,7 +254,7 @@ public class Main {
                             topRepeatStarts.remove(topRepeatStarts.size() - 1);
                         }
                         topRepeatStarts.add(repeatNum);
-                        //System.out.println("Inside str contains repeat num is: " + repeatNum);
+                        System.out.println("Inside str contains repeat num is: " + repeatNum);
                         //topRepeatEnds.add(repeatNum);
                         //topRepeatStarts.add(repeatNum);
                         //repeat = false;
@@ -263,9 +263,9 @@ public class Main {
                     } else if (topRepeat) {
                         //repeatNum++;
                         //repeatNum = 1;
-                        //System.out.println("2repeat num is: " + repeatNum);
+                        System.out.println("2repeat num is: " + repeatNum);
                         topRepeatStarts.add(repeatNum);
-                        repeatNum = 1;
+                        //repeatNum = 1;
                         repeat = true;
                     } else {
                         if (str.startsWith("*")) {
@@ -273,7 +273,7 @@ public class Main {
                         }
                         measuresElement.put(measureNum, noteNum);
                         measureChars += noteNum + 1;
-                        //System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
+                        System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
                         noteNum = 1;
                         if (str.endsWith("*")) {
                             noteNum++;
@@ -312,13 +312,13 @@ public class Main {
             }
         }
         //Test print the array
-        for (GuitarNote guitarNote : guitarNoteArray) {
+        /*for (GuitarNote guitarNote : guitarNoteArray) {
             System.out.println("String: " + guitarNote.stringValue);
             System.out.println("Measure number: " + guitarNote.measure);
             System.out.println("Element number: " + guitarNote.noteNumber);
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
-        }
+        }*/
         System.out.println("Repeat starts at: " + repeatStarts.toString());
         System.out.println("Repeat ends at: " + repeatEnds.toString());
         System.out.println("Repeat amount: " + repeatAmout.toString());
@@ -431,6 +431,8 @@ public class Main {
         boolean pulloff = false;
         boolean hammer = false;
         boolean slurEnd = false;
+        int maxRepeats = Math.min(repeatStarts.size(),repeatEnds.size());
+        int repeatCounter = 0;
         //XML print attempt
         if (measures.size() == 0) {
             return null;
@@ -468,7 +470,7 @@ public class Main {
         for (int i = 0; i < measures.size(); i++) {
             directives.add("measure")
                     .attr("number", i + 1);
-            if(repeatEnds.size() == repeatStarts.size()) {
+            if(repeatCounter < maxRepeats * 2) {
                 if (repeatEnds.contains(i + 2)) {
                     directives.add("barline")
                             .attr("location", "right")
@@ -498,6 +500,7 @@ public class Main {
                             .set("Repeat " + repeatTimes + "times").up().up().up();
                     repeatAmout.remove(0);
                 }
+                repeatCounter++;
             }
             //sets the first measure to include tab details and clef etc.
             if (i == 0) {
