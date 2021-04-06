@@ -191,6 +191,23 @@ public class MainTest {
         measures.clear();
         assertNull(Main.guitarXMLParser(measures));
     }
+    
+    /**
+     * Given an array of drumNotes, will write the xml output to a file.
+     * Tests covers two cases, one where a valid input is given, and where a non-valid input is given.
+     */
+    @Test
+    public void drumXMLParser() {
+    	String input = "BD|--x-x-x-o-x-x-x-|--------x-------|";
+        ArrayList<String> testNoteArray = new ArrayList<>();
+        testNoteArray.add(input);
+        
+        ArrayList<DrumNote> drumNotes = Main.drumNoteParser(testNoteArray);
+        assertNotNull(Main.drumXMLParser(drumNotes));
+
+        drumNotes.clear();
+        assertNull(Main.drumXMLParser(drumNotes));
+    }
 
     /**
      * Function to start the parser, will throw an exception if the wrong file is given.
