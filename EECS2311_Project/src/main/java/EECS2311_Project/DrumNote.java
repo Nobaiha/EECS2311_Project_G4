@@ -17,6 +17,12 @@ public class DrumNote {
         public String part;
         public char noteValue;
         
+        public int duration;
+        public boolean chord;
+        public String noteType;
+        public boolean noteDot;
+        public int octave;
+        
         /**
          * A constructor for GuitarNote.
          * 
@@ -31,5 +37,14 @@ public class DrumNote {
             this.noteNumber = noteNumber;
             this.part = part;
             this.noteValue = noteValue;
+            this.chord = false;
+        }
+        
+        public void setDuration(int duration){
+            this.duration = duration;
+        }
+        
+        public void setChord(boolean chord) {
+            this.chord = chord;
         }
 }
