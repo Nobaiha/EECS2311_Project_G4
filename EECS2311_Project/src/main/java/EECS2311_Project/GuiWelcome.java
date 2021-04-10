@@ -170,7 +170,7 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(label);
 
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/Tab-2-MusicXML_Logo_V7.png")));
+		//lblNewLabel_5.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/Tab-2-MusicXML_Logo_V7.png")));
 		lblNewLabel_5.setBounds(91, 54, 702, 220);
 		contentPane.add(lblNewLabel_5);
 		
