@@ -21,6 +21,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 import java.awt.SystemColor;
 
+/**
+ * The class that operates the upload window of the GUI.
+ *
+ * @author Team 4 EECS2311 Winter 2021
+ */
 public class GuiUploadWindow extends JFrame {
 
 	private static String composer;
@@ -30,7 +35,7 @@ public class GuiUploadWindow extends JFrame {
 	private static String filePath;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,7 +51,7 @@ public class GuiUploadWindow extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public GuiUploadWindow(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -229,14 +234,29 @@ public class GuiUploadWindow extends JFrame {
 		
 	}
 
+	/**
+     * Sets the title of the tablature.
+     * 
+     * @param title
+     */
 	public static void setTabTitle(String title) {
 		GuiUploadWindow.title = title;
 	}
 
+	/**
+     * Sets the content of the tablature.
+     * 
+     * @param content
+     */
 	public static void setContent(String content) {
 		GuiUploadWindow.content = content;
 	}
 
+	/**
+     * Sets the composer of the tablature.
+     * 
+     * @param composer
+     */
 	public static void setComposer(String composer) {
 		GuiUploadWindow.composer = composer;
 

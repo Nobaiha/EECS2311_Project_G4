@@ -26,12 +26,17 @@ import java.awt.event.MouseAdapter;
 import javax.swing.border.EtchedBorder;
 import java.awt.Canvas;
 
+/**
+ * The class that operates the welcome screen of the GUI.
+ *
+ * @author Team 4 EECS2311 Winter 2021
+ */
 public class GuiWelcome extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,7 +52,7 @@ public class GuiWelcome extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creates the frame of the GUI.
 	 */
 	public GuiWelcome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
