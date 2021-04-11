@@ -42,9 +42,9 @@ public class DrumMeasure {
         return res.toString();
     }
 
-    public void sortNotesDrum() {
-        drumNotes.sort(new noteSort());
-    }
+//    public void sortNotesDrum() {
+//        drumNotes.sort(new noteSortDrum());
+//    }
 
     public void processDuration() {
         ArrayList<Integer> samePositionNotes = new ArrayList<>();
@@ -78,13 +78,13 @@ public class DrumMeasure {
                             if(j != 0) {
                                 temp.setChord(true);
                             }
-                            temp.setDuration(nextDur - temp.noteNumber - drumNotes.get(i).noteValue.length() - offset);
+                            //temp.setDuration(nextDur - temp.noteNumber - drumNotes.get(i).noteValue.length() - offset);
                         }
                         samePositionNotes.clear();
                         drumNotes.get(i).setChord(true);
                     }
                     int thisDur = drumNotes.get(i).noteNumber;
-                    drumNotes.get(i).setDuration(nextDur - thisDur - drumNotes.get(i).noteValue.length() - offset);
+                    //drumNotes.get(i).setDuration(nextDur - thisDur - drumNotes.get(i).noteValue.length() - offset);
                 }
             }
         }

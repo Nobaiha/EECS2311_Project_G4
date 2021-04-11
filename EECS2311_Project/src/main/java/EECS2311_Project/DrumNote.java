@@ -22,6 +22,7 @@ public class DrumNote {
         public String noteType;
         public boolean noteDot;
         public int octave;
+        public boolean grace;
         
         /**
          * A constructor for GuitarNote.
