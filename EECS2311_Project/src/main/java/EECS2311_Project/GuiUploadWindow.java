@@ -97,7 +97,7 @@ public class GuiUploadWindow extends JFrame {
 		intrsutmentDropDown.setEditable(true);
 		intrsutmentDropDown.setBackground(Color.WHITE);
 		intrsutmentDropDown.setFont(new Font("Calibri", Font.PLAIN, 23));
-		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass"}));
+		intrsutmentDropDown.setModel(new DefaultComboBoxModel(new String[] {"Guitar","Bass", "Drums"}));
 		intrsutmentDropDown.setBounds(657, 201, 127, 30);
 		contentPane.add(intrsutmentDropDown);
 
@@ -108,6 +108,8 @@ public class GuiUploadWindow extends JFrame {
 					Main.guitar = 1;
 				}else if(instrument.equals("Guitar")){
 					Main.guitar = 0;
+				}else if(instrument.equals("Drums")){
+					Main.guitar = 3;
 				}
 		});
 		
