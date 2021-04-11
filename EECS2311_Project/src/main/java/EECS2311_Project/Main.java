@@ -48,7 +48,7 @@ public class Main {
     }
 
     /**
-     * This reads the text file, extracts the infomation, and
+     * This reads the text file, extracts the information, and
      * places it in an ArrayList.
      *
      * @param file
@@ -760,7 +760,7 @@ public class Main {
     	if (drumNoteArray.size() == 0) {
             return null;
         }
-        //XML print attempt
+
         Directives directives = new Directives();
         directives
         	.add("score-partwise")
@@ -995,8 +995,14 @@ public class Main {
                 	}
                 	
                 	directives.add("note")
-                            .add("unpitched")
-                            .add("display-step");
+                            .add("unpitched");
+                        	
+                			if (drumNote.noteValue == 'f') {
+                        		directives.add("grace")
+                        		.up();
+                        	}
+                	
+                			directives.add("display-step");
                             if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
                             	directives.set("C");
                             } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
