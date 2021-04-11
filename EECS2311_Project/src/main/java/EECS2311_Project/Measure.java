@@ -4,31 +4,62 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-
-//used to sort notes based on their element number.
+/**
+ * A class that is used to sort notes based on their element number.
+ * 
+ * @author Team 4 EECS2311 Winter 2021
+ */
 class noteSort implements Comparator<GuitarNote> {
 
+	/**
+     * Compares two GuitarNotes.
+     * 
+     * @param o1
+     * 				first guitar note.
+     * @param o2
+     * 				second guitar note.
+     * @return TODO
+     */
     @Override
     public int compare(GuitarNote o1, GuitarNote o2) {
         return Integer.compare(o1.noteNumber, o2.noteNumber);
     }
 }
 
+/**
+ * TODO
+ * 
+ * @author Team 4 EECS2311 Winter 2021
+ */
 public class Measure {
     public int elementMax;
     public int measureNum;
     public ArrayList<GuitarNote> guitarNotes = new ArrayList<>();
     public ArrayList<DrumNote> drumNotes;
 
+    /**
+     * A constructor for Measure.
+     * 
+     * @param elementMax
+     * @param measureNum
+     */
     public Measure(int elementMax, int measureNum) {
         this.elementMax = elementMax;
         this.measureNum = measureNum;
     }
 
+    /**
+     * Adds a new guitar note.
+     * 
+     * @param guitarNote
+     */
     public void addGuitarNotes(GuitarNote guitarNote) {
         this.guitarNotes.add(guitarNote);
     }
 
+    /**
+     * The toString method for Measure.
+     */
     public String toString() {
         StringBuilder res = new StringBuilder();
         res.append("\nMeasure number: ").append(this.measureNum);
@@ -44,10 +75,16 @@ public class Measure {
         return res.toString();
     }
 
+    /**
+     * Sorts the notes.
+     */
     public void sortNotes() {
         guitarNotes.sort(new noteSort());
     }
 
+    /**
+     * Calculates the duration of the notes.
+     */
     public void processDuration() {
         ArrayList<Integer> samePositionNotes = new ArrayList<>();
         for (int i = 0; i < guitarNotes.size(); i++) {
@@ -92,6 +129,9 @@ public class Measure {
         }
     }
 
+    /**
+     * TODO
+     */
     public void setNoteType(){
         double maxDuration = 0;
         int chordValue = -1;

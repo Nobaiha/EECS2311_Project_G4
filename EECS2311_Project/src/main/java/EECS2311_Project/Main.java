@@ -8,11 +8,10 @@ import java.util.*;
 import java.util.regex.*;
 
 /**
- * The main class. Takes all other classes and uses them.
+ * The main class.
  *
  * @author Team 4 EECS2311 Winter 2021
  */
-
 public class Main {
 
     //Temp global to keep track of elements in measures.
@@ -37,10 +36,11 @@ public class Main {
 
 
     /**
-     * This checks to see if the input file is a ".txt" file.
+     * Checks to see if the input file is of <.txt> file format.
      *
-     * @param file is the name of the input file.
-     * @return true if the file is of type ".txt". Fails if otherwise.
+     * @param file
+     * 				the name of the input file.
+     * @return true if the file is of type <.txt>, false if otherwise.
      */
     public static boolean fileChecker(String file) {
         int indexOfExt = file.lastIndexOf(".") + 1;
@@ -49,12 +49,13 @@ public class Main {
 
     /**
      * This reads the text file, extracts the infomation, and
-     * places it in an ArrayList. It detects whether its a
-     * drum or guitar tab.
+     * places it in an ArrayList.
      *
-     * @param file is the name of the input file.
+     * @param file
+     * 				the name of the input file.
      * @return an ArrayList of the guitar/drum notes.
-     * @throws FileNotFoundException throws FileNotFoundException if the file is not found.
+     * @throws FileNotFoundException 
+     * 				throws FileNotFoundException if the file is not found.
      */
     public static Object[] fileParser(String file) throws FileNotFoundException {
         if (!fileChecker(file)) {
@@ -109,11 +110,12 @@ public class Main {
     }
 
     /**
-     * This takes the information for the guitar tab ArrayList, picks out
-     * the important information, and places them into variables.
+     * This takes the information for the guitar tablature ArrayList, processes it, 
+     * and sorts it for converting.
      *
-     * @param noteArray is the ArrayList with the converted ".txt" file.
-     * @return an ArrayList of the guitar tab information.
+     * @param noteArray
+     * 				the ArrayList with the converted <.txt> file.
+     * @return an ArrayList of type GuitarNote with processed guitar tablature information.
      */
     public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
         //Creates array of notes
@@ -332,12 +334,14 @@ public class Main {
         return guitarNoteArray;
     }
 
+    
     /**
-     * This takes the information for the drum tab ArrayList, picks out
-     * the important information, and places them into variables.
+     * This takes the information for the drum tablature ArrayList, processes it, 
+     * and sorts it for converting.
      *
-     * @param noteArray is the ArrayList with the converted ".txt" file.
-     * @return an ArrayList of the drum tab information.
+     * @param noteArray
+     * 				the ArrayList with the converted <.txt> file.
+     * @return an ArrayList of type DrumNote with processed drum tablature information.
      */
     public static ArrayList<DrumNote> drumNoteParser(ArrayList<String> noteArray) {
         //drum test case
@@ -421,11 +425,12 @@ public class Main {
     }
 
     /**
-     * Takes all the information gathered from the guitar tab
-     * and makes an XML file with it.
+     * Takes all the information gathered from the guitar tablature
+     * and converts it into a MusicXML file.
      *
-     * @param measures is an ArrayList of the guitar tab information.
-     * @return an XML file.
+     * @param measures 
+     * 					an ArrayList of the guitar tablature information.
+     * @return a MusicXML file.
      */
     public static String guitarXMLParser(ArrayList<Measure> measures) {
         boolean pulloff = false;
@@ -741,11 +746,12 @@ public class Main {
     }
 
     /**
-     * Takes all the information gathered from the drum tab
-     * and makes an XML file with it.
+     * Takes all the information gathered from the drum tablature
+     * and converts it into a MusicXML file.
      *
-     * @param drumNoteArray is an ArrayList of the drum tab information.
-     * @return an XML file.
+     * @param measures 
+     * 					an ArrayList of the drum tablature information.
+     * @return a MusicXML file.
      */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
     	int voiceChange;
@@ -1008,7 +1014,8 @@ public class Main {
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.set("A");
                             } else {
-                            	directives.set("F");
+                            	directives.set("C");
+                            	//Error error = new Error("Somewhere on the tablature, there is no specified drum instrument!");
                             }
 
                             directives.up()//display-step
@@ -1144,10 +1151,12 @@ public class Main {
     }
 
     /**
-     * This saves the XML file that was created.
+     * This saves the MusicXML file that was created.
      *
-     * @param file is the file that was input.
-     * @param xml  is the XML file.
+     * @param file 
+     * 				the file that was input.
+     * @param xml  
+     * 				the MusicXML file.
      */
     public static void saveFile(File file, String xml) {
         try {
@@ -1171,7 +1180,7 @@ public class Main {
     }*/
 
     /**
-     *
+     *TODO
      */
     public static void start(String filePath, String title, String composer) throws FileNotFoundException {
         tabTitle = title;
@@ -1241,7 +1250,7 @@ public class Main {
     }
 
     /**
-     * This starts up the GUI.
+     * Starts up the GUI.
      */
     public static void main(String[] args) {
         GuiWelcome welcomePage = new GuiWelcome();

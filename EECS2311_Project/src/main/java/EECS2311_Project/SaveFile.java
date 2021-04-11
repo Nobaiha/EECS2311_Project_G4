@@ -18,6 +18,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
+/**
+ * The class that operates the save file window of the GUI.
+ *
+ * @author Team 4 EECS2311 Winter 2021
+ */
 public class SaveFile extends JFrame {
 
 	protected Component parent;
@@ -29,7 +34,7 @@ public class SaveFile extends JFrame {
 	private JPanel saveFile;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,7 +51,7 @@ public class SaveFile extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public SaveFile(String title, String composer, String content, String xml) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

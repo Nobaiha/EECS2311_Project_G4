@@ -21,6 +21,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.JTabbedPane;
 
+/**
+ * The class that operates the modifications window of the GUI.
+ *
+ * @author Team 4 EECS2311 Winter 2021
+ */
 public class ModificationsPage extends JFrame {
 
 	private JPanel contentPane;
@@ -32,7 +37,7 @@ public class ModificationsPage extends JFrame {
 	private static String content;
 
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,7 +53,7 @@ public class ModificationsPage extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public ModificationsPage(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

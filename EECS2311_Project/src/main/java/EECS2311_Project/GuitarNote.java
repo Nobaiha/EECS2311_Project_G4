@@ -4,10 +4,7 @@ package EECS2311_Project;
  * A class that stores the data of the recognized guitar note.
  * 
  * @author Team 4 EECS2311 Winter 2021
- * 
- * 
  */
-
 public class GuitarNote {
     //Public for testing, change to private afterwards.
     //Each note has a measure, note number representing the 'tab' it is at (each '-' char is a note number)
@@ -35,8 +32,10 @@ public class GuitarNote {
     /**
      * A constructor for GuitarNote.
      * 
-     * @param measure of not
-     * 
+     * @param measure
+     * @param noteNumber
+     * @param stringValue
+     * @param noteValue
      */
     public GuitarNote(int measure, int noteNumber, int stringValue, String noteValue) {
         this.measure = measure;
@@ -46,14 +45,27 @@ public class GuitarNote {
         this.chord = false;
     }
 
+    /**
+     * Sets the duration of the guitar note.
+     * 
+     * @param duration
+     */
     public void setDuration(int duration){
         this.duration = duration;
     }
 
+    /**
+     * Sets the chord of the guitar note.
+     * 
+     * @param chord
+     */
     public void setChord(boolean chord) {
         this.chord = chord;
     }
 
+    /**
+     *TODO
+     */
     public void setMusicNote(){
         //convert the noteNumber here to musicNote.
         if(noteValue.startsWith("g")){

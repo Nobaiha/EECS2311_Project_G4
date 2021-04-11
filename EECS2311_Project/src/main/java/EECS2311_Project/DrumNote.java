@@ -4,9 +4,7 @@ package EECS2311_Project;
  * A class that stores the data of the recognized drum note.
  * 
  * @author Team 4 EECS2311 Winter 2021
- * 
  */
-
 public class DrumNote {
         //Public for testing, change to private afterwards.
         //Each note has a measure, note number representing the 'tab' it is at (each '-' char is a note number)
@@ -25,13 +23,12 @@ public class DrumNote {
         public boolean grace;
         
         /**
-         * A constructor for GuitarNote.
+         * A constructor for DrumNote.
          * 
-         * @param measure of note
-         * @param number of note
-         * @param part of note
-         * @param value of note
-         * 
+         * @param measure
+         * @param noteNumber
+         * @param part
+         * @param noteValue
          */
         public DrumNote(int measure, int noteNumber, String part, char noteValue) {
             this.measure = measure;
@@ -41,10 +38,20 @@ public class DrumNote {
             this.chord = false;
         }
         
+        /**
+         * Sets the duration of the drum note.
+         * 
+         * @param duration
+         */
         public void setDuration(int duration){
             this.duration = duration;
         }
         
+        /**
+         * Sets the chord of the drum note.
+         * 
+         * @param chord
+         */
         public void setChord(boolean chord) {
             this.chord = chord;
         }
