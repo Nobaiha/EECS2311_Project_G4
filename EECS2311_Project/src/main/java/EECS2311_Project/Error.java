@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Error {
 	
 	/**
-     * Displays an error message to the user.
+     * Displays an error message to the user, along with other information.
      *
      * @param error
      * 				the error message to be displayed.
@@ -30,4 +30,13 @@ public class Error {
             System.exit(0);
         }
     }
+    
+    /**
+     * Displays an error message to the user.
+     */
+    public Error(String error) {
+    	int input = JOptionPane.showOptionDialog(null, error, "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+    	System.exit(0);
+    }
+    
 }
