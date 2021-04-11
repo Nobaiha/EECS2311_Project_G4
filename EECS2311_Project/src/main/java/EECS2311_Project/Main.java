@@ -28,7 +28,7 @@ public class Main {
     static int timeSig1;
     static int timeSig2;
 
-    static int guitar = 0; //0 is guitar, 1 is bass.
+    static int guitar = 0; //0 is guitar, 1 is bass 3 is drums
 
     static String tabTitle = "";
     static String tabComposer = "";
@@ -89,9 +89,9 @@ public class Main {
                 //String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
                 Matcher matcher = pattern.matcher(nextLine);
-                if (matcher.find()) {
+                if (matcher.find() && guitar != 3) {
                     testLines.add(nextLine);
-                } else {
+                } else if(guitar == 3) {
                     Matcher drumMatcher = drumPattern.matcher(nextLine);
                     if (drumMatcher.find()) {
                         drumTestLines.add(nextLine);
@@ -102,7 +102,7 @@ public class Main {
             //Send error not found here.
             e.printStackTrace();
         }
-        if (testLines.size() > drumTestLines.size()) {
+        if (testLines.size() > drumTestLines.size() && guitar != 3) {
             return new Object[]{"guitar", testLines};
         } else {
             return new Object[]{"drum", drumTestLines};
@@ -516,10 +516,10 @@ public class Main {
                         .up()
                         .add("time")
                         .add("beats")
-                        .set(4) //change 4/4 to be based on user or input later
+                        .set(timeSig1) //change 4/4 to be based on user or input later
                         .up()
                         .add("beat-type")
-                        .set(4)
+                        .set(timeSig2)
                         .up()
                         .up()
                         .add("clef")
@@ -1240,6 +1240,16 @@ public class Main {
                 //System.out.println(measure);
             }
             String xml = guitarXMLParser(measureArrayList);
+            if (xml != null) {
+                SaveFile saveFile = new SaveFile(tabTitle, tabComposer, tabContents, xml);
+                saveFile.setVisible(true);
+            } else {
+                System.out.println("xml is null");
+                new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer, tabContents);
+            }
+        }else if(notes[0] == "drum"){
+            ArrayList<DrumNote> drumNotes = drumNoteParser(noteArray);
+            String xml = drumXMLParser(drumNotes);
             if (xml != null) {
                 SaveFile saveFile = new SaveFile(tabTitle, tabComposer, tabContents, xml);
                 saveFile.setVisible(true);
