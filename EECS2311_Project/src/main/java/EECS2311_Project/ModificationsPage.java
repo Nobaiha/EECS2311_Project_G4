@@ -130,13 +130,13 @@ public class ModificationsPage extends JFrame {
 		JComboBox timeSigNumComboBox_2 = new JComboBox();
 		timeSigNumComboBox_2.setModel(new DefaultComboBoxModel(new String[] {"4", "2", "3", "6", "9", "12"}));
 		timeSigNumComboBox_2.setFont(new Font("Calibri", Font.PLAIN, 14));
-		timeSigNumComboBox_2.setBounds(243, 461, 60, 34);
+		timeSigNumComboBox_2.setBounds(243, 461, 70, 34);
 		contentPane.add(timeSigNumComboBox_2);
 		
 		JComboBox timeSigDenomboBox_3 = new JComboBox();
 		timeSigDenomboBox_3.setModel(new DefaultComboBoxModel(new String[] {"4", "1", "2", "8", "16"}));
 		timeSigDenomboBox_3.setFont(new Font("Calibri", Font.PLAIN, 14));
-		timeSigDenomboBox_3.setBounds(334, 461, 60, 34);
+		timeSigDenomboBox_3.setBounds(334, 461, 70, 34);
 		contentPane.add(timeSigDenomboBox_3);
 
 		timeSigNumComboBox_2.addActionListener(e->{
@@ -150,6 +150,34 @@ public class ModificationsPage extends JFrame {
 			String timeSig1 = (String)cb.getSelectedItem();
 			Main.timeSig2 = Integer.parseInt(timeSig1);
 		});
+
+		String[] comboBox1 = new String[] {"4", "2", "3", "6", "9", "12"};
+		String[] comboBox2 = new String[] {"4", "1", "2", "8", "16"};
+		String [] keySigs = new String[] {"C major", "G major", "D major", "A major", "E major", "B major", "F major", "B flat major", "E flat major", "A flat major", "D flat major", "G flat major", "C flat major"};
+
+		int timeSig1Selector = 0;
+		int timeSig2Selector = 0;
+		String mainTimeSig1 = Integer.toString(Main.timeSig1);
+		String mainTimeSig2 = Integer.toString(Main.timeSig2);
+
+		for(int i = 0; i < comboBox1.length; i++){
+			if(comboBox1[i].equals(mainTimeSig1)){
+				timeSig1Selector = i;
+			}
+		}
+		for(int i = 0; i < comboBox2.length; i++){
+			if(comboBox2[i].equals(mainTimeSig2)){
+				timeSig2Selector = i;
+			}
+		}
+		int keySelector = Main.keySignature - 1;
+		if(keySelector < 0){
+			keySelector = keySelector + 13;
+		}
+
+		comboBox.setSelectedIndex(keySelector);
+		timeSigNumComboBox_2.setSelectedIndex(timeSig1Selector);
+		timeSigDenomboBox_3.setSelectedIndex(timeSig2Selector);
 		
 		JLabel lblKey_1 = new JLabel("/");
 		lblKey_1.setFont(new Font("Calibri", Font.BOLD, 28));
