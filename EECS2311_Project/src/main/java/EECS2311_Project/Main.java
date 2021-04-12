@@ -25,14 +25,15 @@ public class Main {
     static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
     static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
 
-    static int timeSig1;
-    static int timeSig2;
+    static int timeSig1 = 4;
+    static int timeSig2 = 4;
 
     static int guitar = 0; //0 is guitar, 1 is bass 3 is drums
 
     static String tabTitle = "";
     static String tabComposer = "";
     static String tabContents = "";
+    static int keySignature = 1;
 
 
     /**
@@ -89,9 +90,9 @@ public class Main {
                 //String cleanedLine = nextLine.replaceAll("\\s", "");
                 //System.out.println(nextLine);
                 Matcher matcher = pattern.matcher(nextLine);
-                if (matcher.find() && guitar != 3) {
+                if (matcher.find() && guitar != 2) {
                     testLines.add(nextLine);
-                } else if(guitar == 3) {
+                } else if(guitar == 2) {
                     Matcher drumMatcher = drumPattern.matcher(nextLine);
                     if (drumMatcher.find()) {
                         drumTestLines.add(nextLine);
@@ -102,7 +103,7 @@ public class Main {
             //Send error not found here.
             e.printStackTrace();
         }
-        if (testLines.size() > drumTestLines.size() && guitar != 3) {
+        if (testLines.size() > drumTestLines.size() && guitar != 2) {
             return new Object[]{"guitar", testLines};
         } else {
             return new Object[]{"drum", drumTestLines};
@@ -436,6 +437,8 @@ public class Main {
         boolean pulloff = false;
         boolean hammer = false;
         boolean slurEnd = false;
+
+        String[] keyArray =  new String[] {"C major", "G major", "D major", "A major", "E major", "B major", "F major", "B flat major", "E flat major", "A flat major", "D flat major", "G flat major", "C flat major"};
         int maxRepeats = Math.min(repeatStarts.size(),repeatEnds.size());
         int repeatCounter = 0;
         //XML print attempt
@@ -513,6 +516,14 @@ public class Main {
                         .add("attributes")
                         .add("divisions") //still no idea what divisions does?
                         .set("4") //the denominator in notes in terms of quarter notes. A duration of 4 will be one quarter note? A duration of 1 will be an 16th?
+                        .up()
+                        .add("key")
+                        .add("fifths")
+                        .set(keySignature)
+                        .up()
+                        .add("mode")
+                        .set("major")
+                        .up()
                         .up()
                         .add("time")
                         .add("beats")
