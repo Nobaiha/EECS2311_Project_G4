@@ -1038,7 +1038,7 @@ public class Main {
                             	directives.set("A");
                             } else {
                             	//directives.set("C");
-                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
 
                             directives.up()//display-step
@@ -1060,7 +1060,7 @@ public class Main {
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.set(4);
                             } else { 
-                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
                             directives.up()//display-octave
                             .up()//unpitched
@@ -1095,7 +1095,7 @@ public class Main {
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.attr("id", "P1-I42");
                             } else {
-                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
 
                             directives.up();//instrument
