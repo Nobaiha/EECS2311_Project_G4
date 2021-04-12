@@ -409,6 +409,8 @@ public class Main {
                     noteNum++;
                     DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, character);
                     drumNoteArray.add(tempDrumNote);
+                    
+                    //#%#%#%#%#%##
                 }
             }
         }
@@ -977,23 +979,37 @@ public class Main {
                     .up()//clef
 
                     .up();//attributes
-            for (DrumNote drumNote : drumNoteArray) {
+        	
+        	ArrayList<DrumNote> sortedDrumArray = new ArrayList<DrumNote>();
+        	int noteNumCounter = 0;
+            while(sortedDrumArray.size() != drumNoteArray.size()) {
+            	noteNumCounter++;
+            	for (DrumNote drumNote : drumNoteArray) {
+                	if (drumNote.noteNumber == noteNumCounter) {
+                		sortedDrumArray.add(drumNote);
+                	}
+                }
+            }
+        	
+            
+            for (DrumNote drumNote : sortedDrumArray) { 
             	System.out.println("Note part:"+drumNote.part);
+            	System.out.println("Note back up:"+drumNote.backUp);
                 if (drumNote.measure == i + 1) {
                 	voiceChange = 0;
                 	
-                	if (drumNote.backUp == true && doOnce == 0) {
-                		voiceChange = 1;
-                		doOnce = 1;
-                	}
-                	
-                	if (voiceChange != 0) {
-                		directives.add("backup")
-                		.add("duration")
-                		.set(16)//TODO
-                		.up()//duration
-                		.up();//backup
-                	}
+//                	if (drumNote.backUp == true && doOnce == 0) {
+//                		voiceChange = 1;
+//                		doOnce = 1;
+//                	}
+//                	
+//                	if (voiceChange != 0) {
+//                		directives.add("backup")
+//                		.add("duration")
+//                		.set(16)//TODO
+//                		.up()//duration
+//                		.up();//backup
+//                	}
                 	
                 	directives.add("note")
                             .add("unpitched");
@@ -1099,15 +1115,15 @@ public class Main {
                             .set("eighth")//TODO
                             .up();//type
 
-                            if (drumNote.backUp == false) {
-                            	directives.add("stem")
-                                .set("up")
-                                .up();//stem
-                            } else {
-                            	directives.add("stem")
-                                .set("down")
-                                .up();//stem
-                            }
+//                            if (drumNote.backUp == false) {
+//                            	directives.add("stem")
+//                                .set("up")
+//                                .up();//stem
+//                            } else {
+//                            	directives.add("stem")
+//                                .set("down")
+//                                .up();//stem
+//                            }
                             
                             
                             //voiceChange

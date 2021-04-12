@@ -8,6 +8,15 @@ import java.util.Comparator;
 //used to sort notes based on their element number.
 class noteSortDrum implements Comparator<DrumNote> {
 
+	/**
+     * Compares two DrumNotes.
+     * 
+     * @param o1
+     * 				first guitar note.
+     * @param o2
+     * 				second guitar note.
+     * @return TODO
+     */
     @Override
     public int compare(DrumNote o1, DrumNote o2) {
         return Integer.compare(o1.noteNumber, o2.noteNumber);
