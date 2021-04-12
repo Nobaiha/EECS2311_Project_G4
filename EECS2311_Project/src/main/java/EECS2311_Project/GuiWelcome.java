@@ -138,7 +138,7 @@ public class GuiWelcome extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				openWebPage(
-						"https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
+						"https://youtu.be/krTh2HwP3PY");
 			}
 		});
 		btnTutorial.setFont(new Font("Calibri", Font.PLAIN, 15));
