@@ -104,9 +104,11 @@ public class GuiUploadWindow extends JFrame {
 				}else if(instrument.equals("Guitar")){
 					Main.guitar = 0;
 				}else if(instrument.equals("Drums")){
-					Main.guitar = 3;
+					Main.guitar = 2;
 				}
 		});
+
+		intrsutmentDropDown.setSelectedIndex(Main.guitar);
 		
 		Button browseButton = new Button("Browse");
 		browseButton.setBackground(Color.WHITE);
@@ -182,7 +184,7 @@ public class GuiUploadWindow extends JFrame {
 				} catch (Exception exception) {
 					setVisible(false);
 					dispose();
-					new Error("Error parsing, please ensure tab is in correct format.", title, composer,tabDisplayTextArea.getText());
+					//new Error("Error memes, please ensure tab is in correct format.", title, composer,tabDisplayTextArea.getText());
 				}
 				//setVisible(false);
 			}
