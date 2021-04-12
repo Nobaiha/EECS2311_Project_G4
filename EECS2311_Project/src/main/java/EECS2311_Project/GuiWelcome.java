@@ -63,8 +63,7 @@ public class GuiWelcome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		//ModificationsPage modificationsPage = new ModificationsPage();
-		GuiUploadWindow guiUploadWindow = new GuiUploadWindow("","","");
+		GuiUploadWindow guiUploadWindow = new GuiUploadWindow("", "", "");
 		Button browseButton = new Button("Start");
 		browseButton.setBackground(new Color(255, 255, 255));
 		browseButton.addActionListener(new ActionListener() {
@@ -78,14 +77,15 @@ public class GuiWelcome extends JFrame {
 		browseButton.setBounds(358, 575, 178, 43);
 		contentPane.add(browseButton);
 
-		JLabel lblNewLabel = new JLabel("Welcome to TAB-2-MusicXML\u2122 (T.2.M) converter that takes TABs of guitar \r\n");
+		JLabel lblNewLabel = new JLabel(
+				"Welcome to TAB-2-MusicXML\u2122 (T.2.M) converter that takes TABs of guitar, \r\n");
 		lblNewLabel.setForeground(new Color(102, 102, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel.setBounds(33, 300, 838, 49);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("and bass music converts them into a musicXML. Enjoy!\r\n");
+		JLabel lblNewLabel_1 = new JLabel("bass, and drum music tablature converts them into a musicXML. Enjoy!\r\n");
 		lblNewLabel_1.setForeground(new Color(102, 102, 255));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
@@ -106,17 +106,18 @@ public class GuiWelcome extends JFrame {
 
 		JButton btnNewButton = new JButton("Learn More");
 		btnNewButton.addMouseListener(new MouseAdapter() {
-			public void openWebPage(String url){
+			public void openWebPage(String url) {
 				try {
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-				}
-				catch (java.io.IOException e) {
+				} catch (java.io.IOException e) {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
-				openWebPage("https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
+				openWebPage(
+						"https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
 			}
 		});
 		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 15));
@@ -126,17 +127,18 @@ public class GuiWelcome extends JFrame {
 
 		JButton btnTutorial = new JButton("Tutorial");
 		btnTutorial.addMouseListener(new MouseAdapter() {
-			public void openWebPage(String url){
+			public void openWebPage(String url) {
 				try {
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-				}
-				catch (java.io.IOException e) {
+				} catch (java.io.IOException e) {
 					System.out.println(e.getMessage());
 				}
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
-				openWebPage("https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
+				openWebPage(
+						"https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
 			}
 		});
 		btnTutorial.setFont(new Font("Calibri", Font.PLAIN, 15));
@@ -168,20 +170,17 @@ public class GuiWelcome extends JFrame {
 		lblNewLabel_2_2.setBounds(0, 701, 905, 67);
 		contentPane.add(lblNewLabel_2_2);
 
-
 		Label label = new Label("Click the button below to upload your tablature.");
 		label.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		label.setBounds(229, 490, 537, 43);
 		contentPane.add(label);
 
-		JLabel lblNewLabel_5 = new JLabel("");
-		//lblNewLabel_5.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/Tab-2-MusicXML_Logo_V7.png")));
-		lblNewLabel_5.setBounds(91, 54, 702, 220);
+		JLabel lblNewLabel_5 = new JLabel(" TAB - 2 - MusicXML\u2122\r\n");
+		lblNewLabel_5.setForeground(new Color(51, 0, 153));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Poor Richard", Font.BOLD, 92));
+		lblNewLabel_5.setBounds(31, 98, 843, 175);
 		contentPane.add(lblNewLabel_5);
-		
-		/*JLabel logoImageLabel = new JLabel("");
-		logoImageLabel.setIcon(new ImageIcon(GuiWelcome.class.getResource("/EECS2311_Project/imgs/TAB-2-MusicXML.png")));
-		logoImageLabel.setBounds(180, 198, 500, 262);
-		contentPane.add(logoImageLabel);*/
+
 	}
 }
