@@ -409,8 +409,7 @@ public class Main {
                     noteNum++;
                     DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, character);
                     drumNoteArray.add(tempDrumNote);
-                    
-                    //#%#%#%#%#%##
+
                 }
             }
         }
@@ -756,8 +755,26 @@ public class Main {
      * @return a MusicXML file.
      */
     public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
+    	System.out.println("Size:"+drumNoteArray.size());
     	int voiceChange;
     	int doOnce = 0;
+    	int lastNote = 0;
+    	
+    	ArrayList<DrumNote> sortedDrumArray = new ArrayList<DrumNote>();
+    	ArrayList<DrumNote> backUpDrumArray = new ArrayList<DrumNote>();
+    	
+    	int noteNumCounter = 0;
+        while(sortedDrumArray.size() != drumNoteArray.size()) {
+        	noteNumCounter++;
+        	for (DrumNote drumNote : drumNoteArray) {
+            	if (drumNote.noteNumber == noteNumCounter) {
+            		sortedDrumArray.add(drumNote);
+            	}
+            }
+        }
+        
+        System.out.println("Size:"+sortedDrumArray.size());
+    	
     	
     	if (drumNoteArray.size() == 0) {
             return null;
@@ -814,20 +831,6 @@ public class Main {
         	.up()  
         	.up()
 
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I44")
-//        	.add("instrument-name")
-//        	.set("High Floor Tom")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I45")
-//        	.add("instrument-name")
-//        	.set("Pedal Hi-Hat")
-//        	.up()  
-//        	.up()
-
         	.add("score-instrument")
         	.attr("id", "P1-I46")
         	.add("instrument-name")
@@ -849,26 +852,12 @@ public class Main {
         	.up()  
         	.up()
 
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I49")
-//        	.add("instrument-name")
-//        	.set("Hi-Mid Tom")
-//        	.up()  
-//        	.up()
-
         	.add("score-instrument")
         	.attr("id", "P1-I50")
         	.add("instrument-name")
         	.set("Crash Cymbal 1")
         	.up()  
         	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I51")
-//        	.add("instrument-name")
-//        	.set("High Tom")
-//        	.up()  
-//        	.up()
 
         	.add("score-instrument")
         	.attr("id", "P1-I52")
@@ -877,77 +866,16 @@ public class Main {
         	.up()  
         	.up()
 
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I53")
-//        	.add("instrument-name")
-//        	.set("Chinese Cymbal")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I54")
-//        	.add("instrument-name")
-//        	.set("Ride Bell")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I55")
-//        	.add("instrument-name")
-//        	.set("Tambourine")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I56")
-//        	.add("instrument-name")
-//        	.set("Splash Cymbal")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I57")
-//        	.add("instrument-name")
-//        	.set("Cowbell")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I58")
-//        	.add("instrument-name")
-//        	.set("Crash Cymbal 2")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I60")
-//        	.add("instrument-name")
-//        	.set("Ride Cymbal 2")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I64")
-//        	.add("instrument-name")
-//        	.set("Open Hi Conga")
-//        	.up()  
-//        	.up()
-
-//        	.add("score-instrument")
-//        	.attr("id", "P1-I65")
-//        	.add("instrument-name")
-//        	.set("Low Conga")
-//        	.up()  
-//        	.up()
-
         	.up()//score-part
         	.up()//part-list
 
         	.add("part")
         	.attr("id","P1");
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             doOnce = 0;
+            lastNote = 0;
+            
         	directives.add("measure")
                     .attr("number", i + 1)
                     .add("attributes")
@@ -979,22 +907,10 @@ public class Main {
                     .up()//clef
 
                     .up();//attributes
-        	
-        	ArrayList<DrumNote> sortedDrumArray = new ArrayList<DrumNote>();
-        	int noteNumCounter = 0;
-            while(sortedDrumArray.size() != drumNoteArray.size()) {
-            	noteNumCounter++;
-            	for (DrumNote drumNote : drumNoteArray) {
-                	if (drumNote.noteNumber == noteNumCounter) {
-                		sortedDrumArray.add(drumNote);
-                	}
-                }
-            }
-        	
-            
+
+
             for (DrumNote drumNote : sortedDrumArray) { 
-            	System.out.println("Note part:"+drumNote.part);
-            	System.out.println("Note back up:"+drumNote.backUp);
+            	//System.out.println("Note back up:"+drumNote.backUp);
                 if (drumNote.measure == i + 1) {
                 	voiceChange = 0;
                 	
@@ -1011,14 +927,25 @@ public class Main {
 //                		.up();//backup
 //                	}
                 	
-                	directives.add("note")
-                            .add("unpitched");
-                        	
-                			if (drumNote.noteValue == 'f') {
-                        		directives.add("grace")
-                        		.up();
-                        	}
+                	directives.add("note");
                 	
+                	if (drumNote.noteValue == 'f') {
+                		directives.add("grace")
+                		.up();
+                	}    
+                	
+                	System.out.println("Note part:"+drumNote.part);
+                	System.out.println("Note number:"+drumNote.noteNumber);
+                	System.out.println("Last note:"+lastNote);
+                	System.out.println("------");
+                	
+//                	if (drumNote.noteNumber == lastNote) {
+//                		directives.add("chord")
+//                		.up();
+//                	}   
+                	
+                	directives.add("unpitched");
+
                 			directives.add("display-step");
                             if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
                             	directives.set("C");
@@ -1124,9 +1051,7 @@ public class Main {
 //                                .set("down")
 //                                .up();//stem
 //                            }
-                            
-                            
-                            //voiceChange
+
                             
                             if (drumNote.noteValue == 'o') {
                             	//Nothing
@@ -1138,20 +1063,24 @@ public class Main {
                             
 
                             //if () {
-                            directives.add("beam")
-                            		.attr("number", "1")
+                            //directives.add("beam")
+                            		//.attr("number", "1")
                             		//if () {
-                            		.set("continue")
+                            		//.set("continue")
                             		//} else if() {
                             		//.set("begin")
                 					//} else {
                             		//.set("end")
-                            		.up();//beam
+                            		//.up();//beam
                             		//}
                             //}
 
                             directives.up();//note
+                            lastNote = drumNote.noteNumber;
                 }
+                
+                
+                
             }
 
             directives.up();//measure
