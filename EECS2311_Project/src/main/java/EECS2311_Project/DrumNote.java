@@ -14,6 +14,7 @@ public class DrumNote {
         public int noteNumber;
         public String part;
         public char noteValue;
+        public boolean backUp;
         
         public int duration;
         public boolean chord;
@@ -36,6 +37,12 @@ public class DrumNote {
             this.part = part;
             this.noteValue = noteValue;
             this.chord = false;
+            
+            if (this.part.equalsIgnoreCase("BD") || this.part.equalsIgnoreCase("B")) {
+            	this.backUp = true;
+            } else {
+            	this.backUp = false;
+            }
         }
         
         /**

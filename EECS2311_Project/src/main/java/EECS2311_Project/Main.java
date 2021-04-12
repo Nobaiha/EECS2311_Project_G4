@@ -71,7 +71,7 @@ public class Main {
         //String tuning can be changed, needs to be accounted for
         Pattern pattern = Pattern.compile("^([eABCDEFGabcdfg|]||(?i)\\brepeat\\b)");
         //Need to check for alternatives such as CC HH, etc.
-        Pattern drumPattern = Pattern.compile("^([CHSBRTF])");
+        Pattern drumPattern = Pattern.compile("^([SDSBDBHHHTRDRCCCSTT1MTT2FTT3])");
 
         //Reads the txt file and parses each line into the arraylist if it is a note line.
         //Maybe need to edit later as sometimes there is information on top of the bars???
@@ -358,7 +358,7 @@ public class Main {
         String part = "";
         String repeatedPart = "";
         int measureMem = 1;
-        Pattern pattern = Pattern.compile("^([CHSBRTF])");
+        Pattern pattern = Pattern.compile("^([SDSBDBHHHTRDRCCCSTT1MTT2FTT3])");
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String str : strArray) {
@@ -978,10 +978,11 @@ public class Main {
 
                     .up();//attributes
             for (DrumNote drumNote : drumNoteArray) {
+            	System.out.println("Note part:"+drumNote.part);
                 if (drumNote.measure == i + 1) {
                 	voiceChange = 0;
                 	
-                	if ((drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) && doOnce == 0) {
+                	if (drumNote.backUp == true && doOnce == 0) {
                 		voiceChange = 1;
                 		doOnce = 1;
                 	}
@@ -1007,11 +1008,11 @@ public class Main {
                             	directives.set("C");
                             } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
                             	directives.set("F");
-                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H") || drumNote.part.equalsIgnoreCase("HT")) { //High hat
                             	directives.set("G");
                             } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
                             	directives.set("F");
-                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            } else if (drumNote.part.equalsIgnoreCase("CC") || drumNote.part.equalsIgnoreCase("C")) { //Crash
                             	directives.set("A");
                             } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
                             	directives.set("E");
@@ -1021,7 +1022,7 @@ public class Main {
                             	directives.set("A");
                             } else {
                             	//directives.set("C");
-                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
 
                             directives.up()//display-step
@@ -1030,11 +1031,11 @@ public class Main {
                             	directives.set(5);
                             } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
                             	directives.set(4);
-                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H") || drumNote.part.equalsIgnoreCase("HT")) { //High hat
                             	directives.set(5);
                             } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
                             	directives.set(5);
-                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            } else if (drumNote.part.equalsIgnoreCase("CC") || drumNote.part.equalsIgnoreCase("C")) { //Crash
                             	directives.set(5);
                             } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
                             	directives.set(5);
@@ -1042,8 +1043,8 @@ public class Main {
                             	directives.set(5);
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.set(4);
-                            } else {
-                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            } else { 
+                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
                             directives.up()//display-octave
                             .up()//unpitched
@@ -1057,7 +1058,7 @@ public class Main {
                             	directives.attr("id", "P1-I39");
                             } else if (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B")) { //Bass
                             	directives.attr("id", "P1-I36");
-                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H")) { //High hat
+                            } else if (drumNote.part.equalsIgnoreCase("HH") || drumNote.part.equalsIgnoreCase("H") || drumNote.part.equalsIgnoreCase("HT")) { //High hat
 
                             	if (drumNote.noteValue == 'x') { //Closed High hat
                             		directives.attr("id", "P1-I43");
@@ -1069,7 +1070,7 @@ public class Main {
 
                             } else if (drumNote.part.equalsIgnoreCase("RD") || drumNote.part.equalsIgnoreCase("R")) { //Ride
                             	directives.attr("id", "P1-I52");
-                            } else if (drumNote.part.equalsIgnoreCase("CR") || drumNote.part.equalsIgnoreCase("C")) { //Crash
+                            } else if (drumNote.part.equalsIgnoreCase("CC") || drumNote.part.equalsIgnoreCase("C")) { //Crash
                             	directives.attr("id", "P1-I50");
                             } else if (drumNote.part.equalsIgnoreCase("ST") || drumNote.part.equalsIgnoreCase("T1")) { //High Tom
                             	directives.attr("id", "P1-I48");
@@ -1078,12 +1079,12 @@ public class Main {
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.attr("id", "P1-I42");
                             } else {
-                            	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+                            	//Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
 
                             directives.up();//instrument
 
-                            if (voiceChange == 0) {
+                            if (drumNote.backUp == false) {
                             	directives.add("voice")
                                 .set(1)
                                 .up();//voice
@@ -1098,7 +1099,7 @@ public class Main {
                             .set("eighth")//TODO
                             .up();//type
 
-                            if (voiceChange == 0) {
+                            if (drumNote.backUp == false) {
                             	directives.add("stem")
                                 .set("up")
                                 .up();//stem
@@ -1121,15 +1122,15 @@ public class Main {
                             
 
                             //if () {
-                            //directives.add("beam")
-                            		//.attr("number", "1")
+                            directives.add("beam")
+                            		.attr("number", "1")
                             		//if () {
-                            		//.set("continue")
+                            		.set("continue")
                             		//} else if() {
                             		//.set("begin")
                 					//} else {
                             		//.set("end")
-                            		//.up()//beam
+                            		.up();//beam
                             		//}
                             //}
 
