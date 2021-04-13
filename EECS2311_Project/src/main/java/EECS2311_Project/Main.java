@@ -16,20 +16,19 @@ import java.util.regex.*;
 public class Main {
 
     //Temp global to keep track of elements in measures.
-    static HashMap<Integer, Integer> measuresElement = new HashMap<>();
-    static ArrayList<Measure> measures = new ArrayList<>();
-    static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
-    static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
-    static ArrayList<Integer> repeatAmout = new ArrayList<>();
-    static ArrayList<Integer> topRepeatStarts = new ArrayList<>();
-    static ArrayList<Integer> topRepeatEnds = new ArrayList<>();
-    static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
-    static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
+    public static HashMap<Integer, Integer> measuresElement = new HashMap<>();
+    public static ArrayList<Measure> measures = new ArrayList<>();
+    public static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
+    public static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
+    public static ArrayList<Integer> repeatAmout = new ArrayList<>();
+    public static ArrayList<Integer> topRepeatStarts = new ArrayList<>();
+    public static ArrayList<Integer> topRepeatEnds = new ArrayList<>();
+
 
     static int timeSig1 = 4;
     static int timeSig2 = 4;
 
-    static int guitar = 0; //0 is guitar, 1 is bass 3 is drums
+    public static int guitar = 0; //0 is guitar, 1 is bass 3 is drums
 
     static String tabTitle = "";
     static String tabComposer = "";
@@ -78,7 +77,7 @@ public class Main {
         try (Scanner sc = new Scanner(inputFile)) {
             while (sc.hasNextLine()) {
                 String nextLine = sc.nextLine();
-                System.out.println(nextLine);
+                //System.out.println(nextLine);
                 tabContents += nextLine + "\n";
                 //removes all spaces.
                 if (!nextLine.contains("|")) {
@@ -121,7 +120,7 @@ public class Main {
         ArrayList<String[]> strArray = new ArrayList<>();
         //System.out.println("Printing notearray");
         for (String list : noteArray) {
-            System.out.println(list);
+            //System.out.println(list);
             String[] tempArray = list.split("[-\\s]", -1);
             //System.out.println(Arrays.toString(tempArray));
             strArray.add(tempArray);
@@ -151,14 +150,14 @@ public class Main {
 
         //Iterates through the parsed string array and makes an array of note objects
         for (String[] array : strArray) {
-            System.out.println(Arrays.toString(array));
+           // System.out.println(Arrays.toString(array));
             if (topRepeat) {
                 topRepeatStarts.remove(topRepeatStarts.size() - 1);
             }
             topRepeat = false;
             repeat = false;
             repeatNum = 0;
-            System.out.println(array.length);
+           // System.out.println(array.length);
             if (repeatTimes == repeatMax) {
                 repeatTimes = 0;
                 stringVal = 0;
@@ -174,13 +173,13 @@ public class Main {
                 topRepeat = true;
             }
             for (String str : array) {
-                System.out.println(str);
+               // System.out.println(str);
                 if (topRepeatStarts.contains(measureChars)) {
                     repeatStarts.add(measureNum);
                     //topRepeatMeasuresStarts.add(measureNum);
                 }
                 if (topRepeatEnds.contains(measureChars)) {
-                    System.out.println("Adding to repeat ends " + measureNum);
+                   // System.out.println("Adding to repeat ends " + measureNum);
                     repeatEnds.add(measureNum);
                     //topRepeatMeasuresEnds.add(measureNum);
                 }
@@ -255,7 +254,7 @@ public class Main {
                             topRepeatStarts.remove(topRepeatStarts.size() - 1);
                         }
                         topRepeatStarts.add(repeatNum);
-                        System.out.println("Inside str contains repeat num is: " + repeatNum);
+                       // System.out.println("Inside str contains repeat num is: " + repeatNum);
                         //topRepeatEnds.add(repeatNum);
                         //topRepeatStarts.add(repeatNum);
                         //repeat = false;
@@ -264,7 +263,7 @@ public class Main {
                     } else if (topRepeat) {
                         //repeatNum++;
                         //repeatNum = 1;
-                        System.out.println("2repeat num is: " + repeatNum);
+                        //System.out.println("2repeat num is: " + repeatNum);
                         topRepeatStarts.add(repeatNum);
                         //repeatNum = 1;
                         repeat = true;
@@ -274,7 +273,7 @@ public class Main {
                         }
                         measuresElement.put(measureNum, noteNum);
                         measureChars += noteNum + 1;
-                        System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
+                       // System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
                         noteNum = 1;
                         if (str.endsWith("*")) {
                             noteNum++;
@@ -320,7 +319,7 @@ public class Main {
             System.out.println("Element value: " + guitarNote.noteValue);
             System.out.println();
         }*/
-        System.out.println("Repeat starts at: " + repeatStarts.toString());
+        /*System.out.println("Repeat starts at: " + repeatStarts.toString());
         System.out.println("Repeat ends at: " + repeatEnds.toString());
         System.out.println("Repeat amount: " + repeatAmout.toString());
         System.out.println();
@@ -328,7 +327,7 @@ public class Main {
         System.out.println("Top repeat ends at: " + topRepeatEnds.toString());
         System.out.println("Top repeat amount: " + repeatAmout.toString());
         System.out.println("Top repeat offset: " + measureChars);
-        System.out.println(measuresElement);
+        System.out.println(measuresElement);*/
         measuresElement.forEach((k, v) -> measures.add(new Measure(v, k)));
         return guitarNoteArray;
     }

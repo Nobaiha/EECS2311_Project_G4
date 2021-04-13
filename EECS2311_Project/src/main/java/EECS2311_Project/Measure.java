@@ -29,7 +29,7 @@ public class Measure {
         this.guitarNotes.add(guitarNote);
     }
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder res = new StringBuilder();
         res.append("\nMeasure number: ").append(this.measureNum);
         res.append("\nMax elements: ").append(this.elementMax).append("\n");
@@ -42,7 +42,7 @@ public class Measure {
             res.append("\nOctave: ").append(guitarNote.octave).append("\n");
         }
         return res.toString();
-    }
+    }*/
 
     public void sortNotes() {
         guitarNotes.sort(new noteSort());
