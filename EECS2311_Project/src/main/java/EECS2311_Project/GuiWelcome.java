@@ -57,48 +57,48 @@ public class GuiWelcome extends JFrame {
 		contentPane.setLayout(null);
 
 		GuiUploadWindow guiUploadWindow = new GuiUploadWindow("", "", "");
-		Button browseButton = new Button("Start");
-		browseButton.setBackground(new Color(255, 255, 255));
-		browseButton.addActionListener(new ActionListener() {
+		Button startButton = new Button("Start");
+		startButton.setBackground(new Color(255, 255, 255));
+		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 				guiUploadWindow.setVisible(true);
 			}
 		});
-		browseButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		browseButton.setBounds(358, 575, 178, 43);
-		contentPane.add(browseButton);
+		startButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		startButton.setBounds(358, 575, 178, 43);
+		contentPane.add(startButton);
 
-		JLabel lblNewLabel = new JLabel(
+		JLabel introLabel1 = new JLabel(
 				"Welcome to TAB-2-MusicXML\u2122 (T.2.M) converter that takes TABs of guitar, \r\n");
-		lblNewLabel.setForeground(new Color(102, 102, 255));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
-		lblNewLabel.setBounds(33, 300, 838, 49);
-		contentPane.add(lblNewLabel);
+		introLabel1.setForeground(new Color(102, 102, 255));
+		introLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+		introLabel1.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
+		introLabel1.setBounds(33, 300, 838, 49);
+		contentPane.add(introLabel1);
 
-		JLabel lblNewLabel_1 = new JLabel("bass, and drum music tablature converts them into a musicXML. Enjoy!\r\n");
-		lblNewLabel_1.setForeground(new Color(102, 102, 255));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
-		lblNewLabel_1.setBounds(33, 359, 838, 49);
-		contentPane.add(lblNewLabel_1);
+		JLabel introLabel2 = new JLabel("bass, and drum music tablature converts them into a musicXML. Enjoy!\r\n");
+		introLabel2.setForeground(new Color(102, 102, 255));
+		introLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+		introLabel2.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 24));
+		introLabel2.setBounds(33, 359, 838, 49);
+		contentPane.add(introLabel2);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Poor Richard", Font.BOLD, 50));
-		lblNewLabel_2.setBackground(new Color(153, 153, 204));
-		lblNewLabel_2.setBounds(0, 0, 905, 67);
-		lblNewLabel_2.setOpaque(true);
-		contentPane.add(lblNewLabel_2);
+		JLabel headerLabel = new JLabel("");
+		headerLabel.setForeground(new Color(255, 255, 255));
+		headerLabel.setFont(new Font("Poor Richard", Font.BOLD, 50));
+		headerLabel.setBackground(new Color(153, 153, 204));
+		headerLabel.setBounds(0, 0, 905, 67);
+		headerLabel.setOpaque(true);
+		contentPane.add(headerLabel);
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(52, 438, 801, 11);
 		contentPane.add(separator);
 
-		JButton btnNewButton = new JButton("Learn More");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton learnMoreButton = new JButton("Learn More");
+		learnMoreButton.addMouseListener(new MouseAdapter() {
 			public void openWebPage(String url) {
 				try {
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
@@ -113,13 +113,13 @@ public class GuiWelcome extends JFrame {
 						"https://docs.google.com/document/d/1657gNM07LNx6sL1kakaTqn_BVKaRHH7KuUWIAG7X0DE/edit?usp=sharing");
 			}
 		});
-		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 15));
-		btnNewButton.setBackground(new Color(255, 255, 255));
-		btnNewButton.setBounds(309, 728, 109, 30);
-		contentPane.add(btnNewButton);
+		learnMoreButton.setFont(new Font("Calibri", Font.PLAIN, 15));
+		learnMoreButton.setBackground(new Color(255, 255, 255));
+		learnMoreButton.setBounds(309, 728, 109, 30);
+		contentPane.add(learnMoreButton);
 
-		JButton btnTutorial = new JButton("Tutorial");
-		btnTutorial.addMouseListener(new MouseAdapter() {
+		JButton tutorialButton = new JButton("Tutorial");
+		tutorialButton.addMouseListener(new MouseAdapter() {
 			public void openWebPage(String url) {
 				try {
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
@@ -134,46 +134,46 @@ public class GuiWelcome extends JFrame {
 						"https://www.youtube.com/watch?v=BxA4vHd6Ghk&ab_channel=Superepicherp");
 			}
 		});
-		btnTutorial.setFont(new Font("Calibri", Font.PLAIN, 15));
-		btnTutorial.addActionListener(new ActionListener() {
+		tutorialButton.setFont(new Font("Calibri", Font.PLAIN, 15));
+		tutorialButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnTutorial.setBackground(new Color(255, 255, 255));
-		btnTutorial.setBounds(562, 728, 109, 30);
-		contentPane.add(btnTutorial);
+		tutorialButton.setBackground(new Color(255, 255, 255));
+		tutorialButton.setBounds(562, 728, 109, 30);
+		contentPane.add(tutorialButton);
 
-		JLabel lblNewLabel_3 = new JLabel("User manual:\r\n");
-		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel_3.setBounds(189, 727, 109, 30);
-		contentPane.add(lblNewLabel_3);
+		JLabel userManualLabel = new JLabel("User manual:\r\n");
+		userManualLabel.setForeground(new Color(255, 255, 255));
+		userManualLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 18));
+		userManualLabel.setBounds(189, 727, 109, 30);
+		contentPane.add(userManualLabel);
 
-		JLabel lblNewLabel_4 = new JLabel("Live demo:\r\n");
-		lblNewLabel_4.setForeground(new Color(255, 255, 255));
-		lblNewLabel_4.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel_4.setBounds(470, 731, 93, 23);
-		contentPane.add(lblNewLabel_4);
+		JLabel liveDemoLabel = new JLabel("Live demo:\r\n");
+		liveDemoLabel.setForeground(new Color(255, 255, 255));
+		liveDemoLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 18));
+		liveDemoLabel.setBounds(470, 731, 93, 23);
+		contentPane.add(liveDemoLabel);
 
-		JLabel lblNewLabel_2_2 = new JLabel("");
-		lblNewLabel_2_2.setOpaque(true);
-		lblNewLabel_2_2.setForeground(Color.WHITE);
-		lblNewLabel_2_2.setFont(new Font("Poor Richard", Font.BOLD, 50));
-		lblNewLabel_2_2.setBackground(new Color(153, 153, 204));
-		lblNewLabel_2_2.setBounds(0, 701, 905, 67);
-		contentPane.add(lblNewLabel_2_2);
+		JLabel footerLabel = new JLabel("");
+		footerLabel.setOpaque(true);
+		footerLabel.setForeground(Color.WHITE);
+		footerLabel.setFont(new Font("Poor Richard", Font.BOLD, 50));
+		footerLabel.setBackground(new Color(153, 153, 204));
+		footerLabel.setBounds(0, 701, 905, 67);
+		contentPane.add(footerLabel);
 
-		Label label = new Label("Click the button below to upload your tablature.");
-		label.setFont(new Font("Calibri Light", Font.PLAIN, 20));
-		label.setBounds(229, 490, 537, 43);
-		contentPane.add(label);
+		Label instructionLabel = new Label("Click the button below to upload your tablature.");
+		instructionLabel.setFont(new Font("Calibri Light", Font.PLAIN, 20));
+		instructionLabel.setBounds(229, 490, 537, 43);
+		contentPane.add(instructionLabel);
 
-		JLabel lblNewLabel_5 = new JLabel(" TAB - 2 - MusicXML\u2122\r\n");
-		lblNewLabel_5.setForeground(new Color(51, 0, 153));
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setFont(new Font("Poor Richard", Font.BOLD, 92));
-		lblNewLabel_5.setBounds(31, 98, 843, 175);
-		contentPane.add(lblNewLabel_5);
+		JLabel titleLabel = new JLabel(" TAB - 2 - MusicXML\u2122\r\n");
+		titleLabel.setForeground(new Color(51, 0, 153));
+		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titleLabel.setFont(new Font("Poor Richard", Font.BOLD, 92));
+		titleLabel.setBounds(31, 98, 843, 175);
+		contentPane.add(titleLabel);
 
 	}
 }

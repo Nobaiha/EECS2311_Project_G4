@@ -62,16 +62,16 @@ public class SaveFile extends JFrame {
 
 		JTextArea tabDisplayTextArea = new JTextArea();
 		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 22));
-		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
-		sp.setBounds(10, 159, 885, 459);
-		saveFile.add(sp);
+		JScrollPane outputScroller = new JScrollPane(tabDisplayTextArea);
+		outputScroller.setBounds(10, 159, 885, 459);
+		saveFile.add(outputScroller);
 		tabDisplayTextArea.setText(xml);
 		tabDisplayTextArea.setCaretPosition(0);
 
-		Button yesButton = new Button("Download");
+		Button downloadButton = new Button("Download");
 
-		yesButton.setBounds(363, 638, 178, 43);
-		yesButton.addActionListener(new ActionListener() {
+		downloadButton.setBounds(363, 638, 178, 43);
+		downloadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.setSelectedFile(new File("guitarTab.musicxml"));
@@ -84,53 +84,53 @@ public class SaveFile extends JFrame {
 				}
 			}
 		});
-		yesButton.setFont(new Font("Calibri", Font.PLAIN, 23));
-		saveFile.add(yesButton);
+		downloadButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		saveFile.add(downloadButton);
 
-		Button noButton = new Button("Exit");
-		noButton.setBounds(717, 638, 178, 43);
-		noButton.setFont(new Font("Calibri", Font.PLAIN, 23));
-		noButton.addActionListener(new ActionListener() {
+		Button exitButton = new Button("Exit");
+		exitButton.setBounds(717, 638, 178, 43);
+		exitButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				System.exit(0);
 			}
 		});
-		saveFile.add(noButton);
+		saveFile.add(exitButton);
 
 		JLabel fileReadyLabel = new JLabel("Your musicXML file is ready!");
 		fileReadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
 		fileReadyLabel.setBounds(10, 100, 895, 49);
 		saveFile.add(fileReadyLabel);
 
-		Button button = new Button("Edit");
-		button.addActionListener(new ActionListener() {
+		Button editButton = new Button("Edit");
+		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
 				new GuiUploadWindow(title, composer, content).setVisible(true);
 			}
 		});
-		button.setFont(new Font("Calibri", Font.PLAIN, 23));
-		button.setBounds(10, 638, 178, 43);
-		saveFile.add(button);
+		editButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		editButton.setBounds(10, 638, 178, 43);
+		saveFile.add(editButton);
 
-		JLabel lblTab = new JLabel(" TAB - 2 - MusicXML\u2122 Save File");
-		lblTab.setOpaque(true);
-		lblTab.setHorizontalAlignment(SwingConstants.LEFT);
-		lblTab.setForeground(Color.WHITE);
-		lblTab.setFont(new Font("Poor Richard", Font.BOLD, 40));
-		lblTab.setBackground(new Color(153, 153, 204));
-		lblTab.setBounds(0, 0, 905, 67);
-		saveFile.add(lblTab);
+		JLabel headerLabel = new JLabel(" TAB - 2 - MusicXML\u2122 Save File");
+		headerLabel.setOpaque(true);
+		headerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		headerLabel.setForeground(Color.WHITE);
+		headerLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		headerLabel.setBackground(new Color(153, 153, 204));
+		headerLabel.setBounds(0, 0, 905, 67);
+		saveFile.add(headerLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setOpaque(true);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Poor Richard", Font.BOLD, 40));
-		lblNewLabel_1.setBackground(new Color(153, 153, 204));
-		lblNewLabel_1.setBounds(0, 701, 905, 67);
-		saveFile.add(lblNewLabel_1);
+		JLabel footerLabel = new JLabel("");
+		footerLabel.setOpaque(true);
+		footerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		footerLabel.setForeground(Color.WHITE);
+		footerLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		footerLabel.setBackground(new Color(153, 153, 204));
+		footerLabel.setBounds(0, 701, 905, 67);
+		saveFile.add(footerLabel);
 	}
 }
