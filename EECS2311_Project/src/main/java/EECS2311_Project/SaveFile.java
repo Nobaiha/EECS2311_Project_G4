@@ -69,6 +69,7 @@ public class SaveFile extends JFrame {
 		tabDisplayTextArea.setCaretPosition(0);
 
 		Button downloadButton = new Button("Download");
+		downloadButton.setBackground(Color.WHITE);
 
 		downloadButton.setBounds(363, 638, 178, 43);
 		downloadButton.addActionListener(new ActionListener() {
@@ -88,6 +89,7 @@ public class SaveFile extends JFrame {
 		saveFile.add(downloadButton);
 
 		Button exitButton = new Button("Exit");
+		exitButton.setBackground(Color.WHITE);
 		exitButton.setBounds(717, 638, 178, 43);
 		exitButton.setFont(new Font("Calibri", Font.PLAIN, 23));
 		exitButton.addActionListener(new ActionListener() {
@@ -104,6 +106,7 @@ public class SaveFile extends JFrame {
 		saveFile.add(fileReadyLabel);
 
 		Button editButton = new Button("Edit");
+		editButton.setBackground(Color.WHITE);
 		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
