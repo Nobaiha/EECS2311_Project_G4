@@ -42,7 +42,6 @@ When selecting a tab to process, please use one of the two provided examples as 
 - Drum tablature conversion is not fully functional. If you wish to use it, these are some things you must keep in mind:
   -  The duration of each note is not accurate.
   -  Must only have one note per column (As in only one note at a time).
-- Selecting a wrong input file type or invalid tab will crash the program.
 
 If it is showing some compiler errors please refer to the next section. 
 
