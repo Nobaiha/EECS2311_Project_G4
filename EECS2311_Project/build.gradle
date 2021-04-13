@@ -41,6 +41,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
+
 run {
     if (javafx.platform.classifier == 'win') {
         // Temporal fix for Eclipse with JDK 1.8 and Windows 
@@ -49,3 +50,15 @@ run {
 }
 
 mainClassName = 'EECS2311_Project.Main'
+
+task debug {
+    group = "application"
+    description = "Runs this project in debug mode on port 2311"
+    doFirst {
+        application {
+            applicationDefaultJvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=2311']
+        }
+    }
+}
+
+debug.finalizedBy run
