@@ -75,7 +75,15 @@ public class SaveFile extends JFrame {
 		downloadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setSelectedFile(new File("guitarTab.musicxml"));
+				String fileName = "convertedTab.musicxml";
+				if(Main.guitar == 0){
+					fileName = "guitarTab.musicxml";
+				}else if(Main.guitar == 1){
+					fileName = "bassTab.musicxml";
+				}else if(Main.guitar == 2){
+					fileName = "drumTab.musicxml";
+				}
+				fileChooser.setSelectedFile(new File(fileName));
 				fileChooser.setFileFilter(new FileNameExtensionFilter("musicxml file", "musicxml"));
 				int userSelection = fileChooser.showSaveDialog(SaveFile.this);
 				if (userSelection == JFileChooser.APPROVE_OPTION) {

@@ -139,5 +139,34 @@ public class GuitarNoteTest {
         assertEquals(2,guitarNote.octave);
         assertEquals(1,guitarNote.modifier);
 
+        guitarNote = new GuitarNote(1, 1, 1, "2");
+        guitarNote.bass = true;
+        guitarNote.setMusicNote();
+        assertEquals( "A", guitarNote.musicNote);
+        assertEquals(2,guitarNote.octave);
+        assertEquals(0,guitarNote.modifier);
+
+        guitarNote = new GuitarNote(1, 1, 2, "1");
+        guitarNote.bass = true;
+        guitarNote.setMusicNote();
+        assertEquals( "D", guitarNote.musicNote);
+        assertEquals(2,guitarNote.octave);
+        assertEquals(1,guitarNote.modifier);
+
+        guitarNote = new GuitarNote(1, 1, 3, "1");
+        guitarNote.bass = true;
+        guitarNote.setMusicNote();
+        assertEquals( "A", guitarNote.musicNote);
+        assertEquals(3,guitarNote.octave);
+        assertEquals(1,guitarNote.modifier);
+
+        guitarNote = new GuitarNote(1, 1, 4, "1");
+        guitarNote.bass = true;
+        guitarNote.setMusicNote();
+        assertEquals( "F", guitarNote.musicNote);
+        assertEquals(3,guitarNote.octave);
+        assertEquals(0,guitarNote.modifier);
+
+
     }
 }
