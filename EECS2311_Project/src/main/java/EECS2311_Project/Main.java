@@ -597,8 +597,8 @@ public class Main {
                     .up()//fifths
                     .up()//key
 
-                    .add("time").add("beats").set(4).up()//beat
-                    .add("beat-type").set(4)
+                    .add("time").add("beats").set(timeSig1).up()//beat
+                    .add("beat-type").set(timeSig2)
                     .up()//beat-type
                     .up()//time
 
