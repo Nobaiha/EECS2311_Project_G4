@@ -1,25 +1,18 @@
 package EECS2311_Project;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.Button;
-import java.awt.TextArea;
-import java.awt.Canvas;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
-import java.awt.SystemColor;
 
 /**
  * The class that operates the upload window of the GUI.
@@ -52,6 +45,14 @@ public class GuiUploadWindow extends JFrame {
 
 	/**
 	 * Creates the frame.
+	 */
+	/**
+	 * Creates the frame that will allow the user to upload their tablature and
+	 * select what the instrument they will be converting for
+	 * 
+	 * @param title    tablature's title entered by user
+	 * @param composer tablature's composer entered by user
+	 * @param content  tablature content from conversion
 	 */
 	public GuiUploadWindow(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -189,9 +190,9 @@ public class GuiUploadWindow extends JFrame {
 				} catch (Exception exception) {
 					setVisible(false);
 					dispose();
-					
+
 				}
-				
+
 			}
 		});
 		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
@@ -236,7 +237,7 @@ public class GuiUploadWindow extends JFrame {
 	/**
 	 * Sets the title of the tablature.
 	 * 
-	 * @param title
+	 * @param title tablature's title entered by user
 	 */
 	public static void setTabTitle(String title) {
 		GuiUploadWindow.title = title;
@@ -245,7 +246,7 @@ public class GuiUploadWindow extends JFrame {
 	/**
 	 * Sets the content of the tablature.
 	 * 
-	 * @param content
+	 * @param content tablature content from conversion
 	 */
 	public static void setContent(String content) {
 		GuiUploadWindow.content = content;
@@ -254,7 +255,7 @@ public class GuiUploadWindow extends JFrame {
 	/**
 	 * Sets the composer of the tablature.
 	 * 
-	 * @param composer
+	 * @param composer tablature's composer entered by user
 	 */
 	public static void setComposer(String composer) {
 		GuiUploadWindow.composer = composer;

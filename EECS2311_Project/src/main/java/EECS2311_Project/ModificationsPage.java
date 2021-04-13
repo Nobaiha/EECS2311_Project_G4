@@ -1,8 +1,6 @@
 package EECS2311_Project;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,15 +9,12 @@ import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.Canvas;
 import java.awt.Button;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
-import javax.swing.JTabbedPane;
 
 /**
  * The class that operates the modifications window of the GUI.
@@ -53,7 +48,12 @@ public class ModificationsPage extends JFrame {
 	}
 
 	/**
-	 * Creates the frame.
+	 * Creates the frame for the modification window where user can enter some input
+	 * to change specific components.
+	 * 
+	 * @param title    tablature's title entered by user
+	 * @param composer tablature's composer entered by user
+	 * @param content  tablature content from conversion
 	 */
 	public ModificationsPage(String title, String composer, String content) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,7 +97,7 @@ public class ModificationsPage extends JFrame {
 		Button enterButton = new Button("Confirm");
 
 		enterButton.setForeground(Color.BLACK);
-		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
+		enterButton.setFont(new Font("Calibri", Font.PLAIN, 23));
 		enterButton.setBackground(Color.WHITE);
 		enterButton.setBounds(387, 597, 178, 43);
 		contentPane.add(enterButton);
