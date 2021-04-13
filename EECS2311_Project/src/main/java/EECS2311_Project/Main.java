@@ -20,20 +20,19 @@ public class Main {
 
 	// Music element related variable definition such as measure, time signature,
 	// music title, composer and related key signature
-	static HashMap<Integer, Integer> measuresElement = new HashMap<>();
-	static ArrayList<Measure> measures = new ArrayList<>();
-	static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
-	static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
-	static ArrayList<Integer> repeatAmout = new ArrayList<>();
-	static ArrayList<Integer> topRepeatStarts = new ArrayList<>();
-	static ArrayList<Integer> topRepeatEnds = new ArrayList<>();
-	static ArrayList<Integer> topRepeatMeasuresStarts = new ArrayList<>();
-	static ArrayList<Integer> topRepeatMeasuresEnds = new ArrayList<>();
+	public static HashMap<Integer, Integer> measuresElement = new HashMap<>();
+	public static ArrayList<Measure> measures = new ArrayList<>();
+	public static LinkedHashSet<Integer> repeatStarts = new LinkedHashSet<>();
+	public static LinkedHashSet<Integer> repeatEnds = new LinkedHashSet<>();
+	public static ArrayList<Integer> repeatAmout = new ArrayList<>();
+	public static ArrayList<Integer> topRepeatStarts = new ArrayList<>();
+	public static ArrayList<Integer> topRepeatEnds = new ArrayList<>();
+
 
 	static int timeSig1 = 4;
 	static int timeSig2 = 4;
 
-	static int guitar = 0;
+	public static int guitar = 0;
 
 	static String tabTitle = "";
 	static String tabComposer = "";
