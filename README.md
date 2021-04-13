@@ -38,7 +38,7 @@ When selecting a tab to process, please use one of the two provided examples as 
 ## Dependencies
 - [Xembly](https://github.com/yegor256/xembly)
 
-## Known Bugs
+## Important Information
 - Drum tablature conversion is not fully functional. If you wish to use it, these are some things you must keep in mind:
   -  The duration of each note is not accurate.
   -  Must only have one note per column (As in only one note at a time).
