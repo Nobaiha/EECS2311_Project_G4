@@ -14,14 +14,9 @@ public class DrumNote {
         public int noteNumber;
         public String part;
         public char noteValue;
-        public boolean backUp;
+        public int position;
         
         public int duration;
-        public boolean chord;
-        public String noteType;
-        public boolean noteDot;
-        public int octave;
-        public boolean grace;
         
         /**
          * A constructor for DrumNote.
@@ -36,13 +31,6 @@ public class DrumNote {
             this.noteNumber = noteNumber;
             this.part = part;
             this.noteValue = noteValue;
-            this.chord = false;
-            
-            if (this.part.equalsIgnoreCase("BD") || this.part.equalsIgnoreCase("B")) {
-            	this.backUp = true;
-            } else {
-            	this.backUp = false;
-            }
         }
         
         /**
@@ -55,11 +43,11 @@ public class DrumNote {
         }
         
         /**
-         * Sets the chord of the drum note.
+         * Sets the position of the drum note.
          * 
-         * @param chord
+         * @param position
          */
-        public void setChord(boolean chord) {
-            this.chord = chord;
+        public void setPosition(int position) {
+            this.position = position;
         }
 }

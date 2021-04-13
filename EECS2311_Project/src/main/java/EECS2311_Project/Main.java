@@ -344,12 +344,10 @@ public class Main {
      * @return an ArrayList of type DrumNote with processed drum tablature information.
      */
     public static ArrayList<DrumNote> drumNoteParser(ArrayList<String> noteArray) {
-        //drum test case
         ArrayList<DrumNote> drumNoteArray = new ArrayList<>();
         ArrayList<String> strArray = new ArrayList<>();
         for (String list : noteArray) {
             String[] tempArray = list.split("-", -1);
-            //converts to arraylist, prob a better way to do this.
             Collections.addAll(strArray, tempArray);
         }
 
@@ -359,10 +357,15 @@ public class Main {
         String repeatedPart = "";
         int measureMem = 1;
         Pattern pattern = Pattern.compile("^([SDSBDBHHHTRDRCCCSTT1MTT2FTT3])");
+        int wholePosition = 0;
 
         //Iterates through the parsed string array and makes an array of note objects
+
         for (String str : strArray) {
-            //System.out.println((str));
+        	
+        	//wholePosition++;
+        	//System.out.println(wholePosition);
+        	
             //checks for old regex expression which represents a note
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
@@ -379,6 +382,9 @@ public class Main {
                         //outlier where first note isnt a '-'
                         DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, str.charAt(indexOfMeasure + 1));
                         drumNoteArray.add(tempDrumNote);
+                        
+                        tempDrumNote.setPosition(wholePosition);
+                        
                     } else if (repeatedPart.equals(part)) {
                         //If it has gone through all possible parts dont reset the measure count
                         measureMem = measureNum;
@@ -396,8 +402,12 @@ public class Main {
                     for (char character : str.substring(1).toCharArray()) {
                         DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, character);
                         drumNoteArray.add(tempDrumNote);
+                        //tempDrumNote.setPosition(wholePosition);
                     }
                 }
+                
+                //wholePosition = 0;
+                
             } else if (str.length() == 0) {
                 //if blank, increase note count.
                 noteNum++;
@@ -409,6 +419,7 @@ public class Main {
                     noteNum++;
                     DrumNote tempDrumNote = new DrumNote(measureNum, noteNum, part, character);
                     drumNoteArray.add(tempDrumNote);
+                    //tempDrumNote.setPosition(wholePosition);
 
                 }
             }
@@ -420,6 +431,7 @@ public class Main {
             System.out.println("Measure number: " + drumNote.measure);
             System.out.println("Element number: " + drumNote.noteNumber);
             System.out.println("Element value: " + drumNote.noteValue);
+            System.out.println("Element position: " + drumNote.position);
             System.out.println();
         }
         return drumNoteArray;
@@ -759,6 +771,10 @@ public class Main {
     	int voiceChange;
     	int doOnce = 0;
     	int lastNote = 0;
+    	int maxMeasure = 0;
+    	int backUpPoint = 0;
+    	int currentMeasure;
+    	
     	
     	ArrayList<DrumNote> sortedDrumArray = new ArrayList<DrumNote>();
     	ArrayList<DrumNote> backUpDrumArray = new ArrayList<DrumNote>();
@@ -770,10 +786,21 @@ public class Main {
             	if (drumNote.noteNumber == noteNumCounter) {
             		sortedDrumArray.add(drumNote);
             	}
+            	
+            	if (drumNote.noteNumber == noteNumCounter && (drumNote.part.equalsIgnoreCase("BD") || drumNote.part.equalsIgnoreCase("B"))) {
+            		backUpDrumArray.add(drumNote);
+            	}
+            	
+            	if (drumNote.measure > maxMeasure) {
+            		maxMeasure = drumNote.measure;
+            	}
             }
         }
         
-        System.out.println("Size:"+sortedDrumArray.size());
+//        System.out.println("Size:"+sortedDrumArray.size());
+//        System.out.println("Backup Size:"+backUpDrumArray.size());
+        
+        backUpPoint = maxMeasure/2;
     	
     	
     	if (drumNoteArray.size() == 0) {
@@ -872,9 +899,12 @@ public class Main {
         	.add("part")
         	.attr("id","P1");
 
-        for (int i = 0; i < 3; i++) {
-            doOnce = 0;
+       
+        
+        for (int i = 0; i < maxMeasure; i++) {
             lastNote = 0;
+            doOnce = 0;
+            currentMeasure = i + 1;
             
         	directives.add("measure")
                     .attr("number", i + 1)
@@ -910,42 +940,30 @@ public class Main {
 
 
             for (DrumNote drumNote : sortedDrumArray) { 
-            	//System.out.println("Note back up:"+drumNote.backUp);
                 if (drumNote.measure == i + 1) {
-                	voiceChange = 0;
                 	
-//                	if (drumNote.backUp == true && doOnce == 0) {
-//                		voiceChange = 1;
-//                		doOnce = 1;
-//                	}
-//                	
-//                	if (voiceChange != 0) {
-//                		directives.add("backup")
-//                		.add("duration")
-//                		.set(16)//TODO
-//                		.up()//duration
-//                		.up();//backup
-//                	}
-                	
+                	if ((i+1) > backUpPoint && doOnce == 0) {
+                		directives.add("backup")
+                		.add("duration")
+                		.set("16")
+                		.up()//duration
+                		.up();//backup
+                		doOnce = 1;
+            		}
+         	
                 	directives.add("note");
                 	
                 	if (drumNote.noteValue == 'f') {
                 		directives.add("grace")
                 		.up();
                 	}    
-                	
-                	System.out.println("Note part:"+drumNote.part);
-                	System.out.println("Note number:"+drumNote.noteNumber);
-                	System.out.println("Last note:"+lastNote);
-                	System.out.println("------");
-                	
+
 //                	if (drumNote.noteNumber == lastNote) {
 //                		directives.add("chord")
 //                		.up();
 //                	}   
                 	
                 	directives.add("unpitched");
-
                 			directives.add("display-step");
                             if (drumNote.part.equalsIgnoreCase("SD") || drumNote.part.equalsIgnoreCase("S")) { //Snare
                             	directives.set("C");
@@ -964,7 +982,6 @@ public class Main {
                             } else if (drumNote.part.equalsIgnoreCase("FT") || drumNote.part.equalsIgnoreCase("T3")) { //Floor Tom
                             	directives.set("A");
                             } else {
-                            	//directives.set("C");
                             	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
                             }
 
@@ -1027,32 +1044,14 @@ public class Main {
 
                             directives.up();//instrument
 
-                            if (drumNote.backUp == false) {
                             	directives.add("voice")
                                 .set(1)
                                 .up();//voice
-                            } else {
-                            	directives.add("voice")
-                                .set(2)
-                                .up();//voice
-                            }
                             
-
                             directives.add("type")
                             .set("eighth")//TODO
                             .up();//type
 
-//                            if (drumNote.backUp == false) {
-//                            	directives.add("stem")
-//                                .set("up")
-//                                .up();//stem
-//                            } else {
-//                            	directives.add("stem")
-//                                .set("down")
-//                                .up();//stem
-//                            }
-
-                            
                             if (drumNote.noteValue == 'o') {
                             	//Nothing
                             } else {
@@ -1060,31 +1059,91 @@ public class Main {
                                 .set(drumNote.noteValue)
                                 .up();
                             }
-                            
-
-                            //if () {
-                            //directives.add("beam")
-                            		//.attr("number", "1")
-                            		//if () {
-                            		//.set("continue")
-                            		//} else if() {
-                            		//.set("begin")
-                					//} else {
-                            		//.set("end")
-                            		//.up();//beam
-                            		//}
-                            //}
-
                             directives.up();//note
                             lastNote = drumNote.noteNumber;
                 }
                 
-                
-                
             }
-
+            
+//            //BACK UP NOTE PART
+//            doOnce = 0;
+//            for (DrumNote backUpNote : backUpDrumArray) {
+//            	if (backUpNote.measure == currentMeasure) {
+//            		
+//            		if (doOnce == 0) {
+//                		directives.add("backup")
+//                		.add("duration")
+//                		.set("16")
+//                		.up()//duration
+//                		.up();//backup
+//                		doOnce = 1;
+//            		}
+//                    	directives.add("note");
+//                    	
+//                    	if (backUpNote.noteValue == 'f') {
+//                    		directives.add("grace")
+//                    		.up();
+//                    	}    
+//
+////                    	if (drumNote.noteNumber == lastNote) {
+////                    		directives.add("chord")
+////                    		.up();
+////                    	}   
+//                    	
+//                    	directives.add("unpitched");
+//                    			directives.add("display-step");
+//                                if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
+//                                	directives.set("F");
+//                                } else {
+//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+//                                }
+//
+//                                directives.up()//display-step
+//                                .add("display-octave");
+//                                if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
+//                                	directives.set(4);
+//                                } else { 
+//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+//                                }
+//                                directives.up()//display-octave
+//                                .up()//unpitched
+//
+//                                .add("duration")
+//                                .set(2)//TODO
+//                                .up()//duration
+//
+//                                .add("instrument");
+//                                } if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
+//                                	directives.attr("id", "P1-I36");
+//                                } else {
+//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
+//                                }
+//
+//                                directives.up();//instrument
+//
+//                                directives.add("voice")
+//                                .set(2)
+//                                .up();//voice
+//                                
+//                                directives.add("type")
+//                                .set("eighth")//TODO
+//                                .up();//type
+//
+//                                if (backUpNote.noteValue == 'o') {
+//                                	//Nothing
+//                                } else {
+//                                	directives.add("notehead")
+//                                    .set(backUpNote.noteValue)
+//                                    .up();
+//                                }
+//                                directives.up();//note
+//                                lastNote = backUpNote.noteNumber;
+//
+//            } //BACK UP NOTE PART END
+            
             directives.up();//measure
         }
+        
         directives.up()//part
         .up();//score-partwise
 
