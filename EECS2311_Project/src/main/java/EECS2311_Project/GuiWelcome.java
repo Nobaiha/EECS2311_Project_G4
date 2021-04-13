@@ -138,7 +138,7 @@ public class GuiWelcome extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				openWebPage(
-						"https://youtu.be/krTh2HwP3PY");
+						"https://www.youtube.com/watch?v=BxA4vHd6Ghk&ab_channel=Superepicherp");
 			}
 		});
 		btnTutorial.setFont(new Font("Calibri", Font.PLAIN, 15));
