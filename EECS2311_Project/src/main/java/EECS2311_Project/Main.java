@@ -75,15 +75,11 @@ public class Main {
 		try (Scanner sc = new Scanner(inputFile)) {
 			while (sc.hasNextLine()) {
 				String nextLine = sc.nextLine();
-				System.out.println(nextLine);
 				tabContents += nextLine + "\n";
-
 				if (!nextLine.contains("|")) {
-
 					testLines.add(" ");
 					drumTestLines.add(" ");
 				}
-
 				Matcher matcher = pattern.matcher(nextLine);
 				if (matcher.find() && guitar != 2) {
 					testLines.add(nextLine);
@@ -118,7 +114,6 @@ public class Main {
 		ArrayList<String[]> strArray = new ArrayList<>();
 
 		for (String list : noteArray) {
-			System.out.println(list);
 			String[] tempArray = list.split("[-\\s]", -1);
 
 			strArray.add(tempArray);
@@ -147,19 +142,16 @@ public class Main {
 		}
 
 		for (String[] array : strArray) {
-			System.out.println(Arrays.toString(array));
 			if (topRepeat) {
 				topRepeatStarts.remove(topRepeatStarts.size() - 1);
 			}
 			topRepeat = false;
 			repeat = false;
 			repeatNum = 0;
-			System.out.println(array.length);
 			if (repeatTimes == repeatMax) {
 				repeatTimes = 0;
 				stringVal = 0;
 				measureMem = measureNum;
-
 			}
 			int counter = 0;
 
@@ -170,27 +162,20 @@ public class Main {
 				topRepeat = true;
 			}
 			for (String str : array) {
-				System.out.println(str);
 				if (topRepeatStarts.contains(measureChars)) {
 					repeatStarts.add(measureNum);
-
 				}
 				if (topRepeatEnds.contains(measureChars)) {
-					System.out.println("Adding to repeat ends " + measureNum);
 					repeatEnds.add(measureNum);
-
 				}
 				if (topRepeat && pattern.matcher(str).find()) {
 					repeatNum += str.length() + 1;
-
 					repeatFlag = true;
 					repeatAmout.add(Integer.parseInt(str.replaceAll("\\D+", "")));
 				} else if (topRepeat && str.contains("repeat")) {
 					repeatNum += str.length() + 1;
 				} else if (str.equals("||") && counter == 0) {
-
 					measureNum = measureMem;
-
 					repeatStarts.add(measureNum + 1);
 					measureNum++;
 					repeat = true;
@@ -240,14 +225,9 @@ public class Main {
 							topRepeatStarts.remove(topRepeatStarts.size() - 1);
 						}
 						topRepeatStarts.add(repeatNum);
-						System.out.println("Inside str contains repeat num is: " + repeatNum);
-
 						counter = -1;
 					} else if (topRepeat) {
-
-						System.out.println("2repeat num is: " + repeatNum);
 						topRepeatStarts.add(repeatNum);
-
 						repeat = true;
 					} else {
 						if (str.startsWith("*")) {
@@ -255,7 +235,6 @@ public class Main {
 						}
 						measuresElement.put(measureNum, noteNum);
 						measureChars += noteNum + 1;
-						System.out.println("measure char is: " + measureChars + " at measure " + measureNum);
 						noteNum = 1;
 						if (str.endsWith("*")) {
 							noteNum++;
@@ -283,16 +262,6 @@ public class Main {
 				counter++;
 			}
 		}
-
-		System.out.println("Repeat starts at: " + repeatStarts.toString());
-		System.out.println("Repeat ends at: " + repeatEnds.toString());
-		System.out.println("Repeat amount: " + repeatAmout.toString());
-		System.out.println();
-		System.out.println("Top repeat starts at: " + topRepeatStarts.toString());
-		System.out.println("Top repeat ends at: " + topRepeatEnds.toString());
-		System.out.println("Top repeat amount: " + repeatAmout.toString());
-		System.out.println("Top repeat offset: " + measureChars);
-		System.out.println(measuresElement);
 		measuresElement.forEach((k, v) -> measures.add(new Measure(v, k)));
 		return guitarNoteArray;
 	}
@@ -871,7 +840,6 @@ public class Main {
 				SaveFile saveFile = new SaveFile(tabTitle, tabComposer, tabContents, xml);
 				saveFile.setVisible(true);
 			} else {
-				System.out.println("xml is null");
 				new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer, tabContents);
 			}
 		} else if (notes[0] == "drum") {
@@ -881,12 +849,9 @@ public class Main {
 				SaveFile saveFile = new SaveFile(tabTitle, tabComposer, tabContents, xml);
 				saveFile.setVisible(true);
 			} else {
-				System.out.println("xml is null");
 				new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer, tabContents);
 			}
 		} else {
-
-			System.out.println("not a guitar tab");
 			Error error = new Error("Error parsing, please ensure tab is in correct format.", tabTitle, tabComposer,
 					tabContents);
 
