@@ -7,6 +7,7 @@
   - The System Requirements Specification (SRS)
   - User Manual
   - Testing Document
+  - System Design Document
 
 ## Requirements
 - JavaSE-15 
