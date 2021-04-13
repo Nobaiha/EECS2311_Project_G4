@@ -27,6 +27,7 @@ import javax.swing.border.EtchedBorder;
 public class GuiWelcome extends JFrame {
 
 	private JPanel contentPane;
+	JLabel label = new JLabel("Button wasn't clicked!");
 
 	/**
 	 * Launches the application.
@@ -45,9 +46,12 @@ public class GuiWelcome extends JFrame {
 	}
 
 	/**
-	 * Creates the frame of the GUI.
+	 * Creates the frame for the welcome window which the user will see upon first
+	 * running the application.
 	 */
 	public GuiWelcome() {
+
+		label.setName("myLabel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 919, 805);
 		contentPane = new JPanel();
@@ -61,11 +65,13 @@ public class GuiWelcome extends JFrame {
 		startButton.setBackground(new Color(255, 255, 255));
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				label.setText("Button was clicked!");
 				setVisible(false);
 				dispose();
 				guiUploadWindow.setVisible(true);
 			}
 		});
+
 		startButton.setFont(new Font("Calibri", Font.PLAIN, 25));
 		startButton.setBounds(358, 575, 178, 43);
 		contentPane.add(startButton);
@@ -130,8 +136,7 @@ public class GuiWelcome extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				openWebPage(
-						"https://www.youtube.com/watch?v=BxA4vHd6Ghk&ab_channel=Superepicherp");
+				openWebPage("https://www.youtube.com/watch?v=BxA4vHd6Ghk&ab_channel=Superepicherp");
 			}
 		});
 		tutorialButton.setFont(new Font("Calibri", Font.PLAIN, 15));
@@ -176,4 +181,16 @@ public class GuiWelcome extends JFrame {
 		contentPane.add(titleLabel);
 
 	}
+
+	private int width = 358;
+	private int height = 575;
+
+	public int getWidth() {
+		return this.width;
+	}
+
+	public int getHeight() {
+		return this.height;
+	}
+
 }
