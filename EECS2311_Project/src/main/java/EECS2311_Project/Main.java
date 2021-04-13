@@ -797,12 +797,8 @@ public class Main {
             }
         }
         
-//        System.out.println("Size:"+sortedDrumArray.size());
-//        System.out.println("Backup Size:"+backUpDrumArray.size());
-        
         backUpPoint = maxMeasure/2;
-    	
-    	
+
     	if (drumNoteArray.size() == 0) {
             return null;
         }
@@ -1044,13 +1040,29 @@ public class Main {
 
                             directives.up();//instrument
 
+                            if ((i+1) > backUpPoint) {
+                            	directives.add("voice")
+                                .set(2)
+                                .up();//voice
+                            } else {
                             	directives.add("voice")
                                 .set(1)
                                 .up();//voice
+                            }
+                            	
                             
                             directives.add("type")
                             .set("eighth")//TODO
                             .up();//type
+                            
+                            directives.add("stem");
+                            if ((i+1) > backUpPoint) {
+                            	directives.set("down")
+                            	.up();//Stem
+                            } else {
+                            	directives.set("up")
+                            	.up();//Stem
+                            }
 
                             if (drumNote.noteValue == 'o') {
                             	//Nothing
@@ -1064,83 +1076,6 @@ public class Main {
                 }
                 
             }
-            
-//            //BACK UP NOTE PART
-//            doOnce = 0;
-//            for (DrumNote backUpNote : backUpDrumArray) {
-//            	if (backUpNote.measure == currentMeasure) {
-//            		
-//            		if (doOnce == 0) {
-//                		directives.add("backup")
-//                		.add("duration")
-//                		.set("16")
-//                		.up()//duration
-//                		.up();//backup
-//                		doOnce = 1;
-//            		}
-//                    	directives.add("note");
-//                    	
-//                    	if (backUpNote.noteValue == 'f') {
-//                    		directives.add("grace")
-//                    		.up();
-//                    	}    
-//
-////                    	if (drumNote.noteNumber == lastNote) {
-////                    		directives.add("chord")
-////                    		.up();
-////                    	}   
-//                    	
-//                    	directives.add("unpitched");
-//                    			directives.add("display-step");
-//                                if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
-//                                	directives.set("F");
-//                                } else {
-//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
-//                                }
-//
-//                                directives.up()//display-step
-//                                .add("display-octave");
-//                                if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
-//                                	directives.set(4);
-//                                } else { 
-//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
-//                                }
-//                                directives.up()//display-octave
-//                                .up()//unpitched
-//
-//                                .add("duration")
-//                                .set(2)//TODO
-//                                .up()//duration
-//
-//                                .add("instrument");
-//                                } if (backUpNote.part.equalsIgnoreCase("BD") || backUpNote.part.equalsIgnoreCase("B")) { //Bass
-//                                	directives.attr("id", "P1-I36");
-//                                } else {
-//                                	Error error = new Error("Tablature incorrect format. No specified drum instrument! (Example: BD|--x-x-| is correct. |--x-x-| is not.)");
-//                                }
-//
-//                                directives.up();//instrument
-//
-//                                directives.add("voice")
-//                                .set(2)
-//                                .up();//voice
-//                                
-//                                directives.add("type")
-//                                .set("eighth")//TODO
-//                                .up();//type
-//
-//                                if (backUpNote.noteValue == 'o') {
-//                                	//Nothing
-//                                } else {
-//                                	directives.add("notehead")
-//                                    .set(backUpNote.noteValue)
-//                                    .up();
-//                                }
-//                                directives.up();//note
-//                                lastNote = backUpNote.noteNumber;
-//
-//            } //BACK UP NOTE PART END
-            
             directives.up();//measure
         }
         
