@@ -61,16 +61,6 @@ public class SaveFile extends JFrame {
 		setContentPane(saveFile);
 		saveFile.setLayout(null);
 
-		Label label_4 = new Label("TM");
-		label_4.setBounds(372, 10, 28, 21);
-		saveFile.add(label_4);
-
-		Label label_3 = new Label("TAB-2-MusicXML");
-		label_3.setForeground(new Color(0, 51, 153));
-		label_3.setFont(new Font("Arial Black", Font.BOLD, 35));
-		label_3.setBounds(10, 10, 372, 49);
-		saveFile.add(label_3);
-
 		JTextArea tabDisplayTextArea = new JTextArea();
 		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 22));
 		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
@@ -81,7 +71,7 @@ public class SaveFile extends JFrame {
 
 		Button yesButton = new Button("Download");
 
-		yesButton.setBounds(339, 638, 224, 41);
+		yesButton.setBounds(363, 638, 178, 43);
 		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -95,12 +85,12 @@ public class SaveFile extends JFrame {
 				}
 			}
 		});
-		yesButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		yesButton.setFont(new Font("Calibri", Font.PLAIN, 23));
 		saveFile.add(yesButton);
 
 		Button noButton = new Button("Exit");
-		noButton.setBounds(739, 638, 150, 41);
-		noButton.setFont(new Font("Calibri", Font.PLAIN, 25));
+		noButton.setBounds(717, 638, 178, 43);
+		noButton.setFont(new Font("Calibri", Font.PLAIN, 23));
 		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -122,8 +112,26 @@ public class SaveFile extends JFrame {
 				new GuiUploadWindow(title, composer, content).setVisible(true);
 			}
 		});
-		button.setFont(new Font("Calibri", Font.PLAIN, 25));
-		button.setBounds(10, 638, 150, 41);
+		button.setFont(new Font("Calibri", Font.PLAIN, 23));
+		button.setBounds(10, 638, 178, 43);
 		saveFile.add(button);
+		
+		JLabel lblTab = new JLabel(" TAB - 2 - MusicXML\u2122 Save File");
+		lblTab.setOpaque(true);
+		lblTab.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTab.setForeground(Color.WHITE);
+		lblTab.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblTab.setBackground(new Color(153, 153, 204));
+		lblTab.setBounds(0, 0, 905, 67);
+		saveFile.add(lblTab);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setOpaque(true);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		lblNewLabel_1.setBackground(new Color(153, 153, 204));
+		lblNewLabel_1.setBounds(0, 701, 905, 67);
+		saveFile.add(lblNewLabel_1);
 	}
 }

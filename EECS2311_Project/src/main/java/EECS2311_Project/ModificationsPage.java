@@ -99,7 +99,7 @@ public class ModificationsPage extends JFrame {
 		enterButton.setForeground(Color.BLACK);
 		enterButton.setFont(new Font("Calibri Light", Font.PLAIN, 23));
 		enterButton.setBackground(Color.WHITE);
-		enterButton.setBounds(387, 597, 162, 41);
+		enterButton.setBounds(387, 597, 178, 43);
 		contentPane.add(enterButton);
 
 		JLabel lblKey = new JLabel("Key:");
