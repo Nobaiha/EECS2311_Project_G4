@@ -43,7 +43,7 @@ When selecting a tab to process, please use one of the two provided examples as 
   -  The duration of each note is not accurate.
   -  Must only have one note per column (As in only one note at a time).
 
-If it is showing some compiler errors please refer to the next section. 
+If you are getting compiler errors, please refer to the next section. 
 
 ## How to deal with compiler errors
 **1. Errors dealing with build path:** 
