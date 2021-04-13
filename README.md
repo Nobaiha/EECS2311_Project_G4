@@ -1,6 +1,6 @@
 # TAB-2-MusicXML™
 ## Introduction
-  The TAB-2-MusicXML™ interface system is a java based application that can be downloaded on to a personal computer that will convert tablature made for percussion and guitar in “.txt” format to musicXML code which will output as a downloadable file in musicXML format that can be used as sheet music or tab sheet music. The final output, at minimum, will contain work details (such as titles and musicians) and attributes (such as time signature and sufficient bars).
+  The TAB-2-MusicXML™ interface system is a java based application that can be downloaded on to a personal computer that will convert tablature made for guitar, bass and percussion in “.txt” format to musicXML code. This code can the be downloaded in musicXML file format. The final output, at minimum, will contain work details (such as titles and musicians) and attributes (such as time signature and sufficient bars).
 
 ## Documentation
   All documents you might need can be found in the [Documentation](https://github.com/Nobaiha/EECS2311_Project_G4/tree/master/Documentation) folder on this Github page. Such Documents include:
@@ -39,7 +39,9 @@ When selecting a tab to process, please use one of the two provided examples as 
 - [Xembly](https://github.com/yegor256/xembly)
 
 ## Known Bugs
-- Not all tabs are supported, only certain guitar tabs are.
+- Drum tablature conversion is not fully functional. If you wish to use it, these are some things you must keep in mind:
+  -  The duration of each note is not accurate.
+  -  Must only have one note per column (As in only one note at a time).
 - Selecting a wrong input file type or invalid tab will crash the program.
 
 If it is showing some compiler errors please refer to the next section. 
@@ -66,7 +68,7 @@ If it is showing some compiler errors please refer to the next section.
  - The dependencies may need to be updated to include Xembly. That can be found here: https://github.com/yegor256/xembly.
 
 **3. If all else fails:**
-  Reinstall and update the current Java workspace and Eclipse version you are using.
+  Reinstall and update the current Java workspace and IDE version you are using.
 
 ## Authors 
 - Suha Siddiqui
