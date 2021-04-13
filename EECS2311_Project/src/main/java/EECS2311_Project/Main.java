@@ -292,14 +292,9 @@ public class Main {
         //Iterates through the parsed string array and makes an array of note objects
 
         for (String str : strArray) {
-        	
-        	//wholePosition++;
-        	//System.out.println(wholePosition);
-        	
             //checks for old regex expression which represents a note
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
-                //System.out.println((str));
                 //checks to see if the first part of the line indicates a "string" i.e checks for a |
                 int indexOfMeasure = str.indexOf("|");
                 if (indexOfMeasure != -1) {
@@ -353,16 +348,6 @@ public class Main {
 
                 }
             }
-        }
-
-        //Test print the array.
-        for (DrumNote drumNote : drumNoteArray) {
-            System.out.println("Part: " + drumNote.part);
-            System.out.println("Measure number: " + drumNote.measure);
-            System.out.println("Element number: " + drumNote.noteNumber);
-            System.out.println("Element value: " + drumNote.noteValue);
-            System.out.println("Element position: " + drumNote.position);
-            System.out.println();
         }
         return drumNoteArray;
     }
@@ -517,7 +502,6 @@ public class Main {
 		try {
 			xml = new Xembler(directives).xml();
 		} catch (Exception e) {
-			System.out.println("error");
 		}
 		return xml;
 
@@ -531,7 +515,6 @@ public class Main {
 	 * @return a MusicXML file.
 	 */
 	public static String drumXMLParser(ArrayList<DrumNote> drumNoteArray) {
-    	System.out.println("Size:"+drumNoteArray.size());
     	int voiceChange;
     	int doOnce = 0;
     	int lastNote = 0;
@@ -752,10 +735,7 @@ public class Main {
                     directives
             ).xml();
         } catch (Exception e) {
-            System.out.println("error");
         }
-
-        System.out.println(xml);
         return xml;
     }
 
