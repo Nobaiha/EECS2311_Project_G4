@@ -5,26 +5,19 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Label;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.border.MatteBorder;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import javax.swing.border.EtchedBorder;
-import java.awt.Canvas;
 
 /**
  * The class that operates the welcome screen of the GUI.

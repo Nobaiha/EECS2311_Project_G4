@@ -1,21 +1,15 @@
 package EECS2311_Project;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.Font;
-import java.awt.Label;
-
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 /**
@@ -50,7 +44,12 @@ public class SaveFile extends JFrame {
 	}
 
 	/**
-	 * Creates the frame.
+	 * Creates the frame for the saving page.
+	 * 
+	 * @param title    tablature's title entered by user
+	 * @param composer tablature's composer entered by user
+	 * @param content  tablature content from conversion
+	 * @param xml      final output language of the tablature
 	 */
 	public SaveFile(String title, String composer, String content, String xml) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,7 +114,7 @@ public class SaveFile extends JFrame {
 		button.setFont(new Font("Calibri", Font.PLAIN, 23));
 		button.setBounds(10, 638, 178, 43);
 		saveFile.add(button);
-		
+
 		JLabel lblTab = new JLabel(" TAB - 2 - MusicXML\u2122 Save File");
 		lblTab.setOpaque(true);
 		lblTab.setHorizontalAlignment(SwingConstants.LEFT);
@@ -124,7 +123,7 @@ public class SaveFile extends JFrame {
 		lblTab.setBackground(new Color(153, 153, 204));
 		lblTab.setBounds(0, 0, 905, 67);
 		saveFile.add(lblTab);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setOpaque(true);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
