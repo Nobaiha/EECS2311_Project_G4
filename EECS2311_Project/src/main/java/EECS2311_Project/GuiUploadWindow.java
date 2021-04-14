@@ -120,6 +120,7 @@ public class GuiUploadWindow extends JFrame {
 		});
 
 		instrumentDropDown.setSelectedIndex(Main.guitar);
+		instrumentDropDown.setEditable(false);
 
 		Button browseButton = new Button("Browse");
 		browseButton.setBackground(Color.WHITE);
