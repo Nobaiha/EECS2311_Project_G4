@@ -182,6 +182,10 @@ public class GuiWelcome extends JFrame {
 
 	}
 
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of Start button
+	 */
 	private int width = 358;
 	private int height = 575;
 

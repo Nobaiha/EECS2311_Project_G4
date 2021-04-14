@@ -1,8 +1,12 @@
 import EECS2311_Project.DrumNote;
+import EECS2311_Project.GuiUploadWindow;
 import EECS2311_Project.GuiWelcome;
 import EECS2311_Project.GuitarNote;
 import EECS2311_Project.Main;
 import EECS2311_Project.Measure;
+import EECS2311_Project.ModificationsPage;
+import EECS2311_Project.SaveFile;
+
 import org.junit.jupiter.api.*;
 
 import java.awt.AWTException;
@@ -222,7 +226,7 @@ public class MainTest {
 	 * @throws AWTException
 	 */
 	@Test
-	public void buttonClick() throws AWTException {
+	public void startButtonClick() throws AWTException {
 		boolean result = false;
 		Robot bot = new Robot();
 		GuiWelcome gW = new GuiWelcome();
@@ -241,6 +245,172 @@ public class MainTest {
 			}
 		}
 
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the ModificationPage class testing for bounds of the 'Confirm' button
+	 * 
+	 * @throws AWTException
+	 */
+	@Test
+	public void confirmButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		ModificationsPage mP = new ModificationsPage(null, null, null);
+		int w = mP.getWidth();
+		int h = mP.getHeight();
+
+		bot.mouseMove(w, h);
+		if (w == 387 && h == 597) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the GuiUploadWindow class testing for bounds of the 'Convert' button
+	 * 
+	 * @throws AWTException
+	 */
+	@Test
+	public void convertButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		GuiUploadWindow gUW = new GuiUploadWindow(null, null, null);
+		int w = gUW.getWidthConvert();
+		int h = gUW.getHeightConvert();
+		bot.mouseMove(w, h);
+
+		if (w == 254 && h == 639) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the GuiUploadWindow class testing for bounds of the 'Modifications' button
+	 * 
+	 * @throws AWTException
+	 */
+	@Test
+	public void modButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		GuiUploadWindow gUW = new GuiUploadWindow(null, null, null);
+		int w = gUW.getWidthMod();
+		int h = gUW.getHeightMod();
+		bot.mouseMove(w, h);
+
+		if (w == 480 && h == 639) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the SaveFile class testing for bounds of the 'Edit' button
+	 * 
+	 * @throws AWTException
+	 */
+	public void editButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		SaveFile sF = new SaveFile(null, null, null, null);
+		int w = sF.getWidthEdit();
+		int h = sF.getHeightEdit();
+		bot.mouseMove(w, h);
+
+		if (w == 10 && h == 638) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the SaveFile class testing for bounds of the 'Download' button
+	 * 
+	 * @throws AWTException
+	 */
+	public void downloadButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		SaveFile sF = new SaveFile(null, null, null, null);
+		int w = sF.getWidthDownload();
+		int h = sF.getHeightDownload();
+		bot.mouseMove(w, h);
+
+		if (w == 363 && h == 638) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		assertEquals(true, result);
+	}
+
+	/**
+	 * Function to check if the robot is pressing in the correct area declared in
+	 * the SaveFile class testing for bounds of the 'Exit' button
+	 * 
+	 * @throws AWTException
+	 */
+	public void exitButtonClick() throws AWTException {
+		boolean result = false;
+		Robot bot = new Robot();
+		SaveFile sF = new SaveFile(null, null, null, null);
+		int w = sF.getWidthExit();
+		int h = sF.getHeightExit();
+		bot.mouseMove(w, h);
+
+		if (w == 717 && h == 638) {
+			try {
+				bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				Thread.sleep(250);
+				bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				result = true;
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		assertEquals(true, result);
 	}
 

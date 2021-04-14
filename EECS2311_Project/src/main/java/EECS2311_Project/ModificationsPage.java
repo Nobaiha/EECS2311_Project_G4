@@ -21,6 +21,14 @@ import javax.swing.SwingConstants;
  *
  * @author Team 4 EECS2311 Winter 2021
  */
+/**
+ * @author suhas
+ *
+ */
+/**
+ * @author suhas
+ *
+ */
 public class ModificationsPage extends JFrame {
 
 	private JPanel contentPane;
@@ -109,9 +117,9 @@ public class ModificationsPage extends JFrame {
 
 		JComboBox keyComboBox = new JComboBox();
 		keyComboBox.setFont(new Font("Calibri", Font.PLAIN, 22));
-		keyComboBox.setModel(new DefaultComboBoxModel(new String[] { "C major", "G major", "D major", "A major", "E major",
-				"B major", "F major", "B flat major", "E flat major", "A flat major", "D flat major", "G flat major",
-				"C flat major" }));
+		keyComboBox.setModel(new DefaultComboBoxModel(new String[] { "C major", "G major", "D major", "A major",
+				"E major", "B major", "F major", "B flat major", "E flat major", "A flat major", "D flat major",
+				"G flat major", "C flat major" }));
 		keyComboBox.setBounds(243, 408, 321, 49);
 		contentPane.add(keyComboBox);
 
@@ -196,12 +204,14 @@ public class ModificationsPage extends JFrame {
 		headerLabel.setBounds(0, 0, 905, 67);
 		contentPane.add(headerLabel);
 
-		Label instructionLabel1 = new Label("This page will allow you to add small modifications to your tab. You will be");
+		Label instructionLabel1 = new Label(
+				"This page will allow you to add small modifications to your tab. You will be");
 		instructionLabel1.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionLabel1.setBounds(10, 87, 885, 41);
 		contentPane.add(instructionLabel1);
 
-		Label instructionLabel2 = new Label("able to enter the composer, title of your tab, key and time signature. Once ");
+		Label instructionLabel2 = new Label(
+				"able to enter the composer, title of your tab, key and time signature. Once ");
 		instructionLabel2.setFont(new Font("Calibri Light", Font.PLAIN, 20));
 		instructionLabel2.setBounds(10, 134, 885, 41);
 		contentPane.add(instructionLabel2);
@@ -229,5 +239,20 @@ public class ModificationsPage extends JFrame {
 				guiUploadWindow.setVisible(true);
 			}
 		});
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of confirm button
+	 */
+	private int width = 387;
+	private int height = 597;
+
+	public int getWidth() {
+		return this.width;
+	}
+
+	public int getHeight() {
+		return this.height;
 	}
 }
