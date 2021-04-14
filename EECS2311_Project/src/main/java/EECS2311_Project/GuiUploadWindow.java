@@ -19,6 +19,10 @@ import java.awt.event.ActionEvent;
  *
  * @author Team 4 EECS2311 Winter 2021
  */
+/**
+ * @author suhas
+ *
+ */
 public class GuiUploadWindow extends JFrame {
 
 	private static String composer;
@@ -260,5 +264,35 @@ public class GuiUploadWindow extends JFrame {
 	public static void setComposer(String composer) {
 		GuiUploadWindow.composer = composer;
 
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of convert button
+	 */
+	private int widthConvert = 254;
+	private int heightConvert = 639;
+
+	public int getWidthConvert() {
+		return this.widthConvert;
+	}
+
+	public int getHeightConvert() {
+		return this.heightConvert;
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of modification button
+	 */
+	private int widthMod = 480;
+	private int heightMod = 639;
+
+	public int getWidthMod() {
+		return this.widthMod;
+	}
+
+	public int getHeightMod() {
+		return this.heightMod;
 	}
 }

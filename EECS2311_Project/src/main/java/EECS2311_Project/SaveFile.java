@@ -144,4 +144,51 @@ public class SaveFile extends JFrame {
 		footerLabel.setBounds(0, 701, 905, 67);
 		saveFile.add(footerLabel);
 	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of edit button
+	 */
+
+	private int widthEdit = 10;
+	private int heightEdit = 638;
+
+	public int getWidthEdit() {
+		return this.widthEdit;
+	}
+
+	public int getHeightEdit() {
+		return this.heightEdit;
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of download button
+	 */
+	private int widthDownload = 363;
+	private int heightDownload = 638;
+
+	public int getWidthDownload() {
+		return this.widthDownload;
+	}
+
+	public int getHeightDownload() {
+		return this.heightDownload;
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of exit button
+	 */
+	private int widthExit = 717;
+	private int heightExit = 638;
+
+	public int getWidthExit() {
+		return this.widthExit;
+	}
+
+	public int getHeightExit() {
+		return this.heightExit;
+	}
+
 }
