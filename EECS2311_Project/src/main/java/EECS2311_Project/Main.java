@@ -55,8 +55,7 @@ public class Main {
 	 *
 	 * @param file the name of the input file.
 	 * @return an ArrayList of the guitar/drum notes.
-	 * @throws FileNotFoundException throws FileNotFoundException if the file is not
-	 *                               found.
+	 * @throws FileNotFoundException throws FileNotFoundException if the file is not found.
 	 */
 	public static Object[] fileParser(String file) throws FileNotFoundException {
 		if (!fileChecker(file)) {
@@ -105,8 +104,7 @@ public class Main {
 	 * and sorts it for converting.
 	 *
 	 * @param noteArray the ArrayList with the converted <.txt> file.
-	 * @return an ArrayList of type GuitarNote with processed guitar tablature
-	 *         information.
+	 * @return an ArrayList of type GuitarNote with processed guitar tablature information.
 	 */
 	public static ArrayList<GuitarNote> guitarNoteParser(ArrayList<String> noteArray) {
 
@@ -270,8 +268,7 @@ public class Main {
 	 * and sorts it for converting.
 	 *
 	 * @param noteArray the ArrayList with the converted <.txt> file.
-	 * @return an ArrayList of type DrumNote with processed drum tablature
-	 *         information.
+	 * @return an ArrayList of type DrumNote with processed drum tablature information.
 	 */
 	public static ArrayList<DrumNote> drumNoteParser(ArrayList<String> noteArray) {
         ArrayList<DrumNote> drumNoteArray = new ArrayList<>();
