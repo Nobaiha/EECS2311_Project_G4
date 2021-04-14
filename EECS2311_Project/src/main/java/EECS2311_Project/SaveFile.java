@@ -1,21 +1,15 @@
 package EECS2311_Project;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.Font;
-import java.awt.Label;
-
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 /**
@@ -49,9 +43,13 @@ public class SaveFile extends JFrame {
 		});
 	}
 
-
 	/**
-	 * Creates the frame.
+	 * Creates the frame for the saving page.
+	 * 
+	 * @param title    tablature's title entered by user
+	 * @param composer tablature's composer entered by user
+	 * @param content  tablature content from conversion
+	 * @param xml      final output language of the tablature
 	 */
 	public SaveFile(String title, String composer, String content, String xml) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,82 +59,136 @@ public class SaveFile extends JFrame {
 		saveFile.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(saveFile);
 		saveFile.setLayout(null);
-		
-		Label label_4 = new Label("TM");
-		label_4.setBounds(372, 10, 28, 21);
-		saveFile.add(label_4);
-		
-		Label label_3 = new Label("TAB-2-MusicXML");
-		label_3.setForeground(new Color(0, 51, 153));
-		label_3.setFont(new Font("Arial Black", Font.BOLD, 35));
-		label_3.setBounds(10, 10, 372, 49);
-		saveFile.add(label_3);
-		
-		
-		/*JLabel saveLabel = new JLabel("in your computer or would you like to exit?");
-		saveLabel.setBounds(10, 179, 885, 49);
-		saveLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		saveLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
-		saveLabel.setBackground(new Color(248, 248, 255));
-		saveFile.add(saveLabel);*/
-		/*Label instructionsLabel1 = new Label("Your music XML file is ready!");
-		instructionsLabel1.setFont(new Font("Calibri", Font.PLAIN, 25));
-		instructionsLabel1.setBounds(10, 73, 885, 65);
-		saveFile.add(instructionsLabel1);*/
 
 		JTextArea tabDisplayTextArea = new JTextArea();
 		tabDisplayTextArea.setFont(new Font("Courier New", Font.PLAIN, 22));
-		JScrollPane sp = new JScrollPane(tabDisplayTextArea);
-		sp.setBounds(10, 159, 885, 459);
-		saveFile.add(sp);
+		JScrollPane outputScroller = new JScrollPane(tabDisplayTextArea);
+		outputScroller.setBounds(10, 159, 885, 459);
+		saveFile.add(outputScroller);
 		tabDisplayTextArea.setText(xml);
 		tabDisplayTextArea.setCaretPosition(0);
-		
-		Button yesButton = new Button("Download");
-		//yesButton.setBounds(151, 268, 249, 69);
-		yesButton.setBounds(339, 638, 224, 41);
-		yesButton.addActionListener(new ActionListener() {
+
+		Button downloadButton = new Button("Download");
+		downloadButton.setBackground(Color.WHITE);
+
+		downloadButton.setBounds(363, 638, 178, 43);
+		downloadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 JFileChooser fileChooser = new JFileChooser();
-			        fileChooser.setSelectedFile(new File("guitarTab.musicxml"));
-			        fileChooser.setFileFilter(new FileNameExtensionFilter("musicxml file","musicxml"));
-			        int userSelection = fileChooser.showSaveDialog(SaveFile.this);
-			        if (userSelection == JFileChooser.APPROVE_OPTION) {
-			            File file = fileChooser.getSelectedFile();
-			            Main.saveFile(file, tabDisplayTextArea.getText());
-			            //new GuiUploadWindow("","","").setVisible(true);
+				JFileChooser fileChooser = new JFileChooser();
+				String fileName = "convertedTab.musicxml";
+				if(Main.guitar == 0){
+					fileName = "guitarTab.musicxml";
+				}else if(Main.guitar == 1){
+					fileName = "bassTab.musicxml";
+				}else if(Main.guitar == 2){
+					fileName = "drumTab.musicxml";
+				}
+				fileChooser.setSelectedFile(new File(fileName));
+				fileChooser.setFileFilter(new FileNameExtensionFilter("musicxml file", "musicxml"));
+				int userSelection = fileChooser.showSaveDialog(SaveFile.this);
+				if (userSelection == JFileChooser.APPROVE_OPTION) {
+					File file = fileChooser.getSelectedFile();
+					Main.saveFile(file, tabDisplayTextArea.getText());
+
 				}
 			}
 		});
-		yesButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		saveFile.add(yesButton);
-		
-		Button noButton = new Button("Exit");
-		noButton.setBounds(739, 638, 150, 41);
-		noButton.setFont(new Font("Calibri", Font.PLAIN, 25));
-		noButton.addActionListener(new ActionListener() {
+		downloadButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		saveFile.add(downloadButton);
+
+		Button exitButton = new Button("Exit");
+		exitButton.setBackground(Color.WHITE);
+		exitButton.setBounds(717, 638, 178, 43);
+		exitButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				System.exit(0);
 			}
 		});
-		saveFile.add(noButton);
-		
+		saveFile.add(exitButton);
+
 		JLabel fileReadyLabel = new JLabel("Your musicXML file is ready!");
 		fileReadyLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
 		fileReadyLabel.setBounds(10, 100, 895, 49);
 		saveFile.add(fileReadyLabel);
 
-		Button button = new Button("Edit");
-		button.addActionListener(new ActionListener() {
+		Button editButton = new Button("Edit");
+		editButton.setBackground(Color.WHITE);
+		editButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				dispose();
-				new GuiUploadWindow(title,composer,content).setVisible(true);
+				new GuiUploadWindow(title, composer, content).setVisible(true);
 			}
 		});
-		button.setFont(new Font("Calibri", Font.PLAIN, 25));
-		button.setBounds(10, 638, 150, 41);
-		saveFile.add(button);
+		editButton.setFont(new Font("Calibri", Font.PLAIN, 23));
+		editButton.setBounds(10, 638, 178, 43);
+		saveFile.add(editButton);
+
+		JLabel headerLabel = new JLabel(" TAB - 2 - MusicXML\u2122 Save File");
+		headerLabel.setOpaque(true);
+		headerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		headerLabel.setForeground(Color.WHITE);
+		headerLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		headerLabel.setBackground(new Color(153, 153, 204));
+		headerLabel.setBounds(0, 0, 905, 67);
+		saveFile.add(headerLabel);
+
+		JLabel footerLabel = new JLabel("");
+		footerLabel.setOpaque(true);
+		footerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		footerLabel.setForeground(Color.WHITE);
+		footerLabel.setFont(new Font("Poor Richard", Font.BOLD, 40));
+		footerLabel.setBackground(new Color(153, 153, 204));
+		footerLabel.setBounds(0, 701, 905, 67);
+		saveFile.add(footerLabel);
 	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of edit button
+	 */
+
+	private int widthEdit = 10;
+	private int heightEdit = 638;
+
+	public int getWidthEdit() {
+		return this.widthEdit;
+	}
+
+	public int getHeightEdit() {
+		return this.heightEdit;
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of download button
+	 */
+	private int widthDownload = 363;
+	private int heightDownload = 638;
+
+	public int getWidthDownload() {
+		return this.widthDownload;
+	}
+
+	public int getHeightDownload() {
+		return this.heightDownload;
+	}
+
+	/**
+	 * Following code fragment for testing purpose setting bounds as width and
+	 * height of exit button
+	 */
+	private int widthExit = 717;
+	private int heightExit = 638;
+
+	public int getWidthExit() {
+		return this.widthExit;
+	}
+
+	public int getHeightExit() {
+		return this.heightExit;
+	}
+
 }
